@@ -70,6 +70,9 @@
   width: max-content;
 }
 
+.apps {
+  padding: 10px;
+
 body {
   overflow: hidden;
   background-image: var(--bg-img);
