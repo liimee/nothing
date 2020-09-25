@@ -60,6 +60,7 @@
 
 .apps .app {
   text-align: center;
+  max-width: 95px;
 }
 
 body {
