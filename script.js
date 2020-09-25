@@ -55,8 +55,8 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--text-color', 'white');
 }
 
+// interact.js
 const position = { x: 0, y: 0 }
-
 interact('.window').draggable({
   allowFrom: '.top',
   listeners: {
