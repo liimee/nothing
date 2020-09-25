@@ -57,6 +57,13 @@
   border: none;
 }
 
+.window .top {
+  width: 100%;
+  background-color: #dbdbdb;
+  padding-left: 6px;
+  padding-right: 6px;
+}
+
 #barTime {
   float: right;
 }
