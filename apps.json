@@ -1,0 +1,12 @@
+{
+  "apps": {
+    "settings": {
+      "name": "Settings",
+      "builtin": true,
+      "initialwindowsize": {
+        "width": "150px",
+        "height": "250px"
+      }
+    }
+  }
+}

@@ -1,0 +1,61 @@
+:root {
+  --bg-img: none;
+  --bg-repeat: none;
+  --bar-bg: #fff;
+  --text-color: black;
+}
+
+.bx {
+  vertical-align: middle;
+}
+
+#bar {
+  width: 100%;
+  height: 25px;
+  padding: 8px;
+  top: 0;
+  position: fixed;
+  left: 0;
+  z-index: 3;
+  background-color: var(--bar-bg);
+  color: var(--text-color);
+}
+
+#overlay {
+  width: 100%;
+  height: 100%;
+  top: calc(25px + 8px + 5px);
+  padding: 16px;
+  left: 0;
+  z-index: 4;
+  opacity: 0;
+  position: fixed;
+  background-color: #191919;
+  transition: .4s;
+  color: white;
+  user-select: none;
+}
+
+#overlayTitle {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+  width: max-content;
+  font-size: 30px;
+}
+
+#barTime {
+  float: right;
+}
+
+#home {
+  transition: .4s;
+}
+
+body {
+  overflow: hidden;
+  background-image: var(--bg-img);
+  background-repeat: var(--bg-repeat);
+  background-size: cover;
+  font-family: 'Inter', sans-serif;
+}
