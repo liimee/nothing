@@ -25,7 +25,7 @@ var core = {
   },
   openApp: function(app) {
     core.closeHome();
-    $('body').append('<div class="window" style="top: 70px;"><div class="top">Test</div><iframe src="' + app + '"></iframe></div>');
+    $('#desktop').append('<div class="window" style="top: 70px;"><div class="top">Test</div><iframe src="' + app + '"></iframe></div>');
   }
 };
 
@@ -63,6 +63,12 @@ document.addEventListener('onload', function() {
 const position = { x: 0, y: 0 }
 interact('.window').draggable({
   allowFrom: '.top',
+  modifiers: [
+    interact.modifiers.restrictRect({
+      restriction: 'parent',
+      endOnly: true
+    })
+  ],
   listeners: {
     move (event) {
       position.x += event.dx
