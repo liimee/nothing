@@ -44,6 +44,12 @@
   font-size: 30px;
 }
 
+.window {
+  min-width: 85px;
+  min-height: 75px;
+  border-radius: 8px;
+}
+
 #barTime {
   float: right;
 }
