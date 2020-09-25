@@ -49,6 +49,11 @@
   min-height: 75px;
   border-radius: 8px;
   overflow: scroll;
+  border: 1px solid black;
+}
+
+.window iframe {
+  border: none;
 }
 
 #barTime {
