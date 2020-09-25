@@ -1,6 +1,7 @@
 var core = {
   root: document.documentElement,
   openHome: function() {
+    document.querySelector('#overlay').style.display = 'block';
     document.querySelector('#home').removeAttribute('onclick');
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
@@ -18,6 +19,7 @@ var core = {
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-circle');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
+      document.querySelector('#overlay').style.display = 'none';
     }, 500);
   },
   openApp: function(app) {
