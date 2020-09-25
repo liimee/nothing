@@ -61,6 +61,12 @@
 .apps .app {
   text-align: center;
   max-width: 95px;
+  padding: 6px 10px;
+}
+
+.apps .app img {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 body {
