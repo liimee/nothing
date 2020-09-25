@@ -1,6 +1,7 @@
 var core = {
   root: document.documentElement,
   openHome: function() {
+    document.querySelector('#home').removeAttribute('onclick');
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     setTimeout(function() {
@@ -10,8 +11,14 @@ var core = {
     }, 500);
   },
   closeHome: function() {
+    document.querySelector('#home').removeAttribute('onclick');
     document.querySelector('#overlay').style.opacity = 0;
-    $('#home').attr('onclick', 'core.openHome();');
+    document.querySelector('#home').style.transform = 'scale(0, 0)';
+    setTimeout(function() {
+      $('#home').attr('class', 'bx bx-circle');
+      document.querySelector('#home').style.transform = 'scale(1, 1)';
+      $('#home').attr('onclick', 'core.openHome();');
+    }, 500);
   }
 };
 
