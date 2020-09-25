@@ -1,11 +1,9 @@
 var core = {
   root: document.documentElement,
+  homeOpen: false,
   openHome: function() {
-    document.querySelector('.apps').style.display = 'block';
     document.querySelector('#home').removeAttribute('onclick');
-    setTimeout(function() {
-      document.querySelector('#overlay').style.opacity = 0.85;
-    }, 50);
+    document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     $('#home').attr('onclick', 'core.closeHome();');
     setTimeout(function() {
@@ -18,7 +16,6 @@ var core = {
     document.querySelector('#overlay').style.opacity = 0;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     $('#home').attr('onclick', 'core.openHome();');
-    document.querySelector('.apps').style.display = 'none';
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-circle');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
