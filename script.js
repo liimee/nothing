@@ -19,6 +19,9 @@ var core = {
       $('#home').attr('class', 'bx bx-circle');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
     }, 500);
+  },
+  openApp: function(app) {
+    $('body').append('<iframe class="window" src="' + app + '" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></iframe>');
   }
 };
 
