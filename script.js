@@ -68,4 +68,4 @@ interact('.window').draggable({
         `translate(${position.x}px, ${position.y}px)`
     }
   }
-})
+});
