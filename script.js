@@ -4,20 +4,20 @@ var core = {
     document.querySelector('#home').removeAttribute('onclick');
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
+    $('#home').attr('onclick', 'core.closeHome();');
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-x');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
-      $('#home').attr('onclick', 'core.closeHome();');
     }, 500);
   },
   closeHome: function() {
     document.querySelector('#home').removeAttribute('onclick');
     document.querySelector('#overlay').style.opacity = 0;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
+    $('#home').attr('onclick', 'core.openHome();');
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-circle');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
-      $('#home').attr('onclick', 'core.openHome();');
     }, 500);
   }
 };
