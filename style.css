@@ -52,6 +52,7 @@
   border: 1px solid black;
   width: max-content;
   background-color: white;
+  position: relative;
 }
 
 .window iframe {
