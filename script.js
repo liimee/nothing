@@ -58,7 +58,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--text-color', 'white');
 }
 
-document.addEventListener('load', function(){
+document.addEventListener('DOMContentLoaded', function(){
 new Draggable.Draggable(document.querySelector('#desktop'), {
   handle: '.top',
   draggable: '.window'
