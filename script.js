@@ -5,6 +5,7 @@ var core = {
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     $('#home').attr('class', 'bx bx-x');
     $('#home').attr('onclick', 'core.closeHome();');
+    document.querySelector('#home').style.transform = 'scale(1, 1)';
   },
   closeHome: function() {
     document.querySelector('#overlay').style.opacity = 0;
