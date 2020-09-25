@@ -58,6 +58,10 @@
   transition: .4s;
 }
 
+.apps .app {
+  text-align: center;
+}
+
 body {
   overflow: hidden;
   background-image: var(--bg-img);
