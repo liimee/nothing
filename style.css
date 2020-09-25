@@ -52,7 +52,7 @@
   border: 1px solid black;
   width: max-content;
   background-color: white;
-  position: relative;
+  position: absolute;
 }
 
 .window iframe {
@@ -90,7 +90,6 @@
 
 .apps {
   padding: 10px;
-  display: none;
 }
 
 body {
