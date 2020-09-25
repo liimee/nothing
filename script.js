@@ -54,3 +54,18 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--bar-bg', '#212121');
   core.root.style.setProperty('--text-color', 'white');
 }
+
+const position = { x: 0, y: 0 }
+
+interact('.window').draggable({
+  allowFrom: '.top',
+  listeners: {
+    move (event) {
+      position.x += event.dx
+      position.y += event.dy
+
+      event.target.style.transform =
+        `translate(${position.x}px, ${position.y}px)`
+    },
+  }
+})
