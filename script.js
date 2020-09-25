@@ -22,7 +22,7 @@ var core = {
   },
   openApp: function(app) {
     core.closeHome();
-    $('body').append('<div class="window" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div style="width: 100%; background-color: #dbdbdb">Test</div><iframe src="' + app + '"></iframe></div>');
+    $('body').append('<div class="window" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"><div class="top">Test</div><iframe src="' + app + '"></iframe></div>');
   }
 };
 
