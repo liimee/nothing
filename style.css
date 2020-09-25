@@ -62,6 +62,8 @@
   background-color: #dbdbdb;
   padding-left: 6px;
   padding-right: 6px;
+  touch-action: none;
+  user-select: none;
 }
 
 #barTime {
