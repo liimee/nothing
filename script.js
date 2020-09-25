@@ -21,6 +21,7 @@ var core = {
     }, 500);
   },
   openApp: function(app) {
+    core.closeHome();
     $('body').append('<iframe class="window" src="' + app + '" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);"></iframe>');
   }
 };
