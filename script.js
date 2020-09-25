@@ -16,7 +16,7 @@ var core = {
     document.querySelector('#overlay').style.opacity = 0;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     $('#home').attr('onclick', 'core.openHome();');
-    document.querySelector('#.apps').style.display = 'none';
+    document.querySelector('.apps').style.display = 'none';
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-circle');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
