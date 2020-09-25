@@ -3,7 +3,9 @@ var core = {
   openHome: function() {
     document.querySelector('.apps').style.display = 'block';
     document.querySelector('#home').removeAttribute('onclick');
-    document.querySelector('#overlay').style.opacity = 0.85;
+    setTimeout(function() {
+      document.querySelector('#overlay').style.opacity = 0.85;
+    }, 50);
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     $('#home').attr('onclick', 'core.closeHome();');
     setTimeout(function() {
