@@ -59,7 +59,8 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 document.addEventListener('load', function(){
-new Draggable.Draggable(document.querySelectorAll('.window'), {
-  handle: '.top'
+new Draggable.Draggable(document.querySelector('#desktop'), {
+  handle: '.top',
+  draggable: '.window.'
 });
 });
