@@ -34,7 +34,6 @@
   transition: .4s;
   color: white;
   user-select: none;
-  display: none;
 }
 
 #overlayTitle {
@@ -91,6 +90,7 @@
 
 .apps {
   padding: 10px;
+  display: none;
 }
 
 body {
