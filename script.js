@@ -58,6 +58,8 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--text-color', 'white');
 }
 
+document.addEventListener('load', function(){
 new Draggable.Draggable(document.querySelectorAll('.window'), {
   handle: '.top'
+});
 });
