@@ -3,10 +3,6 @@ var core = {
   openHome: function() {
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
-    setTimeout(function(){
-      document.querySelector('#home').innerHTML = '<i class="bx bx-x"></i>';
-      document.querySelector('#home').style.transform = 'scale(1, 1)';
-    }, 500);
     $('#home').attr('onclick', 'core.closeHome();');
   },
   closeHome: function() {
