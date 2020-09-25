@@ -26,6 +26,25 @@ var core = {
   openApp: function(app) {
     core.closeHome();
     $('#desktop').append('<div class="window" style="top: 70px;"><div class="top">Test</div><iframe src="' + app + '"></iframe></div>');
+    const position = { x: 0, y: 0 }
+    interact('.window').draggable({
+      allowFrom: '.top',
+      modifiers: [
+        interact.modifiers.restrictRect({
+          restriction: 'parent',
+          endOnly: true
+        })
+      ],
+      listeners: {
+        move (event) {
+          position.x += event.dx
+          position.y += event.dy
+
+          event.target.style.transform =
+          `translate(${position.x}px, ${position.y}px)`
+        },
+      }
+    });
   }
 };
 
@@ -57,26 +76,3 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--bar-bg', '#212121');
   core.root.style.setProperty('--text-color', 'white');
 }
-
-// interact.js
-document.addEventListener('load', function() {
-const position = { x: 0, y: 0 }
-interact('.window').draggable({
-  allowFrom: '.top',
-  modifiers: [
-    interact.modifiers.restrictRect({
-      restriction: 'parent',
-      endOnly: true
-    })
-  ],
-  listeners: {
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
-
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-});
-});
