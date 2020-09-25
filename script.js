@@ -15,11 +15,11 @@ var core = {
 
 if(localStorage.getItem('wp') === null) {
   localStorage.setItem('wp', 'd-1');
-  core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.jpeg')");
+  core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
 } else {
   switch(localStorage.getItem('wp')) {
     case 'd-1':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.jpeg')");
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
   }
 }
 
