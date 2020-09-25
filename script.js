@@ -66,6 +66,6 @@ interact('.window').draggable({
 
       event.target.style.transform =
         `translate(${position.x}px, ${position.y}px)`
-    }
+    },
   }
 });
