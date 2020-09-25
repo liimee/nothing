@@ -59,6 +59,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 // interact.js
+document.addEventListener('onload', function() {
 const position = { x: 0, y: 0 }
 interact('.window').draggable({
   allowFrom: '.top',
@@ -71,4 +72,5 @@ interact('.window').draggable({
         `translate(${position.x}px, ${position.y}px)`
     },
   }
+});
 });
