@@ -59,7 +59,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 // interact.js
-document.addEventListener('onload', function() {
+document.addEventListener('load', function() {
 const position = { x: 0, y: 0 }
 interact('.window').draggable({
   allowFrom: '.top',
