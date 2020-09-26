@@ -16,7 +16,7 @@
   top: 0;
   position: fixed;
   left: 0;
-  z-index: 3;
+  z-index: 999;
   background-color: var(--bar-bg);
   color: var(--text-color);
 }
@@ -41,8 +41,7 @@
   height: 100%;
   margin-top: calc(25px + 8px + 6px);
   position: fixed;
-  background-image: var(--bg-img);
-  background-repeat: var(--bg-repeat);
+  z-index: 2;
 }
 
 #overlayTitle {
@@ -59,8 +58,8 @@
   border-radius: 8px;
   overflow: scroll;
   border: 1px solid black;
-  width: max-content;
   background-color: white;
+  z-index: 3;
 }
 
 .window iframe {
@@ -100,4 +99,6 @@ body {
   overflow: hidden;
   background-size: cover;
   font-family: 'Inter', sans-serif;
+  background-image: var(--bg-img);
+  background-repeat: var(--bg-repeat);
 }
