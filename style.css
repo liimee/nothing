@@ -57,6 +57,7 @@
   min-height: 75px;
   border-radius: 8px;
   overflow: scroll;
+  position: fixed;
   border: 1px solid black;
   background-color: white;
   z-index: 3;
@@ -64,6 +65,7 @@
 
 .window iframe {
   border: none;
+  margin-top: 34px;
 }
 
 .window .top {
@@ -72,6 +74,7 @@
   padding: 8px;
   touch-action: none;
   user-select: none;
+  position: absolute;
 }
 
 #home {
