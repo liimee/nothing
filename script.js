@@ -74,7 +74,7 @@ var core = {
   },
   focusWindow: function(el) {
     el.style.zIndex = 5;
-    $('.window').not(el).css('z-index', 5);
+    $('.window').not('#' + el.id).css('z-index', 5);
   }
 };
 
