@@ -69,8 +69,7 @@
 .window .top {
   width: 100%;
   background-color: #dbdbdb;
-  padding-left: 6px;
-  padding-right: 6px;
+  padding: 8px;
   touch-action: none;
   user-select: none;
 }

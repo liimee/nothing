@@ -27,8 +27,7 @@ var core = {
   },
   openApp: function(app) {
     core.closeHome();
-    $('#desktop').append('<div class="window" style="top: 70px; width: 100px;"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);"></i>Test</div><iframe src="' + app + '"></iframe></div>');
-
+    $('#desktop').append('<div class="window" style="width: 300px;"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>Test</div><iframe src="' + app + '"></iframe></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
@@ -36,7 +35,7 @@ var core = {
       modifiers: [
         interact.modifiers.restrictRect({
           restriction: 'parent',
-          endOnly: true
+          endOnly: false
         })
       ],
       listeners: {
@@ -101,3 +100,13 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--bar-bg', '#212121');
   core.root.style.setProperty('--text-color', 'white');
 }
+
+document.addEventListener('keydown', function() {
+  if (event.metaKey) {
+    if(core.homeOpen) {
+      core.closeHome();
+    } else {
+      core.openHome();
+    }
+  }
+});
