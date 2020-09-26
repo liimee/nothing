@@ -22,5 +22,17 @@
       <div id="apps"><span id="hello-world" class="app" onclick="if(core.homeOpen) {core.openApp('hello-world.html');}"><div class="icon"><img src="images/hello-world-icon.png" width="45" height="45"></div><div>Hello World</div></span></div>
     </div>
     <div id="desktop"></div>
+    <script>
+      // install service worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('script.js').then(function(registration) {
+            console.log('Service Worker installed successfully with scope: ', registration.scope);
+          }, function(err) {
+            console.log('Service Worker installation failed: ', err);
+          });
+        });
+      }
+    </script>
   </body>
 </html>
