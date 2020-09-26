@@ -74,9 +74,9 @@ var core = {
   },
   maximizeWindow: function(el) {
     el.style.transition = '.4s';
+    el.style.top = '120px';
     el.style.width = '100%';
     el.style.height = '100%';
-    el.style.top = '120px';
     setTimeout(function() {
       el.style.transition = 'initial';
     }, 500);
