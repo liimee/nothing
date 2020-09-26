@@ -66,6 +66,7 @@
 .window iframe {
   border: none;
   margin-top: 34px;
+  width: 100%;
 }
 
 .window .top {
