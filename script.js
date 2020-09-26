@@ -76,7 +76,7 @@ var core = {
     el.style.transition = '.4s';
     el.style.width = '100%';
     el.style.height = '100%';
-    el.style.top = 0;
+    el.style.top = '120px';
     setTimeout(function() {
       el.style.transition = 'initial';
     }, 450);
