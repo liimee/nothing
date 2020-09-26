@@ -3,8 +3,6 @@ console.log('%cWebDesktop WIP', 'padding: 8px; background-color: #007bff; color:
 var core = {
   root: document.documentElement,
   homeOpen: false,
-  focusedWindow: null,
-  numberOfWindows: 0,
   openHome: function() {
     document.querySelector('#home').removeAttribute('onclick');
     document.querySelector('#overlay').style.zIndex = 4;
@@ -75,7 +73,8 @@ var core = {
     $(el).parent().parent().remove();
   },
   focusWindow: function(el) {
-    let elid = el.id.replace('window-', '');
+    el.style.zIndex = 5;
+    $('.window').not(el).css('z-index', 5);
   }
 };
 
