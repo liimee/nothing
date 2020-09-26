@@ -79,7 +79,7 @@ var core = {
     el.style.top = '120px';
     setTimeout(function() {
       el.style.transition = 'initial';
-    }, 450);
+    }, 500);
   }
 };
 
