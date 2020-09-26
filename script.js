@@ -74,7 +74,7 @@ var core = {
   },
   maximizeWindow: function(el) {
     el.style.width = '100%';
-    el.style.height = '100%;
+    el.style.height = '100%';
   }
 };
 
