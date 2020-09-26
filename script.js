@@ -5,7 +5,7 @@ var core = {
   homeOpen: false,
   openHome: function() {
     document.querySelector('#home').removeAttribute('onclick');
-    document.querySelector('#overlay').style.zIndex = 4;
+    document.querySelector('#overlay').style.zIndex = 6;
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     $('#home').attr('onclick', 'core.closeHome();');
