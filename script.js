@@ -29,7 +29,7 @@ var core = {
   },
   openApp: function(app) {
     core.closeHome();
-    $('#desktop').append('<div class="window" style="width: 300px; top: 75px; left: 85px;" onclick="core.focusWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>Test</div><iframe src="' + app + '"></iframe></div>');
+    $('#desktop').append('<div class="window" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>Test</div><iframe src="' + app + '"></iframe></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
@@ -72,9 +72,9 @@ var core = {
   closeWindow: function(el) {
     $(el).parent().parent().remove();
   },
-  focusWindow: function(el) {
-    el.style.zIndex = 5;
-    $('.window').not(el).css('z-index', 4);
+  maximizeWindow: function(el) {
+    el.style.width = '100%';
+    el.style.height = '100%;
   }
 };
 
