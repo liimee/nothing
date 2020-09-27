@@ -124,7 +124,7 @@ if(localStorage.getItem('apps') === null) {
       name: 'Text Editor',
       file: 'edittext.html',
       id: 'edittext',
-      icon: 'images/hello-world-icon.png'
+      icon: 'images/edittext-icon.png'
     },
     helloworld: {
       name: 'Hello, World!',
