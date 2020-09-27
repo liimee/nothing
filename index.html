@@ -26,7 +26,7 @@
       // install service worker
       if('serviceWorker' in navigator) {
         navigator.serviceWorker
-          .register('/sw.js')
+          .register('script.js')
           .then(function() { console.log("Service Worker registered"); });
       }
     </script>
