@@ -116,7 +116,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 if(localStorage.getItem('apps') === null) {
-  localStorage.setItem('apps', '{textedit: {name: \'Edit Text\', file: \'edittext.html\', id: \'edit-text\', icon: \'\'}}');
+  localStorage.setItem('apps', '{\'textedit\': {\'name\': \'Edit Text\', \'file\': \'edittext.html\', \'id\': \'edit-text\', \'icon\': \'\'}}');
   let ia = JSON.parse(localStorage.getItem('apps'));
   Object.keys(ia).forEach(core.apps);
 } else {
