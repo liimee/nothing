@@ -80,7 +80,7 @@
   touch-action: none;
   user-select: none;
   position: absolute;
-  overflow-x: hidden;
+  overflow: hidden;
 }
 
 #home {
