@@ -82,19 +82,19 @@
   transition: .4s;
 }
 
-.apps .app {
+#apps .app {
   text-align: center;
   max-width: 95px;
   padding: 6px 10px;
 }
 
-.apps .app .icon {
+#apps .app .icon {
   margin-left: auto;
   margin-right: auto;
   width: max-content;
 }
 
-.apps {
+#apps {
   padding: 10px;
 }
 
