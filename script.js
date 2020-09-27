@@ -117,10 +117,10 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 
 if(localStorage.getItem('apps') === null) {
   let aps = {
-    edit-text: {
+    edittext: {
       name: 'Edit Text',
       file: 'edittext.html',
-      id: 'edit-text',
+      id: 'edittext',
       icon: ''
     }
   }
