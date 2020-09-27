@@ -58,7 +58,6 @@
   min-width: 85px;
   min-height: 75px;
   border-radius: 8px;
-  overflow: scroll;
   position: fixed;
   border: 1px solid black;
   background-color: white;
@@ -69,6 +68,7 @@
   border: none;
   margin-top: 34px;
   width: 100%;
+  overflow: scroll;
   height: 100%;
 }
 
