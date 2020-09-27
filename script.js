@@ -127,6 +127,12 @@ if(localStorage.getItem('apps') === null) {
       file: 'hello-world.html',
       id: 'helloworld',
       icon: 'images/hello-world-icon.png'
+    },
+    CHEINSTTROARLY: {
+      name: 'CHEINSTTROARLY',
+      file: 'minusone.html',
+      id: 'CHEINSTTROARLY',
+      icon: 'images/minusone.png'
     }
   }
   localStorage.setItem('apps', JSON.stringify(aps));
