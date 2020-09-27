@@ -24,10 +24,14 @@
     <div id="desktop"></div>
     <script>
       // install service worker
-      if('serviceWorker' in navigator) {
-        navigator.serviceWorker
-          .register('script.js')
-          .then(function() { console.log("Service Worker registered"); });
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('script.js').then(function(registration) {
+            console.log('Service Worker installed successfully with scope: ', registration.scope);
+          }, function(err) {
+            console.log('Service Worker installation failed: ', err);
+          });
+        });
       }
     </script>
   </body>
