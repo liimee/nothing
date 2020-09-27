@@ -115,6 +115,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--text-color', 'white');
 }
 
+document.addEventListener('DOMContentLoaded', function() {
 if(localStorage.getItem('apps') === null) {
   let aps = {
     edittext: {
@@ -131,7 +132,7 @@ if(localStorage.getItem('apps') === null) {
   let ia = JSON.parse(localStorage.getItem('apps'));
   Object.keys(ia).forEach(core.apps);
 }
-
+});
 document.addEventListener('keydown', function() {
   if (event.metaKey) {
     if(core.homeOpen) {
