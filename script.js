@@ -112,6 +112,10 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--text-color', 'white');
 }
 
+if(localStorage.getItem('apps') === null) {
+  localStorage.setItem('apps', '{textedit: {name: \'Edit Text\', file: \'edittext.html\'}}');
+}
+
 document.addEventListener('keydown', function() {
   if (event.metaKey) {
     if(core.homeOpen) {
