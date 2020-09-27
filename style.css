@@ -3,6 +3,7 @@
   --bg-repeat: none;
   --bar-bg: #fff;
   --text-color: black;
+  --window-top: #dbdbdb;
 }
 
 .bx {
@@ -73,7 +74,8 @@
 
 .window .top {
   width: 100%;
-  background-color: #dbdbdb;
+  background-color: var(--window-top);
+  color: var(--text-color);
   padding: 8px;
   touch-action: none;
   user-select: none;

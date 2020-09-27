@@ -110,9 +110,11 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   localStorage.setItem('dm', 'false');
   core.root.style.setProperty('--bar-bg', '#fff');
   core.root.style.setProperty('--text-color', 'black');
+  core.root.style.setProperty('--window-top', '#dbdbdb');
   core.darkmode = false;
 } else {
   core.root.style.setProperty('--bar-bg', '#212121');
+  core.root.style.setProperty('--window-top', '#212121');
   core.root.style.setProperty('--text-color', 'white');
   core.darkmode = true;
 }
@@ -120,12 +122,6 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 document.addEventListener('DOMContentLoaded', function() {
 if(localStorage.getItem('apps') === null) {
   let aps = {
-    edittext: {
-      name: 'Text Editor',
-      file: 'edittext.html',
-      id: 'edittext',
-      icon: 'images/edittext-icon.png'
-    },
     helloworld: {
       name: 'Hello, World!',
       file: 'hello-world.html',
