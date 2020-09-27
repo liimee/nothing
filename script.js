@@ -80,6 +80,9 @@ var core = {
     setTimeout(function() {
       el.style.transition = 'initial';
     }, 500);
+  },
+  apps: function(app) {
+    $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div>' + app.name + '</div></span>');
   }
 };
 
@@ -113,7 +116,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 if(localStorage.getItem('apps') === null) {
-  localStorage.setItem('apps', '{textedit: {name: \'Edit Text\', file: \'edittext.html\'}}');
+  localStorage.setItem('apps', '{textedit: {name: \'Edit Text\', file: \'edittext.html\', id: \'edit-text\', icon: \'\'}}');
 }
 
 document.addEventListener('keydown', function() {
