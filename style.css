@@ -34,6 +34,7 @@
   transition: .4s;
   color: white;
   user-select: none;
+  overflow-y: scroll;
 }
 
 #desktop {
@@ -83,14 +84,25 @@
 }
 
 #apps .app {
-  text-align: center;
-  max-width: 95px;
-  padding: 6px 10px;
+  max-width: 95em;
+  padding: 10px;
+  width: max-content;
+  display: inline-flex;
+  cursor: pointer;
+  border-radius: 8px;
+}
+
+#apps .app:hover {
+  background-color: #666666;
+}
+
+#apps .app .appname {
+  padding-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 #apps .app .icon {
-  margin-left: auto;
-  margin-right: auto;
   width: max-content;
 }
 

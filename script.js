@@ -82,7 +82,7 @@ var core = {
     }, 500);
   },
   apps: function(app) {
-    $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div>' + app.name + '</div></span>');
+    $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   }
 };
 
@@ -110,27 +110,39 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   localStorage.setItem('dm', 'false');
   core.root.style.setProperty('--bar-bg', '#fff');
   core.root.style.setProperty('--text-color', 'black');
+  core.darkmode = false;
 } else {
   core.root.style.setProperty('--bar-bg', '#212121');
   core.root.style.setProperty('--text-color', 'white');
+  core.darkmode = true;
 }
 
 document.addEventListener('DOMContentLoaded', function() {
 if(localStorage.getItem('apps') === null) {
   let aps = {
     edittext: {
-      name: 'Edit Text',
+      name: 'Text Editor',
       file: 'edittext.html',
       id: 'edittext',
-      icon: ''
+      icon: 'images/hello-world-icon.png'
+    },
+    helloworld: {
+      name: 'Hello, World!',
+      file: 'hello-world.html',
+      id: 'helloworld',
+      icon: 'images/hello-world-icon.png'
     }
   }
   localStorage.setItem('apps', JSON.stringify(aps));
   let ia = JSON.parse(localStorage.getItem('apps'));
-  Object.keys(ia).forEach(core.apps);
+  for (let l = 0; l < Object.keys(ia).length; l++) {
+    core.apps(ia[Object.keys(ia)[l]]);
+  }
 } else {
   let ia = JSON.parse(localStorage.getItem('apps'));
-  Object.keys(ia).forEach(core.apps);
+  for (let l = 0; l < Object.keys(ia).length; l++) {
+    core.apps(ia[Object.keys(ia)[l]]);
+  }
 }
 });
 document.addEventListener('keydown', function() {
