@@ -23,6 +23,9 @@ body {
   width: 32px;
   opacity: 0;
   transition: .3s;
+  margin-top: auto;
+  margin-bottom: auto;
+  vertical-align: middle;
 }
 
 #rightBtn:hover {
@@ -32,7 +35,7 @@ body {
 </body>
 <body>
 <div id="main"></div>
-<div id="rightBtn">→</div>
+<div id="rightBtn" onclick="do(1);">→</div>
 <script>
 var page = 1;
 function check() {
@@ -72,6 +75,17 @@ function check() {
       break;
     case 12:
       document.querySelector('#main').innerText = 'Chapter 13 of the book of CHEINSTTROARLY the first prophecy of the sixth age\nPart 2\nBelieved to be about bad people\n\nBad people will be forced to work on the building or be struck down by -1';
+  }
+}
+
+function do(action) {
+  if(action == 1) {
+    if (page > 12) {
+      return;
+    } else {
+      page += 1;
+      check();
+    }
   }
 }
 
