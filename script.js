@@ -119,6 +119,9 @@ if(localStorage.getItem('apps') === null) {
   localStorage.setItem('apps', '{textedit: {name: \'Edit Text\', file: \'edittext.html\', id: \'edit-text\', icon: \'\'}}');
   let ia = JSON.parse(localStorage.getItem('apps'));
   Object.keys(ia).forEach(core.apps);
+} else {
+  let ia = JSON.parse(localStorage.getItem('apps'));
+  Object.keys(ia).forEach(core.apps);
 }
 
 document.addEventListener('keydown', function() {
