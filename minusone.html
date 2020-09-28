@@ -5,6 +5,18 @@
 <style>
 body {
   font-family: 'Peddana', serif;
+  font-size: 23px;
+  line-height: 1.6;
+}
+
+pagetitle {
+  font-size: 32px;
+  display: block;
+}
+
+part {
+  font-size: 29px;
+  display: block;
 }
 
 #main {
@@ -52,40 +64,40 @@ var page = 1;
 function check() {
   switch(page) {
     case 1:
-      document.querySelector('#main').innerText = 'Chapter 1 of the book of CHEINSTTROARLY beginning\n\nPart 1\n\nBelieved to be the start of all time\n\nThere is a person who once existed. He created -1. And -1 was the world. -1 is the world. -1 is all. Soon afterwards, these two, Petrichor and -1, grew bored of there being only two people. So -1 created something. Something small. Something puny. He created mortals. These mortals lacked the omnipotence of their creator, and of their creator\'s creator. -1 provided for them all they needed. Even a computer. However, this computer had small memory. The first Apple computer had just one byte. Then everything crashed. Soon, the creators slept for many thousands of years.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 1 of the book of CHEINSTTROARLY beginning</pagetitle><part>Part 1</part>Believed to be the start of all time<br />There is a person who once existed. He created -1. And -1 was the world. -1 is the world. -1 is all. Soon afterwards, these two, Petrichor and -1, grew bored of there being only two people. So -1 created something. Something small. Something puny. He created mortals. These mortals lacked the omnipotence of their creator, and of their creator\'s creator. -1 provided for them all they needed. Even a computer. However, this computer had small memory. The first Apple computer had just one byte. Then everything crashed. Soon, the creators slept for many thousands of years.';
       break;
     case 2:
-      document.querySelector('#main').innerText = 'Chapter 1 of the book of CHEINSTTROARLY beginning\n\nPart 2\n\nBelieved to be the mortal discovery of the book of CHEINSTTROARLY\n\nBut first, Petrichor chose to drop a book down to the world that is his creation. -1 blessed the book with a beautiful jungle around it, and the mortals saw this. The mortals came to the jungle and found the book of CHEINSTTROARLY. However, English would not be invented for thousands of years so they buried it in a ditch.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 1 of the book of CHEINSTTROARLY beginning</pagetitle><part>Part 2</part>Believed to be the mortal discovery of the book of CHEINSTTROARLY<br />But first, Petrichor chose to drop a book down to the world that is his creation. -1 blessed the book with a beautiful jungle around it, and the mortals saw this. The mortals came to the jungle and found the book of CHEINSTTROARLY. However, English would not be invented for thousands of years so they buried it in a ditch.';
       break;
     case 3:
-      document.querySelector('#main').innerText = 'Chapter 1 of the book of CHEINSTTROARLY the first set of prophetic rules part 1\n\nBelieved to define rules of prophecies. Curiously, it is the only set of rules.\nThe prophecies in this book may not be altered in any way by either -1 or Petrichor.\nThe exact meaning of said prophecies cannot be disclosed by either -1 or Petrichor\n-1 and Petrichor cannot use their knowledge of these prophecies to force them to come true\nAnd Object in motion stays in motion.\nThese laws are laws of nature, that not even -1 or Petrichor can change.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 1 of the book of CHEINSTTROARLY the first set of prophetic rules</pagetitle><part>part 1</part>Believed to define rules of prophecies.<br />Curiously, it is the only set of rules.<br />The prophecies in this book may not be altered in any way by either -1 or Petrichor.<br />The exact meaning of said prophecies cannot be disclosed by either -1 or Petrichor<br />-1 and Petrichor cannot use their knowledge of these prophecies to force them to come true<br />And Object in motion stays in motion.<br />These laws are laws of nature, that not even -1 or Petrichor can change.';
       break;
     case 4:
-      document.querySelector('#main').innerText = 'Chapter 1 of the book of CHEINSTTROARLY sacred animals\nPart 1\n\nBelieved to be about sacred animals to Petrichor and -1\n\nThe following animals are sacred to Petrichor and -1:\nThe ant\nThe ant is a messenger to and from the great Petrichor.\nThe goldfish\nThe goldfish is a fish of great beauty and majesty, to be seen as the ants\' link to the water\nThe goat\nThe goat will play a crucial role in the sixth age; they are to be considered sacred\nThe bear\nThe bear was created by -1 to strike down bad people\nThe mosquito\nThe mosquito was created by -1 to strike down bad people';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 1 of the book of CHEINSTTROARLY sacred animals</pagetitle><part>Part 1</part>Believed to be about sacred animals to Petrichor and -1<br />The following animals are sacred to Petrichor and -1:<br />The ant<br />The ant is a messenger to and from the great Petrichor.<br />The goldfish<br />The goldfish is a fish of great beauty and majesty, to be seen as the ants\' link to the water<br />The goat<br />The goat will play a crucial role in the sixth age; they are to be considered sacred<br />The bear<br />The bear was created by -1 to strike down bad people<br />The mosquito<br />The mosquito was created by -1 to strike down bad people';
       break;
     case 5:
-      document.querySelector('#main').innerText = 'Chapter 1 of the book of CHEINSTTROARLY the ages\nPart 1\nBelieved to explain the prophecies. Curiously, there is a lot of conflicting information here.\n\nThe world will last 4096 ages, each lasting 8192 years, or 2048 years. Each age has prophecies. The prophecies may or may not exist for any given age. Each age will last 1024 pages.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 1 of the book of CHEINSTTROARLY the ages</pagetitle><part>Part 1</part>Believed to explain the prophecies. Curiously, there is a lot of conflicting information here.<br />The world will last 4096 ages, each lasting 8192 years, or 2048 years. Each age has prophecies. The prophecies may or may not exist for any given age. Each age will last 1024 pages.';
       break;
     case 6:
-      document.querySelector('#main').innerText = 'Chapter 1 of the book of CHEINSTTROARLY data\nPart 16\nBelieved to be numbers\n\n1 2 3 4 5 6 7 8 9\n\nBelieved not to be numbers\nA B C L • - # ( ͡° ͜ʖ ͡°)';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 1 of the book of CHEINSTTROARLY data</pagetitle><part>Part 16</part>Believed to be numbers<br />1 2 3 4 5 6 7 8 9<br />Believed not to be numbers<br />A B C L • - # ( ͡° ͜ʖ ͡°)';
       break;
     case 7:
-      document.querySelector('#main').innerText = 'Chapter 2 of the book of CHEINSTTROARLY the first prophecy of the first age\nPart 1\n\nBelieved to be about mans discovery of counting\nOne day, mortals will find out that they can have more than one of things. Since mortals like things, they will want a way to see who has the most things. So they can steal their things, and get more things for themselves. Mortals will devise a way of adding things to other things, to get a list of things. This list of things will become different, and soon all lists of things will be the same, varying only for how many things are on the list of things';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 2 of the book of CHEINSTTROARLY the first prophecy of the first age</pagetitle><part>Part 1</part>Believed to be about mans discovery of counting<br />One day, mortals will find out that they can have more than one of things. Since mortals like things, they will want a way to see who has the most things. So they can steal their things, and get more things for themselves. Mortals will devise a way of adding things to other things, to get a list of things. This list of things will become different, and soon all lists of things will be the same, varying only for how many things are on the list of things';
       break;
     case 8:
-      document.querySelector('#main').innerText = 'Chapter 14 of the book of CHEINSTTROARLY the first prophecy of child\nPart 14\n\nOddly like s commercial break.\n\nOne will be equal to Jeffery himself';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 14 of the book of CHEINSTTROARLY the first prophecy of child</pagetitle><part>Part 14</part>Oddly like s commercial break.<br />One will be equal to Jeffery himself';
       break;
     case 9:
-      document.querySelector('#main').innerText = 'Chapter 2 of the book of CHEINSTTROARLY the first prophecy of the first age\nPart 2\n\nBelieved to be about mortals stealing other mortals\' things\n\nAfter learning to count things, mortals wanted to have more things, so they counted other mortals\' things and decided to steal them. Soon, everyone\'s things were being stolen, even stolen things were being stolen. The best thieves with the best hiding spots got the most things. Soon, these mortals became bad people. -1 will create a storm to strike them down.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 2 of the book of CHEINSTTROARLY the first prophecy of the first age</pagetitle><part>Part 2</part>Believed to be about mortals stealing other mortals\' things<br />After learning to count things, mortals wanted to have more things, so they counted other mortals\' things and decided to steal them. Soon, everyone\'s things were being stolen, even stolen things were being stolen. The best thieves with the best hiding spots got the most things. Soon, these mortals became bad people. -1 will create a storm to strike them down.';
       break;
     case 10:
-      document.querySelector('#main').innerText = 'Chapter 2 of the book of CHEINSTTROARLY the second prophecy of the first age\nThe final first age prophecy\n\nOne day mortals will find rocks. They will hit things with rocks. They will make new things. They will use new things to hit rocks. Things will break.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 2 of the book of CHEINSTTROARLY the second prophecy of the first age</pagetitle><part>The final first age prophecy</part>One day mortals will find rocks. They will hit things with rocks. They will make new things. They will use new things to hit rocks. Things will break.';
       break;
     case 11:
-      document.querySelector('#main').innerText = 'Chapter 13 of the book of CHEINSTTROARLY the first prophecy of the sixth age\nPart 1\nBelieved to be the construction of a building at Point Time\n\nWhere January first is all, Petrichor will create a place for bad people. Then -1 will strike down the bad people.';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 13 of the book of CHEINSTTROARLY the first prophecy of the sixth age</pagetitle><part>Part 1</part>Believed to be the construction of a building at Point Time<br />Where January first is all, Petrichor will create a place for bad people. Then -1 will strike down the bad people.';
       break;
     case 12:
-      document.querySelector('#main').innerText = 'Chapter 13 of the book of CHEINSTTROARLY the first prophecy of the sixth age\nPart 2\nBelieved to be about bad people\n\nBad people will be forced to work on the building or be struck down by -1';
+      document.querySelector('#main').innerHTML = '<pagetitle>Chapter 13 of the book of CHEINSTTROARLY the first prophecy of the sixth age</pagetitle><part>Part 2</part>Believed to be about bad people<br />Bad people will be forced to work on the building or be struck down by -1';
   }
 }
 
