@@ -75,6 +75,7 @@ var core = {
   maximizeWindow: function(el) {
     el.style.transition = '.4s';
     if(el.getAttribute('data-maximized') == 'false') {
+      el.setAttribute('data-initial-pos', el.style.transform);
       el.style.transform = 'none';
       el.setAttribute('data-initial-width', el.style.width);
       el.setAttribute('data-initial-height', el.style.height);
@@ -84,13 +85,15 @@ var core = {
       el.style.height = '90%';
       el.setAttribute('data-maximized', 'true');
     } else {
-      el.style.top = '120px';
-      el.style.left = '12px';
+      el.style.top = '75px';
+      el.style.left = '85px';
+      el.style.transform = el.getAttribute('data-initial-pos');
       el.style.width = el.getAttribute('data-initial-width');
       el.style.height = el.getAttribute('data-initial-height');
       el.setAttribute('data-maximized', 'false');
       el.removeAttribute('data-initial-width');
       el.removeAttribute('data-initial-height');
+      el.removeAttribute('data-initial-pos');
     }
     setTimeout(function() {
       el.style.transition = 'initial';
