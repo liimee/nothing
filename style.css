@@ -58,6 +58,7 @@
   min-width: 85px;
   min-height: 75px;
   border-radius: 8px;
+  padding-bottom: 2px;
   position: fixed;
   border: 1px solid black;
   background-color: white;
@@ -70,6 +71,7 @@
   width: 100%;
   overflow: scroll;
   height: 100%;
+  border-radius: 8px;
 }
 
 .window .top {
@@ -81,6 +83,7 @@
   user-select: none;
   position: absolute;
   overflow: hidden;
+  border-radius: 8px;
 }
 
 #home {

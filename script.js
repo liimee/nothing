@@ -29,7 +29,7 @@ var core = {
   },
   openApp: function(app) {
     core.closeHome();
-    $('#desktop').append('<div class="window" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>Test</div><iframe src="' + app + '"></iframe></div>');
+    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>Test</div><iframe src="' + app + '"></iframe></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
@@ -74,9 +74,24 @@ var core = {
   },
   maximizeWindow: function(el) {
     el.style.transition = '.4s';
-    el.style.top = '120px';
-    el.style.width = '100%';
-    el.style.height = '100%';
+    if(el.getAttribute('data-maximized') == 'false') {
+      el.style.transform = 'none';
+      el.setAttribute('data-initial-width', el.style.width);
+      el.setAttribute('data-initial-height', el.style.height);
+      el.style.top = 'calc(25px + 8px + 12px)';
+      el.style.left = '12px';
+      el.style.width = '95%';
+      el.style.height = '90%';
+      el.setAttribute('data-maximized', 'true');
+    } else {
+      el.style.top = '120px';
+      el.style.left = '12px';
+      el.style.width = el.getAttribute('data-initial-width');
+      el.style.height = el.getAttribute('data-initial-height');
+      el.setAttribute('data-maximized', 'false');
+      el.removeAttribute('data-initial-width');
+      el.removeAttribute('data-initial-height');
+    }
     setTimeout(function() {
       el.style.transition = 'initial';
     }, 500);
