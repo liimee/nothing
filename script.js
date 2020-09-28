@@ -27,9 +27,9 @@ var core = {
       document.querySelector('#home').style.transform = 'scale(1, 1)';
     }, 500);
   },
-  openApp: function(app) {
+  openApp: function(app, title) {
     core.closeHome();
-    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>Test</div><iframe src="' + app + '"></iframe></div>');
+    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>' + title + '</div><iframe src="' + app + '"></iframe></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
@@ -97,7 +97,7 @@ var core = {
     }, 500);
   },
   apps: function(app) {
-    $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
+    $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\', \'' + app.name + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   }
 };
 

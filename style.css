@@ -55,8 +55,8 @@
 }
 
 .window {
-  min-width: 85px;
-  min-height: 75px;
+  min-width: 135px;
+  min-height: 120px;
   border-radius: 8px;
   padding-bottom: 2px;
   position: fixed;
