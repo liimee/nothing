@@ -29,7 +29,7 @@ var core = {
   },
   openApp: function(app, title) {
     core.closeHome();
-    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>' + title + '</div><iframe src="' + app + '"></iframe></div>');
+    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>' + title + '</div><div style="padding: 12px;"><iframe src="' + app + '"></iframe></div></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
@@ -83,6 +83,8 @@ var core = {
       el.style.left = '12px';
       el.style.width = '95%';
       el.style.height = '93%';
+      interact(el).draggable(false);
+      interact(el).resizable(false);
       el.setAttribute('data-maximized', 'true');
     } else {
       el.style.top = '75px';
@@ -91,6 +93,8 @@ var core = {
       el.style.width = el.getAttribute('data-initial-width');
       el.style.height = el.getAttribute('data-initial-height');
       el.setAttribute('data-maximized', 'false');
+      interact(el).draggable(true);
+      interact(el).resizable(true);
       el.removeAttribute('data-initial-width');
       el.removeAttribute('data-initial-height');
       el.removeAttribute('data-initial-pos');
