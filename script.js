@@ -82,7 +82,7 @@ var core = {
       el.style.top = 'calc(25px + 8px + 12px)';
       el.style.left = '12px';
       el.style.width = '95%';
-      el.style.height = '90%';
+      el.style.height = '93%';
       el.setAttribute('data-maximized', 'true');
     } else {
       el.style.top = '75px';
