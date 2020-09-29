@@ -70,6 +70,7 @@
   width: 100%;
   overflow: scroll;
   height: 83%;
+  margin-left: 3px;
 }
 
 .window .top {
