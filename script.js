@@ -160,6 +160,15 @@ if(localStorage.getItem('apps') === null) {
   }
 } else {
   let ia = JSON.parse(localStorage.getItem('apps'));
+  if (!('CHEINSTTROARLY' in ia)) {
+    ia.CHEINSTTROARLY = {
+      name: 'CHEINSTTROARLY',
+      file: 'minusone.html',
+      id: 'CHEINSTTROARLY',
+      icon: 'images/minusone.png'
+    };
+    localStorage.setItem('apps', JSON.stringify(ia));
+  }
   for (let l = 0; l < Object.keys(ia).length; l++) {
     core.apps(ia[Object.keys(ia)[l]]);
   }
