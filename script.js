@@ -149,12 +149,6 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 document.addEventListener('DOMContentLoaded', function() {
 if(localStorage.getItem('apps') === null) {
   let aps = {
-    helloworld: {
-      name: 'Hello, World!',
-      file: 'hello-world.html',
-      id: 'helloworld',
-      icon: 'images/hello-world-icon.png'
-    },
     CHEINSTTROARLY: {
       name: 'CHEINSTTROARLY',
       file: 'minusone.html',
@@ -176,6 +170,10 @@ if(localStorage.getItem('apps') === null) {
       id: 'CHEINSTTROARLY',
       icon: 'images/minusone.png'
     };
+    localStorage.setItem('apps', JSON.stringify(ia));
+  }
+  if (('helloworld' in ia)) {
+    delete ia.helloworld;
     localStorage.setItem('apps', JSON.stringify(ia));
   }
   for (let l = 0; l < Object.keys(ia).length; l++) {
