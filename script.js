@@ -128,6 +128,11 @@ if(localStorage.getItem('wprepeat') === null) {
   }
 }
 
+setInterval(function(){
+  let date = new Date();
+  document.querySelector('#clock').innerText = date.getHours + ':' + date.getMinutes();
+}, 100);
+
 if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
   localStorage.setItem('dm', 'false');
   core.root.style.setProperty('--bar-bg', '#fff');
