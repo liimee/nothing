@@ -120,7 +120,7 @@
 body {
   overflow: hidden;
   background-size: cover;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', system-ui, sans-serif;
   background-image: var(--bg-img);
   background-repeat: var(--bg-repeat);
 }
