@@ -119,6 +119,10 @@
   margin-bottom: 5em;
 }
 
+#bar #clock {
+  float: right;
+}
+
 body {
   overflow: hidden;
   background-size: cover;
