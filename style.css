@@ -81,6 +81,8 @@
   user-select: none;
   overflow: hidden;
   border-radius: 8px;
+  max-width: -webkit-fill-available;
+  max-width: available;
 }
 
 #home {
