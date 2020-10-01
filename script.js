@@ -130,8 +130,10 @@ if(localStorage.getItem('wprepeat') === null) {
 
 setInterval(function(){
   let date = new Date();
-  document.querySelector('#clock').innerText = date.getHours() + ':' + date.getMinutes();
-}, 100);
+  let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
+  let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
+  document.querySelector('#clock').innerText = hour + ':' + minute;
+}, 10);
 
 if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
   localStorage.setItem('dm', 'false');
