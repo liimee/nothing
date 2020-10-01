@@ -20,7 +20,7 @@
   z-index: 999;
   background-color: var(--bar-bg);
   color: var(--text-color);
-  padding-right: 50px;
+  padding-right: 64px;
 }
 
 #overlay {
