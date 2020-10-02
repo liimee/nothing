@@ -29,7 +29,7 @@ var core = {
   },
   openApp: function(app, title) {
     core.closeHome();
-    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>' + title + '</div><div style="padding: 12px; height: -webkit-fill-available; height: available;"><iframe src="' + app + '"></iframe></div></div>');
+    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px;" ondblclick="core.maximizeWindow(this);"><div class="top"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i>' + title + '</div><div style="padding: 12px; height: 100%; max-height: -webkit-fill-available; max-height: available;"><iframe src="' + app + '"></iframe></div></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
