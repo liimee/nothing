@@ -122,6 +122,7 @@
 #bar #clock {
   float: right;
   margin-right: 25px;
+  cursor: pointer;
 }
 
 body {
