@@ -138,7 +138,7 @@ setInterval(function(){
   let month = months[date.getMonth()];
   let day = date.getDate();
   document.querySelector('#clock').innerText = hour + ':' + minute;
-  core.clockTooltip.setContent(`${hour}:${minute} | ${month} ${day}, ${year}`);
+  core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + day + ',' + year);
 }, 10);
 
 if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
