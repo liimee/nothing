@@ -106,7 +106,6 @@ var core = {
   apps: function(app) {
     $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\', \'' + app.name + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   },
-  clockTooltip: tippy(document.querySelector('#clock'), { trigger: 'click' })
 };
 
 if(localStorage.getItem('wp') === null) {
@@ -155,6 +154,8 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 document.addEventListener('DOMContentLoaded', function() {
+core.clockTooltip = tippy(document.querySelector('#clock'), { trigger: 'click' });
+
 if(localStorage.getItem('apps') === null) {
   let aps = {
     CHEINSTTROARLY: {
