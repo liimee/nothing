@@ -106,7 +106,7 @@ var core = {
   apps: function(app) {
     $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\', \'' + app.name + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   },
-  clockTooltip: tippy(document.querySelector('#clock'))
+  clockTooltip: tippy(document.querySelector('#clock'), { trigger: 'click' })
 };
 
 if(localStorage.getItem('wp') === null) {
@@ -130,10 +130,15 @@ if(localStorage.getItem('wprepeat') === null) {
 }
 
 setInterval(function(){
+  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let date = new Date();
   let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
   let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
+  let year = date.getFullYear();
+  let month = months[date.getMonth()];
+  let day = date.getDate();
   document.querySelector('#clock').innerText = hour + ':' + minute;
+  core.clockTooltip.setContent(`${hour}:${minute} | ${month} ${day}, ${year}`);
 }, 10);
 
 if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
