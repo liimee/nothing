@@ -154,7 +154,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-core.clockTooltip = tippy(document.querySelector('#clock'), { trigger: 'click' });
+core.clockTooltip = tippy(document.querySelector('#clock'), { trigger: 'click', arrow: false });
 
 if(localStorage.getItem('apps') === null) {
   let aps = {
