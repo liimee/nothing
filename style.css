@@ -46,14 +46,6 @@
   z-index: 2;
 }
 
-#overlayTitle {
-  margin-left: auto;
-  margin-right: auto;
-  text-align: center;
-  width: max-content;
-  font-size: 30px;
-}
-
 .window {
   min-width: 135px;
   min-height: 120px;
