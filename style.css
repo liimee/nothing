@@ -134,7 +134,8 @@
 
 #overlay #overlayClock {
   font-weight: 200;
-  font-size: 36px;
+  font-size: 45px;
+  padding-left: 20px;
 }
 
 body {
