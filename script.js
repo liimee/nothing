@@ -128,12 +128,6 @@ if(localStorage.getItem('wprepeat') === null) {
   }
 }
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  document.querySelector('#device').innerHTML = '<i class="bx bx-mobile"></i>';
-} else {
-  document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
-}
-
 setInterval(function(){
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let date = new Date();
@@ -161,6 +155,12 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 
 document.addEventListener('DOMContentLoaded', function() {
 core.clockTooltip = tippy(document.querySelector('#clock'), { trigger: 'click', arrow: false });
+
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  document.querySelector('#device').innerHTML = '<i class="bx bx-mobile"></i>';
+} else {
+  document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
+}
 
 if(localStorage.getItem('apps') === null) {
   let aps = {
@@ -196,6 +196,7 @@ if(localStorage.getItem('apps') === null) {
   }
 }
 });
+
 document.addEventListener('keydown', function() {
   if (event.metaKey) {
     if(core.homeOpen) {
