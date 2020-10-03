@@ -125,6 +125,12 @@
   cursor: pointer;
 }
 
+#device {
+  float: right;
+  margin-right: calc(25px + 8px);
+  cursor: pointer;
+}
+
 body {
   overflow: hidden;
   background-size: cover;
