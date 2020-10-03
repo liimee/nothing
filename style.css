@@ -132,10 +132,13 @@
   cursor: pointer;
 }
 
-#overlay #overlayClock {
+#overlay #overlayClock #realOverlayClock {
   font-weight: 200;
-  font-size: 45px;
-  padding-left: 20px;
+  font-size: 13px;
+}
+
+#overlay #overlayClock {
+  margin-bottom: 20px;
 }
 
 body {
