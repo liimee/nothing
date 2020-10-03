@@ -63,6 +63,7 @@
   border: 1px solid black;
   background-color: white;
   z-index: 3;
+  box-sizing: border-box;
 }
 
 .window iframe {
