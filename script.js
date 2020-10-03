@@ -139,7 +139,7 @@ setInterval(function(){
   let month = months[date.getMonth()];
   let day = date.getDate();
   document.querySelector('#clock').innerText = hour + ':' + minute;
-  document.querySelector('#overlayClock').innerText = hour + ':' + minute;
+  document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
   core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
 }, 10);
 
