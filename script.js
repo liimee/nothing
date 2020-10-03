@@ -140,6 +140,17 @@ setInterval(function(){
   let day = date.getDate();
   document.querySelector('#clock').innerText = hour + ':' + minute;
   document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
+  if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 15) {
+    document.querySelector('#overlayGreeting').innerText = 'Good morning!';
+  } else if (date.getHours() > 10 && date.getHours() < 17) {
+    document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
+  } else if (date.getHours() < 20 && date.getHours() > 16) {
+    document.querySelecror('#overlayGreeting').innerText = 'Good evening!';
+  } else if (date.getHours() < 23 && date.getHours() > 19 && date.getHours() != 0) {
+    document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
+  } else {
+    document.querySelector('#overlayGreeting').innerText = 'Dude this is midnight';
+  }
   core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
 }, 10);
 
