@@ -137,6 +137,11 @@
   font-size: 13px;
 }
 
+#overlay #overlayClock #overlayGreeting {
+  font-size: 37px;
+  font-weight: 700;
+}
+
 #overlay #overlayClock {
   margin-bottom: 20px;
 }
