@@ -128,6 +128,12 @@ if(localStorage.getItem('wprepeat') === null) {
   }
 }
 
+if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
+  document.querySelector('#device').innerHTML = '<i class="bx bx-mobile"></i>';
+} else {
+  document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
+}
+
 setInterval(function(){
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let date = new Date();
