@@ -149,7 +149,7 @@ setInterval(function(){
   } else if (date.getHours() < 24 && date.getHours() > 19 && date.getHours() != 0) {
     document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
   } else {
-    document.querySelector('#overlayGreeting').innerText = 'Dude this is midnight';
+    document.querySelector('#overlayGreeting').innerText = 'Dude it\'s midnight';
   }
   core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
 }, 10);
