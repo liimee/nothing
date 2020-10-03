@@ -146,7 +146,7 @@ setInterval(function(){
     document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
   } else if (date.getHours() < 20 && date.getHours() > 16) {
     document.querySelecror('#overlayGreeting').innerText = 'Good evening!';
-  } else if (date.getHours() < 23 && date.getHours() > 19 && date.getHours() != 0) {
+  } else if (date.getHours() < 24 && date.getHours() > 19 && date.getHours() != 0) {
     document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
   } else {
     document.querySelector('#overlayGreeting').innerText = 'Dude this is midnight';
