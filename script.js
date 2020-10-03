@@ -140,7 +140,7 @@ setInterval(function(){
   let day = date.getDate();
   document.querySelector('#clock').innerText = hour + ':' + minute;
   document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
-  if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 15) {
+  if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
     document.querySelector('#overlayGreeting').innerText = 'Good morning!';
   } else if (date.getHours() > 10 && date.getHours() < 17) {
     document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
