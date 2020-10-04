@@ -31,7 +31,7 @@ var core = {
   },
   openApp: function(app, title) {
     core.closeHome();
-    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px; height: 235px;"><div class="top" ondblclick="core.maximizeWindow(this.parentElement);"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-move-vertical" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; transform: rotate(45deg); background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + title + '</div><div style="padding-right: 10px; padding-left: 10px; height: 90%;"><iframe src="' + app + '"></iframe></div></div>');
+    $('#desktop').append('<div class="window" data-maximized="false" style="width: 300px; top: 75px; left: 85px; height: 235px;"><div class="top" ondblclick="core.maximizeWindow(this.parentElement);"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + title + '</div><div style="padding-right: 10px; padding-left: 10px; height: 90%;"><iframe src="' + app + '"></iframe></div></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
