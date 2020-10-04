@@ -139,6 +139,18 @@ function networkThing() {
       break;
     case 'cellular':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bar-chart"></i>';
+      break;
+    case 'ethernet':
+      document.querySelector('#bar #network').innerHTML = '<i class="bx bx-plug"></i>';
+      break;
+    case 'none':
+      document.querySelector('#bar #network').innerHTML = '<i class="bx bx-wifi-off"></i>';
+      break;
+    case 'wifi':
+      document.querySelector('#bar #network').innerHTML = '<i class="bx bx-wifi"></i>';
+      break;
+    default:
+      document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i>';
   }
 }
 
