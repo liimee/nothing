@@ -206,9 +206,7 @@ core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'cli
 core.deviceTooltip = tippy(document.querySelector('#bar #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
 core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
 
-if (navigator.networkInformation) {
-  networkThing();
-}
+networkThing();
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
