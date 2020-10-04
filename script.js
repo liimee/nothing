@@ -122,6 +122,12 @@ if(localStorage.getItem('wp') === null) {
   switch(localStorage.getItem('wp')) {
     case 'd-1':
     core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
+    break;
+    case 'd-2':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
+    break;
+    case 'd-3':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
   }
 }
 
@@ -210,6 +216,19 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--text-color', 'white');
   core.darkmode = true;
 }
+
+window.addEventListener('storage', function() {
+  switch(localStorage.getItem('wp')) {
+    case 'd-1':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
+    break;
+    case 'd-2':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
+    break;
+    case 'd-3':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
+  }
+});
 
 document.addEventListener('DOMContentLoaded', function() {
 core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
