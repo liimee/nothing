@@ -119,13 +119,13 @@
 
 #bar #clock {
   float: right;
-  margin-right: 25px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
 #bar #device {
   float: right;
-  margin-right: calc(25px + 8px);
+  margin-right: 10px;
   cursor: pointer;
 }
 
