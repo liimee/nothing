@@ -161,6 +161,7 @@ setInterval(function(){
 
 setInterval(function(){
   document.querySelector('#bar #fps').innerText = core.fps;
+  core.fpsTooltip.setContent(core.fps);
   core.fps = 0;
 }, 1000);
 
@@ -180,6 +181,7 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 document.addEventListener('DOMContentLoaded', function() {
 core.clockTooltip = tippy(document.querySelector('#clock'), { trigger: 'click', arrow: false });
 core.deviceTooltip = tippy(document.querySelector('#device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
+core.fpsTooltip = tippy(document.querySelector('#bar #device'), { trigger: 'click', arrow: false });
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
