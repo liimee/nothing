@@ -131,6 +131,17 @@ if(localStorage.getItem('wprepeat') === null) {
   }
 }
 
+function networkThing() {
+  let ty = netInfo.type;
+  switch (ty) {
+    case 'bluetooth':
+      document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bluetooth"></i>';
+      break;
+    case 'cellular':
+      document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bar-chart"></i>';
+  }
+}
+
 setInterval(function(){
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
   let date = new Date();
