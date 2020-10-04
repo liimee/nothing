@@ -175,7 +175,7 @@ setInterval(function(){
   } else if (date.getHours() > 10 && date.getHours() < 17) {
     document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
   } else if (date.getHours() < 20 && date.getHours() > 16) {
-    document.querySelecror('#overlayGreeting').innerText = 'Good evening!';
+    document.querySelector('#overlayGreeting').innerText = 'Good evening!';
   } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
     document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
   } else {
