@@ -108,6 +108,7 @@ var core = {
   apps: function(app) {
     $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\', \'' + app.name + '\');}"><div class="icon"><img src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   },
+  fps: 0
 };
 
 if(localStorage.getItem('wp') === null) {
@@ -153,6 +154,15 @@ setInterval(function(){
   }
   core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
 }, 10);
+
+setInterval(function(){
+  core.fps += 1;
+}, 16);
+
+setInterval(function(){
+  document.querySelector('#bar #fps').innerText = core.fps;
+  core.fps = 0;
+}, 1000);
 
 if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
   localStorage.setItem('dm', 'false');
