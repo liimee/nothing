@@ -217,7 +217,7 @@ if (navigator.connection) {
   networkThing();
   navigator.connection.addEventListener('change', networkThing);
 } else {
-  document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i>';
+  document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
   core.networkTooltip.setContent('This browser doesn\'t seem to support the JavaScript Network Information API.');
 }
 
