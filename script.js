@@ -132,7 +132,7 @@ if(localStorage.getItem('wprepeat') === null) {
 }
 
 function networkThing() {
-  let ty = networkInfo.type;
+  let ty = networkInformation.type;
   switch (ty) {
     case 'bluetooth':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bluetooth"></i>';
