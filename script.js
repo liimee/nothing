@@ -217,8 +217,8 @@ if (navigator.connection) {
   networkThing();
   navigator.connection.addEventListener('change', networkThing);
 } else {
-  document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
-  core.networkTooltip.setContent('This browser doesn\'t seem to support the JavaScript Network Information API.');
+  document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
+  core.networkTooltip.setContent('It seems like this browser does not support the JavaScript Network Information API.');
 }
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
