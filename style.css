@@ -22,6 +22,11 @@
   color: var(--text-color);
 }
 
+#bar #fps {
+  float: right;
+  margin-right: 10px;
+}
+
 #overlay {
   width: 100%;
   height: 100%;
@@ -118,7 +123,7 @@
   cursor: pointer;
 }
 
-#device {
+#bar #device {
   float: right;
   margin-right: calc(25px + 8px);
   cursor: pointer;
