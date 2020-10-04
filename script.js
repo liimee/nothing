@@ -136,27 +136,27 @@ function networkThing() {
   switch (ty) {
     case 'bluetooth':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bluetooth"></i>';
-      core.networkTooltip.setContent('Connected to a Bluetooth device.');
+      core.networkTooltip.setContent('This device is connected to a Bluetooth device.');
       break;
     case 'cellular':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bar-chart"></i>';
-      core.networkTooltip.setContent('Connected to a celullar network.');
+      core.networkTooltip.setContent('This device is connected to a celullar network.');
       break;
     case 'ethernet':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-plug"></i>';
-      core.networkTooltip.setContent('Connected to an ethernet network.');
+      core.networkTooltip.setContent('This device is connected to an ethernet network.');
       break;
     case 'none':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-wifi-off"></i>';
-      core.networkTooltip.setContent('Not connected to a network.');
+      core.networkTooltip.setContent('This device is not connected to a network.');
       break;
     case 'wifi':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-wifi"></i>';
-      core.networkTooltip.setContent('Connected to a Wi-Fi network.');
+      core.networkTooltip.setContent('This device is connected to a Wi-Fi network.');
       break;
     default:
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i>';
-      core.networkTooltip.setContent('Connected to an unknown network type.');
+      core.networkTooltip.setContent('This device is connected to an unknown network type.');
   }
 }
 
