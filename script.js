@@ -205,10 +205,14 @@ document.addEventListener('DOMContentLoaded', function() {
 core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
 core.deviceTooltip = tippy(document.querySelector('#bar #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
 core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
+core.networkTooltip = tippy(document.querySelector('#bar #network'), {trigger: 'click', arrow: false});
 
 if (navigator.connection) {
   networkThing();
   navigator.connection.addEventListener('change', networkThing);
+} else {
+  document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i>';
+  core.networkTooltip.setContent('This browser doesn\'t seem to support JavaScript Network Information API.');
 }
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
