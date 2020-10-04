@@ -161,7 +161,7 @@ setInterval(function(){
 
 setInterval(function(){
   document.querySelector('#bar #fps').innerText = core.fps;
-  core.fpsTooltip.setContent(core.fps);
+  core.fpsTooltip.setContent(core.fps + ' FPS');
   core.fps = 0;
 }, 1000);
 
