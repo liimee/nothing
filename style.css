@@ -74,7 +74,8 @@
   border: none;
   width: 100%;
   overflow: scroll;
-  height: 83%;
+  height: -webkit-fill-available;
+  height: available;
 }
 
 .window .top {
