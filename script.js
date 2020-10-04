@@ -79,6 +79,8 @@ var core = {
     if(el.getAttribute('data-maximized') == 'false') {
       el.setAttribute('data-initial-pos', el.style.transform);
       el.style.transform = 'none';
+      el.children[0].children[1].classList.remove('bx-expand');
+      el.children[0].children[1].classList.add('bx-collapse');
       el.setAttribute('data-initial-width', el.style.width);
       el.setAttribute('data-initial-height', el.style.height);
       el.style.top = 'calc(25px + 8px + 12px)';
@@ -92,6 +94,8 @@ var core = {
       el.style.top = '75px';
       el.style.left = '85px';
       el.style.transform = el.getAttribute('data-initial-pos');
+      el.children[0].children[1].classList.remove('bx-collapse');
+      el.children[0].children[1].classList.add('bx-expand');
       el.style.width = el.getAttribute('data-initial-width');
       el.style.height = el.getAttribute('data-initial-height');
       el.setAttribute('data-maximized', 'false');
