@@ -152,6 +152,13 @@
   margin-top: 10px;
 }
 
+#desktop #desktopContextMenu {
+  position: fixed;
+  display: none;
+  background-color: var(--bar-bg);
+  color: var(--text-color);
+}
+
 body {
   overflow: hidden;
   background-size: cover;
