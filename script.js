@@ -257,8 +257,15 @@ window.addEventListener("click", e => {
 
 document.querySelector('#desktop').addEventListener("contextmenu", e => {
   e.preventDefault();
-  document.querySelector('#desktopContextMenu').style.top = e.clientY;
-  document.querySelector('#desktopContextMenu').style.left = e.clientX;
+  if (e.pageX || e.pageY) {
+    document.querySelector('#desktopContextMenu').style.left = e.pageX;
+    document.querySelector('#desktopContextMenu').style.top = e.pageY;
+  } else if (e.clientX || e.clientY) {
+    document.querySelector('#desktopContextMenu').style.left = e.clientX + document.body.scrollLeft + 
+                       document.documentElement.scrollLeft;
+    document.querySelector('#desktopContextMenu').style.top = e.clientY + document.body.scrollTop + 
+                       document.documentElement.scrollTop;
+  }
   document.querySelector('#desktopContextMenu').style.display = 'block';
   core.desktopContextMenu = true;
   return false;
