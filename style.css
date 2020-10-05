@@ -166,4 +166,5 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background-image: var(--bg-img);
   background-repeat: var(--bg-repeat);
+  transition: .4s;
 }
