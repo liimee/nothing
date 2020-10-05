@@ -21,12 +21,18 @@
 switch(localStorage.getItem('wp')) {
   case 'd-1':
     document.querySelector('#one').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#one').css('z-index', 1);
+    document.querySelector('#one').style.zIndex = 2;
     break;
   case 'd-2':
     document.querySelector('#two').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#two').css('z-index', 1);
+    document.querySelector('#two').style.zIndex = 2;
     break;
   case 'd-3':
     document.querySelector('#three').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#three').css('z-index', 1);
+    document.querySelector('#three').style.zIndex = 2;
 }
 </script>
 </body>
