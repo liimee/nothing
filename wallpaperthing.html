@@ -15,7 +15,7 @@
 </head>
 <body>
 <div id="choose">
-<img src="images/wallpaper-1.png" onclick="localStorage.setItem('wp', 'd-1'); $('#choose img').not(this).css('transform', 'scale(1,1)'); this.style.transform = 'scale(1.4, 1.4)';" id="one"><img src="images/wallpaper-2.png" onclick="localStorage.setItem('wp', 'd-2'); $('#choose img').not(this).css('transform', 'scale(1,1)'); this.style.transform = 'scale(1.4, 1.4)';" id="two"><img src="images/wallpaper-3.png" onclick="localStorage.setItem('wp', 'd-3'); $('#choose img').not(this).css('transform', 'scale(1,1)'); this.style.transform = 'scale(1.4, 1.4)';" id="three">
+<img src="images/wallpaper-1.png" onclick="localStorage.setItem('wp', 'd-1'); $('#choose img').not(this).css('transform', 'scale(1,1)'); this.style.transform = 'scale(1.4, 1.4)'; $('#choose img').not(this).css('z-index', 1); this.style.zIndex = 2;" id="one"><img src="images/wallpaper-2.png" onclick="localStorage.setItem('wp', 'd-2'); $('#choose img').not(this).css('transform', 'scale(1,1)'); this.style.transform = 'scale(1.4, 1.4)'; $('#choose img').not(this).css('z-index', 1); this.style.zIndex = 2;" id="two"><img src="images/wallpaper-3.png" onclick="localStorage.setItem('wp', 'd-3'); $('#choose img').not(this).css('transform', 'scale(1,1)'); this.style.transform = 'scale(1.4, 1.4)'; $('#choose img').not(this).css('z-index', 1); this.style.zIndex = 2;" id="three">
 </div>
 <script>
 switch(localStorage.getItem('wp')) {
