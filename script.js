@@ -251,6 +251,19 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
 }
 
+window.addEventListener("click", e => {
+  if(core.desktopContextMenu){document.querySelector('#desktopContextMenu').style.display = 'none';}
+});
+
+document.querySelector('#desktop').addEventListener("contextmenu", e => {
+  e.preventDefault();
+  document.querySelector('#desktopContextMenu').style.top = e.pageY;
+  document.querySelector('#desktopContextMenu').style.left = e.pageX;
+  document.querySelector('#desktopContextMenu').style.display = 'block';
+  core.desktopContextMenu = true;
+  return false;
+});
+
 if(localStorage.getItem('apps') === null) {
   let aps = {
     CHEINSTTROARLY: {
@@ -284,19 +297,6 @@ if(localStorage.getItem('apps') === null) {
     core.apps(ia[Object.keys(ia)[l]]);
   }
 }
-});
-
-window.addEventListener("click", e => {
-  if(core.desktopContextMenu){document.querySelector('#desktopContextMenu').style.display = 'none';}
-});
-
-document.querySelector('#desktop').addEventListener("contextmenu", e => {
-  e.preventDefault();
-  document.querySelector('#desktopContextMenu').style.top = e.pageY;
-  document.querySelector('#desktopContextMenu').style.left = e.pageX;
-  document.querySelector('#desktopContextMenu').style.display = 'block';
-  core.desktopContextMenu = true;
-  return false;
 });
 
 document.addEventListener('keydown', function() {
