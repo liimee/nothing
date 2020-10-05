@@ -112,7 +112,8 @@ var core = {
   apps: function(app) {
     $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\', \'' + app.name + '\');}"><div class="icon"><img alt="' + app.name + ' Icon" src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   },
-  fps: 0
+  fps: 0,
+  desktopContextMenu: false
 };
 
 if(localStorage.getItem('wp') === null) {
@@ -283,6 +284,19 @@ if(localStorage.getItem('apps') === null) {
     core.apps(ia[Object.keys(ia)[l]]);
   }
 }
+});
+
+window.addEventListener("click", e => {
+  if(core.desktopContextMenu){document.querySelector('#desktopContextMenu').style.display = 'none';}
+});
+
+document.querySelector('#desktop').addEventListener("contextmenu", e => {
+  e.preventDefault();
+  document.querySelector('#desktopContextMenu').style.top = e.pageY;
+  document.querySelector('#desktopContextMenu').style.left = e.pageX;
+  document.querySelector('#desktopContextMenu').style.display = 'block';
+  core.desktopContextMenu = true;
+  return false;
 });
 
 document.addEventListener('keydown', function() {
