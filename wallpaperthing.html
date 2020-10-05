@@ -48,6 +48,35 @@ switch(localStorage.getItem('wp')) {
     $('#choose img').not('#five').css('z-index', 1);
     document.querySelector('#five').style.zIndex = 2;
 }
+
+window.addEventListener('storage', function() {
+  switch(localStorage.getItem('wp')) {
+  case 'd-1':
+    document.querySelector('#one').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#one').css('z-index', 1);
+    document.querySelector('#one').style.zIndex = 2;
+    break;
+  case 'd-2':
+    document.querySelector('#two').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#two').css('z-index', 1);
+    document.querySelector('#two').style.zIndex = 2;
+    break;
+  case 'd-3':
+    document.querySelector('#three').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#three').css('z-index', 1);
+    document.querySelector('#three').style.zIndex = 2;
+    break;
+  case 'd-4':
+    document.querySelector('#four').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#four').css('z-index', 1);
+    document.querySelector('#four').style.zIndex = 2;
+    break;
+  case 'd-5':
+    document.querySelector('#five').style.transform = 'scale(1.4, 1.4)';
+    $('#choose img').not('#five').css('z-index', 1);
+    document.querySelector('#five').style.zIndex = 2;
+  }
+}
 </script>
 </body>
 </html>
