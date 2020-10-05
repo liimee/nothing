@@ -251,30 +251,6 @@ if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(naviga
   document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
 }
 
-window.addEventListener("click", e => {
-  if(core.desktopContextMenu){document.querySelector('#desktopContextMenu').style.display = 'none';}
-});
-
-document.querySelector('#desktop').addEventListener("contextmenu", e => {
-  e.preventDefault();
-  document.querySelector('#desktopContextMenu').style.top = 0;
-  document.querySelector('#desktopContextMenu').style.left = 0;
-  if (e.pageX || e.pageY) {
-    let x = e.pageX;
-    let y = e.pageY;
-    document.querySelector('#desktopContextMenu').style.transform = 'translate(' + x + ', ' + y + ')';
-  } else if (e.clientX || e.clientY) {
-    let x = e.clientX + document.body.scrollLeft + 
-                       document.documentElement.scrollLeft;
-    let y = e.clientY + document.body.scrollTop + 
-                       document.documentElement.scrollTop;
-    document.querySelector('#desktopContextMenu').style.transform = 'translate(' + x + ', ' + y + ')';
-  }
-  document.querySelector('#desktopContextMenu').style.display = 'block';
-  core.desktopContextMenu = true;
-  return false;
-});
-
 if(localStorage.getItem('apps') === null) {
   let aps = {
     CHEINSTTROARLY: {
