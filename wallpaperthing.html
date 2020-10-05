@@ -16,5 +16,18 @@
 <div id="choose">
 <img src="images/wallpaper-1.png" onclick="localStorage.setItem('wp', 'd-1');"><img src="images/wallpaper-2.png" onclick="localStorage.setItem('wp', 'd-2');"><img src="images/wallpaper-3.png" onclick="localStorage.setItem('wp', 'd-3');">
 </div>
+<script>
+function changeWp(whichone) {
+  switch (whichone) {
+    case 1:
+      localStorage.setItem('wp', 'd-1');
+      break;
+    case 2:
+      localStorage.setItem('wp', 'd-2');
+      break;
+    case 3:
+      localStorage.setItem('wp', 'd-3');
+  }
+}
 </body>
 </html>
