@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <style>
 #choose img:not(:first-child) {
   margin-left: 10px;
@@ -14,7 +15,7 @@
 </head>
 <body>
 <div id="choose">
-<img src="images/wallpaper-1.png" onclick="localStorage.setItem('wp', 'd-1');" id="1"><img src="images/wallpaper-2.png" onclick="localStorage.setItem('wp', 'd-2');" id="2"><img src="images/wallpaper-3.png" onclick="localStorage.setItem('wp', 'd-3');" id="3">
+<img src="images/wallpaper-1.png" onclick="localStorage.setItem('wp', 'd-1'); $('#choose img').not(this).css('transform', 'scale(1,1)');" id="1"><img src="images/wallpaper-2.png" onclick="localStorage.setItem('wp', 'd-2'); $('#choose img').not(this).css('transform', 'scale(1,1)');" id="2"><img src="images/wallpaper-3.png" onclick="localStorage.setItem('wp', 'd-3'); $('#choose img').not(this).css('transform', 'scale(1,1)');" id="3">
 </div>
 <script>
 switch(localStorage.getItem('wp')) {
