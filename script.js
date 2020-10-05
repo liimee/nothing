@@ -127,7 +127,7 @@ if(localStorage.getItem('wp') === null) {
     core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
     break;
     case 'd-3':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-3.png')");
   }
 }
 
