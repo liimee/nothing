@@ -263,7 +263,7 @@ if(localStorage.getItem('apps') === null) {
       name: 'Desktop Wallpaper Settings',
       file: 'wallpaperthing.html',
       id: 'wallpaperthing',
-      icon: 'wpthingicon.png'
+      icon: 'images/wpthingicon.png'
     }
   }
   localStorage.setItem('apps', JSON.stringify(aps));
@@ -287,7 +287,7 @@ if(localStorage.getItem('apps') === null) {
       name: 'Desktop Wallpaper Settings',
       file: 'wallpaperthing.html',
       id: 'wallpaperthing',
-      icon: 'wpthingicon.png'
+      icon: 'images/wpthingicon.png'
     };
     localStorage.setItem('apps', JSON.stringify(ia));
   }
