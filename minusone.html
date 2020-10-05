@@ -35,8 +35,6 @@ part {
   width: 32px;
   opacity: 0;
   transition: .3s;
-  padding-top: 50%;
-  padding-bottom: 50%;
   background-color: #3d3d3d;
   color: #999999;
 }
@@ -57,8 +55,8 @@ part {
 </body>
 <body>
 <div id="main"></div>
-<div id="rightBtn" onclick="something(1);"><span style="vertical-align: middle;">→</span></div>
-<div id="leftBtn" onclick="something(2);"><span style="vertical-align: middle;">←</span></div>
+<div id="rightBtn" onclick="something(1);"><span style="position: fixed; top: 50%;">→</span></div>
+<div id="leftBtn" onclick="something(2);"><span style="position: fixed; top: 50%;">←</span></div>
 <script>
 var page = 1;
 function check() {
