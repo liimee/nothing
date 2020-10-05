@@ -258,6 +258,12 @@ if(localStorage.getItem('apps') === null) {
       file: 'minusone.html',
       id: 'CHEINSTTROARLY',
       icon: 'images/minusone.png'
+    },
+    wallpaperthing: {
+      name: 'Desktop Wallpaper Settings',
+      file: 'wallpaperthing.html',
+      id: 'wallpaperthing',
+      icon: 'wpthingicon.png'
     }
   }
   localStorage.setItem('apps', JSON.stringify(aps));
@@ -273,6 +279,15 @@ if(localStorage.getItem('apps') === null) {
       file: 'minusone.html',
       id: 'CHEINSTTROARLY',
       icon: 'images/minusone.png'
+    };
+    localStorage.setItem('apps', JSON.stringify(ia));
+  }
+  if (!('wallpaperthing' in ia)) {
+    ia.wallpaperthing = {
+      name: 'Desktop Wallpaper Settings',
+      file: 'wallpaperthing.html',
+      id: 'wallpaperthing',
+      icon: 'wpthingicon.png'
     };
     localStorage.setItem('apps', JSON.stringify(ia));
   }
