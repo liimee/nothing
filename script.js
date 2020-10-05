@@ -257,14 +257,18 @@ window.addEventListener("click", e => {
 
 document.querySelector('#desktop').addEventListener("contextmenu", e => {
   e.preventDefault();
+  document.querySelector('#desktopContextMenu').style.top = 0;
+  document.querySelector('#desktopContextMenu').style.left = 0;
   if (e.pageX || e.pageY) {
-    document.querySelector('#desktopContextMenu').style.left = e.pageX;
-    document.querySelector('#desktopContextMenu').style.top = e.pageY;
+    let x = e.pageX;
+    let y = e.pageY;
+    document.querySelector('#desktopContextMenu').style.transform = `translate(${x}, ${y})`;
   } else if (e.clientX || e.clientY) {
-    document.querySelector('#desktopContextMenu').style.left = e.clientX + document.body.scrollLeft + 
+    let x = e.clientX + document.body.scrollLeft + 
                        document.documentElement.scrollLeft;
-    document.querySelector('#desktopContextMenu').style.top = e.clientY + document.body.scrollTop + 
+    let y = e.clientY + document.body.scrollTop + 
                        document.documentElement.scrollTop;
+    document.querySelector('#desktopContextMenu').style.transform = `translate(${x}, ${y})`;
   }
   document.querySelector('#desktopContextMenu').style.display = 'block';
   core.desktopContextMenu = true;
