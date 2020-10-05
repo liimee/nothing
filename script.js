@@ -262,13 +262,13 @@ document.querySelector('#desktop').addEventListener("contextmenu", e => {
   if (e.pageX || e.pageY) {
     let x = e.pageX;
     let y = e.pageY;
-    document.querySelector('#desktopContextMenu').style.transform = `translate(${x}, ${y})`;
+    document.querySelector('#desktopContextMenu').style.transform = 'translate(' + x + ', ' + y + ')';
   } else if (e.clientX || e.clientY) {
     let x = e.clientX + document.body.scrollLeft + 
                        document.documentElement.scrollLeft;
     let y = e.clientY + document.body.scrollTop + 
                        document.documentElement.scrollTop;
-    document.querySelector('#desktopContextMenu').style.transform = `translate(${x}, ${y})`;
+    document.querySelector('#desktopContextMenu').style.transform = 'translate(' + x + ', ' + y + ')';
   }
   document.querySelector('#desktopContextMenu').style.display = 'block';
   core.desktopContextMenu = true;
