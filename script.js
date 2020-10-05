@@ -276,6 +276,12 @@ if(localStorage.getItem('apps') === null) {
       file: 'wallpaperthing.html',
       id: 'wallpaperthing',
       icon: 'images/wpthingicon.png'
+    },
+    oof: {
+      name: 'Endless OOF',
+      file: 'oof.html',
+      id: 'oof',
+      icon: 'images/oof.png'
     }
   }
   localStorage.setItem('apps', JSON.stringify(aps));
@@ -301,6 +307,15 @@ if(localStorage.getItem('apps') === null) {
       id: 'wallpaperthing',
       icon: 'images/wpthingicon.png'
     };
+    localStorage.setItem('apps', JSON.stringify(ia));
+  }
+  if (!('oof' in ia)) {
+    ia.oof = {
+      name: 'Endless OOF',
+      file: 'oof.html',
+      id: 'oof',
+      icon: 'images/oof.png'
+    }
     localStorage.setItem('apps', JSON.stringify(ia));
   }
   if (('helloworld' in ia)) {
