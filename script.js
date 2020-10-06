@@ -113,8 +113,7 @@ var core = {
     $('#apps').append('<span id="' + app.id + '" class="app" onclick="if(core.homeOpen) {core.openApp(\'' + app.file + '\', \'' + app.name + '\');}"><div class="icon"><img alt="' + app.name + ' Icon" src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
   },
   fps: 0,
-  desktopContextMenu: false,
-  powerOffBtnTooltip: tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true})
+  desktopContextMenu: false
 };
 
 if(localStorage.getItem('wp') === null) {
@@ -249,6 +248,7 @@ core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'cli
 core.deviceTooltip = tippy(document.querySelector('#bar #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
 core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
 core.networkTooltip = tippy(document.querySelector('#bar #network'), {trigger: 'click', arrow: false});
+core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true});
 
 if (navigator.connection) {
   networkThing();
