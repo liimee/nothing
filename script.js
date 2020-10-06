@@ -119,6 +119,7 @@ var core = {
     core.powerOffBtnTooltip.hide();
     setTimeout(function() {
       document.querySelector('#power-off').style.zIndex = 1001;
+      document.querySelector('#power-off').style.opacity = 1;
     }, 800);
   }
 };
