@@ -121,6 +121,7 @@ var core = {
       document.querySelector('#power-off').style.zIndex = 1001;
       document.querySelector('#power-off').style.opacity = 1;
       setTimeout(function() {
+        window.open('', '_self', '');
         window.close();
       }, 725);
     }, 800);
