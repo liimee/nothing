@@ -159,6 +159,14 @@
   cursor: pointer;
 }
 
+#bar #power-off-button,
+#bar #network,
+#bar #fps,
+#bar #device,
+#bar #clock {
+  transition: opacity .4s;
+}
+
 #power-off {
   z-index: -2;
   opacity: 0;
