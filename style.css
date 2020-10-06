@@ -152,14 +152,6 @@
   margin-top: 10px;
 }
 
-#desktop #desktopContextMenu {
-  position: fixed;
-  display: none;
-  background-color: var(--bar-bg);
-  color: var(--text-color);
-  z-index: 9999;
-}
-
 #power-off {
   z-index: -2;
   opacity: 0;
@@ -167,6 +159,9 @@
   background-color: black;
   width: 100%;
   height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 body {
