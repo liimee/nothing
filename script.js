@@ -72,11 +72,11 @@ var core = {
     })
   },
   closeWindow: function(el) {
-    el.parentElement.parentElement.style.transition = '.35s';
-    el.parentElement.parentElement.style.transform = 'scale(0.5, 0.5)';
+    el.parentElement.parentElement.style.transition = 'transform .6s linear';
+    el.parentElement.parentElement.style.transform = 'scale(0.7, 0.7)';
     setTimeout(function() {
       $(el).parent().parent().remove();
-    }, 400);
+    }, 600);
   },
   maximizeWindow: function(el) {
     el.style.transition = '.4s';
