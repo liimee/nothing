@@ -72,8 +72,9 @@ var core = {
     })
   },
   closeWindow: function(el) {
-    el.parentElement.parentElement.style.transition = 'transform .6s linear';
+    el.parentElement.parentElement.style.transition = '.6s linear';
     el.parentElement.parentElement.style.transform = 'scale(0.7, 0.7)';
+    el.parentElement.parentElement.style.opacity = '0.6';
     setTimeout(function() {
       $(el).parent().parent().remove();
     }, 600);
