@@ -264,7 +264,7 @@ core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'cli
 core.deviceTooltip = tippy(document.querySelector('#bar #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
 core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
 core.networkTooltip = tippy(document.querySelector('#bar #network'), {trigger: 'click', arrow: false});
-core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();">Power Off?</span>' });
+core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; padding: 8px;">Power Off?</span>' });
 
 if (navigator.connection) {
   networkThing();
