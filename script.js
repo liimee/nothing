@@ -116,7 +116,7 @@ var core = {
   desktopContextMenu: false,
   powerOff: function() {
     document.querySelector('#bar').style.top = '-45px';
-    core.powerOffBtnTooltip.disable();
+    core.powerOffBtnTooltip.hide();
   }
 };
 
