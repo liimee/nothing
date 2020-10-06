@@ -9,6 +9,9 @@ var core = {
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     document.querySelector('#home').title = 'Close';
+    document.querySelector('#bar #power-off-button, #bar #clock, #bar #fps, #bar #network, #bar device').style.opacity = 0;
+    document.querySelector('#overlay #top').appendChild(document.querySelector('#bar #power-off-button, #bar #clock, #bar #fps, #bar #network, #bar device'));
+    document.querySelector('#bar #power-off-button, #bar #clock, #bar #fps, #bar #network, #bar device').style.opacity = 1;
     $('#home').attr('onclick', 'core.closeHome();');
     core.homeOpen = true;
     setTimeout(function() {
