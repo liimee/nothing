@@ -117,6 +117,9 @@ var core = {
   powerOff: function() {
     document.querySelector('#bar').style.top = '-45px';
     core.powerOffBtnTooltip.hide();
+    setTimeout(function() {
+      document.querySelector('#power-off').style.zIndex = 1001;
+    }, 800);
   }
 };
 
