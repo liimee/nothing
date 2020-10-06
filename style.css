@@ -20,6 +20,7 @@
   z-index: 999;
   background-color: var(--bar-bg);
   color: var(--text-color);
+  transition: top .5s;
 }
 
 #bar #fps {
