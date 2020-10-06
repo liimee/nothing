@@ -24,13 +24,11 @@
 }
 
 #bar #fps {
-  float: right;
-  margin-right: 30px;
+  margin-right: 10px;
   cursor: pointer;
 }
 
 #bar #network {
-  float: right;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -132,13 +130,11 @@
 }
 
 #bar #clock {
-  float: right;
   margin-right: 10px;
   cursor: pointer;
 }
 
 #bar #device {
-  float: right;
   margin-right: 10px;
   cursor: pointer;
 }
@@ -159,17 +155,13 @@
 }
 
 #bar #power-off-button {
-  float: right;
   margin-right: 10px;
   cursor: pointer;
 }
 
-#bar #power-off-button,
-#bar #network,
-#bar #fps,
-#bar #device,
-#bar #clock {
+#bar #right {
   transition: opacity .4s;
+  float: right;
 }
 
 #power-off {
