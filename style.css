@@ -152,6 +152,12 @@
   margin-top: 10px;
 }
 
+#power-off-button {
+  float: right;
+  margin-right: 10px;
+  cursor: pointer;
+}
+
 #power-off {
   z-index: -2;
   opacity: 0;
