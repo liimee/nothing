@@ -115,7 +115,8 @@ var core = {
   fps: 0,
   desktopContextMenu: false,
   powerOff: function() {
-    document.querySelector('#bar').style.top = '-30px';
+    document.querySelector('#bar').style.top = '-45px';
+    core.powerOffBtnTooltip.disable();
   }
 };
 
