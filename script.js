@@ -73,7 +73,7 @@ var core = {
   },
   closeWindow: function(el) {
     el.parentElement.parentElement.style.transition = '.4s';
-    el.parentElement.parentElement.style.transform = 'scale(0, 0)';
+    el.parentElement.parentElement.style.opacity = 0;
     setTimeout(function() {
       $(el).parent().parent().remove();
     }, 400);
