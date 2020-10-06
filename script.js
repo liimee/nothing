@@ -344,7 +344,8 @@ if(localStorage.getItem('apps') === null) {
 }
 });
 
-document.addEventListener('keydown', function() {
+document.addEventListener('keydown', function(event) {
+  event.preventDefault();
   if (event.metaKey) {
     if(core.homeOpen) {
       core.closeHome();
