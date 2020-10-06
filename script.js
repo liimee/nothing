@@ -72,12 +72,11 @@ var core = {
     })
   },
   closeWindow: function(el) {
-    el.parentElement.parentElement.style.transition = '.6s linear';
-    el.parentElement.parentElement.style.transform = 'scale(0.7, 0.7)';
-    el.parentElement.parentElement.style.opacity = '0.6';
+    el.parentElement.parentElement.style.transition = '.4s';
+    el.parentElement.parentElement.style.transform = 'scale(0, 0)';
     setTimeout(function() {
       $(el).parent().parent().remove();
-    }, 600);
+    }, 400);
   },
   maximizeWindow: function(el) {
     el.style.transition = '.4s';
