@@ -24,7 +24,6 @@ var core = {
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     document.querySelector('#home').title = 'Home';
     $('#home').attr('onclick', 'core.openHome();');
-    core.homeOpen = false;
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-circle');
       document.querySelector('#home').style.transform = 'scale(1, 1)';
