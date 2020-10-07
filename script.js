@@ -9,11 +9,6 @@ var core = {
     document.querySelector('#overlay').style.opacity = 0.85;
     document.querySelector('#home').style.transform = 'scale(0, 0)';
     document.querySelector('#home').title = 'Close';
-    document.querySelector('#bar #right').style.opacity = 0;
-    setTimeout(function() {
-      document.querySelector('#overlay #top').appendChild(document.querySelector('#bar #right'));
-      document.querySelector('#overlay #top').children.style.opacity = 1;
-    }, 450);
     $('#home').attr('onclick', 'core.closeHome();');
     core.homeOpen = true;
     setTimeout(function() {
