@@ -11,7 +11,7 @@ var core = {
     document.querySelector('#home').title = 'Close';
     document.querySelector('#bar #right').style.opacity = 0;
     setTimeout(function() {
-      document.querySelector('#overlay #top').append(document.querySelector('#bar #right'));
+      document.querySelector('#overlay #top').appendChild(document.querySelector('#bar #right'));
       document.querySelector('#bar #right').style.opacity = 1;
     }, 450);
     $('#home').attr('onclick', 'core.closeHome();');
