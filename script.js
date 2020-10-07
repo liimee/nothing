@@ -337,8 +337,8 @@ if(localStorage.getItem('apps') === null) {
     delete ia.helloworld;
     localStorage.setItem('apps', JSON.stringify(ia));
   }
-  for (let l = 0; l < Object.keys(ia).length; l++) {
-    core.apps(ia[Object.keys(ia)[l]]);
+  Object.keys(ia).forEach(function(key) {
+    core.apps(ia[key]);
   }
 }
 });
