@@ -29,9 +29,9 @@ var core = {
       document.querySelector('#home').style.transform = 'scale(1, 1)';
     }, 500);
   },
-  openApp: function(app) {
+  openApp: function(appobj) {
     core.closeHome();
-    $('#desktop').append('<div class="window ' + app.id + '" data-maximized="false" style="width: 450px; top: 75px; left: 85px; height: 310px;"><div class="top" ondblclick="core.maximizeWindow(this.parentElement);"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + app.name + '</div><div style="padding-right: 10px; padding-left: 10px; height: 90%;"><iframe src="' + app.file + '"></iframe></div></div>');
+    $('#desktop').append('<div class="window ' + appobj.id + '" data-maximized="false" style="width: 450px; top: 75px; left: 85px; height: 310px;"><div class="top" ondblclick="core.maximizeWindow(this.parentElement);"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + appobj.name + '</div><div style="padding-right: 10px; padding-left: 10px; height: 90%;"><iframe src="' + appobj.file + '"></iframe></div></div>');
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
