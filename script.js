@@ -192,30 +192,6 @@ function networkThing() {
 }
 
 setInterval(function(){
-  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  let date = new Date();
-  let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
-  let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
-  let year = date.getFullYear();
-  let month = months[date.getMonth()];
-  let day = date.getDate();
-  document.querySelector('#clock').innerText = hour + ':' + minute;
-  document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
-  if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
-    document.querySelector('#overlayGreeting').innerText = 'Good morning!';
-  } else if (date.getHours() > 10 && date.getHours() < 17) {
-    document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
-  } else if (date.getHours() < 20 && date.getHours() > 16) {
-    document.querySelector('#overlayGreeting').innerText = 'Good evening!';
-  } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
-    document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
-  } else {
-    document.querySelector('#overlayGreeting').innerText = 'Dude it\'s midnight';
-  }
-  core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
-}, 10);
-
-setInterval(function(){
   core.fps += 1;
 }, 16);
 
@@ -230,12 +206,10 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
   core.root.style.setProperty('--bar-bg', '#fff');
   core.root.style.setProperty('--text-color', 'black');
   core.root.style.setProperty('--window-top', '#dbdbdb');
-  core.darkmode = false;
 } else {
   core.root.style.setProperty('--bar-bg', '#212121');
   core.root.style.setProperty('--window-top', '#212121');
   core.root.style.setProperty('--text-color', 'white');
-  core.darkmode = true;
 }
 
 window.addEventListener('storage', function() {
@@ -271,6 +245,30 @@ if (navigator.connection) {
   document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
   core.networkTooltip.setContent('It seems like this browser does not support the JavaScript Network Information API.');
 }
+
+setInterval(function(){
+  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  let date = new Date();
+  let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
+  let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
+  let year = date.getFullYear();
+  let month = months[date.getMonth()];
+  let day = date.getDate();
+  document.querySelector('#clock').innerText = hour + ':' + minute;
+  document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
+  if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
+    document.querySelector('#overlayGreeting').innerText = 'Good morning!';
+  } else if (date.getHours() > 10 && date.getHours() < 17) {
+    document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
+  } else if (date.getHours() < 20 && date.getHours() > 16) {
+    document.querySelector('#overlayGreeting').innerText = 'Good evening!';
+  } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
+    document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
+  } else {
+    document.querySelector('#overlayGreeting').innerText = 'Dude it\'s midnight';
+  }
+  core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
+}, 10);
 
 if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
   document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
