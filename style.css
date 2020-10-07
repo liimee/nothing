@@ -49,11 +49,6 @@
   overflow-y: scroll;
 }
 
-#overlay #top {
-  width: max-content;
-  float: right;
-}
-
 #desktop {
   width: 100%;
   height: 100%;
