@@ -339,7 +339,7 @@ if(localStorage.getItem('apps') === null) {
   }
   Object.keys(ia).forEach(function(key) {
     core.apps(ia[key]);
-  }
+  });
 }
 });
 
