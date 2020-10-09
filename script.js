@@ -56,7 +56,7 @@ var core = {
     document.querySelector('#desktop').appendChild(thatNewWindow);
     let position = { x: 0, y: 0 }
 
-    interact('.window').draggable({
+    interact(thatNewWindow).draggable({
       allowFrom: '.top',
       modifiers: [
         interact.modifiers.restrictRect({
@@ -65,6 +65,9 @@ var core = {
         })
       ],
       listeners: {
+        start (event) {
+          core.bringWindowToFront(thatNewWindow);
+        },
         move (event) {
           position.x += event.dx
           position.y += event.dy
