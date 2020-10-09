@@ -196,15 +196,15 @@ function networkThing() {
   switch (ty) {
     case 'bluetooth':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bluetooth"></i>';
-      core.networkTooltip.setContent('This device is connected to a Bluetooth device.\ndownlink: ' + navigator.connection.downlink + 'MB/s\nrtt: ' + navigator.connection.rtt + 'ms\neffective type: ' + navigator.connection.effectiveType);
+      core.networkTooltip.setContent('This device is connected to a Bluetooth device.\n downlink: ' + navigator.connection.downlink + ' MB/s\n rtt: ' + navigator.connection.rtt + 'ms\n effective type: ' + navigator.connection.effectiveType);
       break;
     case 'cellular':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-bar-chart"></i>';
-      core.networkTooltip.setContent('This device is connected to a celullar network.\ndownlink: ' + navigator.connection.downlink + 'MB/s\nrtt: ' + navigator.connection.rtt + 'ms\neffective type: ' + navigator.connection.effectiveType);
+      core.networkTooltip.setContent('This device is connected to a celullar network.\n downlink: ' + navigator.connection.downlink + ' MB/s\n rtt: ' + navigator.connection.rtt + 'ms\n effective type: ' + navigator.connection.effectiveType);
       break;
     case 'ethernet':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-plug"></i>';
-      core.networkTooltip.setContent('This device is connected to an ethernet network.\ndownlink: ' + navigator.connection.downlink + 'MB/s\nrtt: ' + navigator.connection.rtt + 'ms\neffective type: ' + navigator.connection.effectiveType);
+      core.networkTooltip.setContent('This device is connected to an ethernet network.\n downlink: ' + navigator.connection.downlink + ' MB/s\n rtt: ' + navigator.connection.rtt + 'ms\n effective type: ' + navigator.connection.effectiveType);
       break;
     case 'none':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-wifi-off"></i>';
@@ -212,11 +212,11 @@ function networkThing() {
       break;
     case 'wifi':
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-wifi"></i>';
-      core.networkTooltip.setContent('This device is connected to a Wi-Fi network.\ndownlink: ' + navigator.connection.downlink + 'MB/s\nrtt: ' + navigator.connection.rtt + 'ms\neffective type: ' + navigator.connection.effectiveType);
+      core.networkTooltip.setContent('This device is connected to a Wi-Fi network.\n downlink: ' + navigator.connection.downlink + ' MB/s\n rtt: ' + navigator.connection.rtt + 'ms\n effective type: ' + navigator.connection.effectiveType);
       break;
     default:
       document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i>';
-      core.networkTooltip.setContent('This device is connected to an unknown network type.\ndownlink: ' + navigator.connection.downlink + 'MB/s\nrtt: ' + navigator.connection.rtt + 'ms\neffective type: ' + navigator.connection.effectiveType);
+      core.networkTooltip.setContent('This device is connected to an unknown network type.\ndownlink: ' + navigator.connection.downlink + ' MB/s\n rtt: ' + navigator.connection.rtt + 'ms\n effective type: ' + navigator.connection.effectiveType);
   }
 }
 
