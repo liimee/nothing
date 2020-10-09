@@ -32,7 +32,28 @@ var core = {
   openApp: function(app) {
     core.closeHome();
     $('.window').css('z-index', 3);
-    $('#desktop').append('<div class="window ' + app.id + '" data-maximized="false" style="width: 450px; top: 75px; left: 85px; height: 310px; z-index: 4;" onclick="core.bringWindowToFront(this);"><div class="top" ondblclick="core.maximizeWindow(this.parentElement);"><i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + app.name + '</div><div style="padding-right: 10px; padding-left: 10px; height: 85%;"><iframe src="' + app.file + '"></iframe></div></div>');
+    let thatNewWindow = document.createElement('div');
+    thatNewWindow.classList.add('window');
+    thatNewWindow.classList.add(app.id);
+    thatNewWindow.setAttribute('data-maximized', 'false');
+    thatNewWindow.style.width = '450px';
+    thatNewWindow.style.top = '75px';
+    thatNewWindow.style.left = '85px';
+    thatNewWindow.style.height = '310px';
+    thatNewWindow.style.zIndex = 4;
+    thatNewWindow.onclick = 'core.bringWindowToFront(this)';
+    let thatNewTop = document.createElement('div');
+    thatNewTop.className = 'top';
+    thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
+    thatNewTop.innerHTML = '<i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + app.name;
+    let thatNewFrame = document.createElement('div');
+    thatNewFrame.style.paddingRight = '10px';
+    thatNewFrame.style.paddingLeft = '10px';
+    thatNewFrame.style.height = '85%';
+    thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
+    thatNewWindow.appendChild(thatNewTop);
+    thatNewWindow.appendChild(thatNewFrame);
+    document.querySelector('#desktop').appendChild(thatNewWindow);
     let position = { x: 0, y: 0 }
 
     interact('.window').draggable({
