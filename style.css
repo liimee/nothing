@@ -188,6 +188,8 @@
   background-color: var(--bar-bg);
   color: var(--text-color);
   transition: top .35s;
+  width: 345px;
+  max-height: 125px;
 }
 
 #notif #notifTitle {
