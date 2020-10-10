@@ -176,7 +176,9 @@
   position: fixed;
   top: 50%;
   color: white;
-  left: 50%;
+  width: max-content;
+  margin-left: auto;
+  margin-right: auto;
   font-size: 35px;
 }
 
