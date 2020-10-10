@@ -41,7 +41,7 @@ var core = {
     thatNewWindow.style.left = '85px';
     thatNewWindow.style.height = '310px';
     thatNewWindow.style.zIndex = 4;
-    thatNewWindow.onclick = 'core.bringWindowToFront(this)';
+    thatNewWindow.setAttribute('onclick', 'core.bringWindowToFront(this)');
     let thatNewTop = document.createElement('div');
     thatNewTop.className = 'top';
     thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
