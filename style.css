@@ -176,6 +176,8 @@
   position: fixed;
   top: 50%;
   color: white;
+  left: 50%;
+  font-size: 35px;
 }
 
 body {
