@@ -171,7 +171,7 @@ var core = {
   },
   receiveNotif: function(which, app) {
     let msgChannel = new MessageChannel();
-    which.addEventListener('message', function (e) {
+    which.contentWindow.addEventListener('message', function (e) {
       document.querySelector('#notif #notifTitle').innerText = app.name;
       document.querySelector('#notif #notifContent').innerText = e.data;
       document.querySelector('#notif').top = '24px';
