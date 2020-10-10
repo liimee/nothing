@@ -181,6 +181,18 @@
   font-size: 35px;
 }
 
+#notif {
+  top: -20px;
+  position: fixed;
+  z-index: 2000;
+  background-color: var(--bar-bg);
+  color: var(--text-color);
+}
+
+#notif #notifTitle {
+  text-decoration: bold;
+}
+
 body {
   overflow: hidden;
   background-size: cover;
