@@ -1,4 +1,4 @@
-console.log('%cWebDesktop WIP', 'padding: 8px; background-color: #007bff; color: white; border: 2px solid #00a1ff; font-size: 35px;');
+console.log('%cNothing WIP', 'padding: 8px; background-color: #007bff; color: white; border: 2px solid #00a1ff; font-size: 35px;');
 
 var core = {
   root: document.documentElement,
