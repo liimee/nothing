@@ -170,11 +170,13 @@ var core = {
     }
   },
   receiveNotif: function(which, app) {
-    which.contentWindow.addEventListener('message', function (e) {
+    let msgchannel = new MessageChannel();
+    channel.port1.onmessage = function (e) {
       document.querySelector('#notif #notifTitle').innerText = app.name;
       document.querySelector('#notif #notifContent').innerText = e.data;
       document.querySelector('#notif').top = '24px';
-    });
+    };
+    which.contentWindow.postMessage('nothing', '*', [msgchannel.port2]);
   }
 };
 
