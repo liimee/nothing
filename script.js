@@ -158,6 +158,13 @@ var core = {
   bringWindowToFront: function(el) {
     $('.window').not(el).css('z-index', 3);
     el.style.zIndex = 4;
+  },
+  calculateRunningApps: function() {
+    if(document.querySelectorAll('.window').length == 0) {
+      document.title = 'Running — nothing';
+    } else {
+      document.title = document.querySelectorAll('.window').length.toString() + ' running apps';
+    }
   }
 };
 
