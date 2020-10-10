@@ -382,6 +382,15 @@ if(localStorage.getItem('apps') === null) {
     delete ia.helloworld;
     localStorage.setItem('apps', JSON.stringify(ia));
   }
+  if(!('notiftest' in ia)) {
+    ia.notiftest = {
+      name: 'Notification Test',
+      file: 'notiftest.html',
+      id: 'notiftest',
+      icon: 'images/notiftest.png'
+    };
+    localStorage.setItem('apps', JSON.stringify(ia));
+  }
   Object.keys(ia).forEach(function(key) {
     core.apps(ia[key]);
   });
