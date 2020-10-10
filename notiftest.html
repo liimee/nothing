@@ -3,7 +3,8 @@
 <body>
 <button onclick="test();">Send Notif</button>
 <script>
-function test(){
+window.addEventListener('message', test);
+function test(e){
   e.ports[0].postMessage('test');
 }
 </script>
