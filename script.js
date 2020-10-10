@@ -143,9 +143,11 @@ var core = {
   },
   fps: 0,
   powerOff: function() {
+    document.title = 'Shutting down — nothing';
     document.querySelector('#bar').style.top = '-45px';
     core.powerOffBtnTooltip.hide();
     setTimeout(function() {
+      document.title = 'Powered off — nothing';
       document.querySelector('#power-off').style.zIndex = 1001;
       document.querySelector('#power-off').style.opacity = 1;
       setTimeout(function() {
