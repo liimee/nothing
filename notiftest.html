@@ -3,7 +3,9 @@
 <body>
 <button onclick="test();">Send Notif</button>
 <script>
-function test(){}
+function test(){
+  e.ports[0].postMessage('test');
+}
 </script>
 </body>
 </html>
