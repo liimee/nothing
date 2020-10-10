@@ -54,6 +54,7 @@ var core = {
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
+    core.calculateRunningApps();
     let position = { x: 0, y: 0 }
 
     interact(thatNewWindow).draggable({
@@ -101,6 +102,7 @@ var core = {
     el.parentElement.parentElement.style.opacity = 0;
     setTimeout(function() {
       $(el).parent().parent().remove();
+      core.calculateRunningApps();
     }, 400);
   },
   maximizeWindow: function(el) {
@@ -163,7 +165,7 @@ var core = {
     if(document.querySelectorAll('.window').length == 0) {
       document.title = 'Running — nothing';
     } else {
-      document.title = document.querySelectorAll('.window').length.toString() + ' running apps';
+      document.title = document.querySelectorAll('.window').length.toString() + ' running apps — nothing';
     }
   }
 };
