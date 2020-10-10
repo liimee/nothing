@@ -178,6 +178,9 @@ if(localStorage.getItem('wp') === null) {
     break;
     case 'd-5':
     core.root.style.setProperty('--bg-img', "url('images/wallpaper-5.png')");
+    break;
+    case 'd-6':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-6.png')");
   }
 }
 
@@ -257,6 +260,9 @@ window.addEventListener('storage', function() {
     break;
     case 'd-5':
     core.root.style.setProperty('--bg-img', "url('images/wallpaper-5.png')");
+    break;
+    case 'd-6':
+    core.root.style.setProperty('--bg-img', "url('images/wallpaper-6.png')");
   }
 });
 
