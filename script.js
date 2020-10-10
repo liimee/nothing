@@ -267,6 +267,7 @@ window.addEventListener('storage', function() {
 });
 
 document.addEventListener('DOMContentLoaded', function() {
+document.title = 'Running — nothing';
 core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
 core.deviceTooltip = tippy(document.querySelector('#bar #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
 core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
