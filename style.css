@@ -172,6 +172,12 @@
   left: 0;
 }
 
+#power-off div {
+  position: fixed;
+  top: 50%;
+  color: white;
+}
+
 body {
   overflow: hidden;
   background-size: cover;
