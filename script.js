@@ -177,6 +177,7 @@ var core = {
       document.querySelector('#notif').top = '24px';
     };
     which.contentWindow.postMessage('nothing', '*', [msgchannel.port2]);
+    return;
   }
 };
 
