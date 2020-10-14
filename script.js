@@ -55,7 +55,6 @@ var core = {
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
     core.calculateRunningApps();
-    core.receiveNotif(thatNewFrame, JSON.stringify(app));
     let position = { x: 0, y: 0 }
 
     interact(thatNewWindow).draggable({
@@ -168,15 +167,6 @@ var core = {
     } else {
       document.title = (document.querySelectorAll('.window').length == 1) ? '1 running app — nothing' : document.querySelectorAll('.window').length.toString() + ' running apps — nothing';
     }
-  },
-  receiveNotif: function(which, app) {
-    let msgchannel = new MessageChannel();
-    msgchannel.port1.onmessage = function (e) {
-      document.querySelector('#notif #notifTitle').innerText = app.name;
-      document.querySelector('#notif #notifContent').innerText = e.data;
-      document.querySelector('#notif').top = '24px';
-    };
-    which.children[0].contentWindow.postMessage('nothing', '*', [msgchannel.port2]);
   }
 };
 
