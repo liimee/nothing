@@ -175,7 +175,7 @@ var core = {
   closr: function() {
     document.querySelector('#rightinfo').style.right = '-999px';
     core.rightinfo = false;
-  }
+  },
   rightinfo: false
 };
 
