@@ -71,7 +71,7 @@
 #rightinfo #rclck {
   font-size: 3em;
   margin-left: .5em;
-  margin-top: 1em;
+  margin-top: .6em;
 }
 
 #desktop {
@@ -159,7 +159,7 @@
   margin-right: .6em;
   cursor: pointer;
   float: right;
-  font-size: 1.2em;
+  font-size: 1.8em;
 }
 
 #overlay #overlayClock #realOverlayClock {
