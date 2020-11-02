@@ -170,10 +170,13 @@ var core = {
   },
   openr: function() {
     document.querySelector('#rightinfo').style.right = 0;
+    setTimeout(() => { core.rightInfo = true; }, 500);
   },
   closr: function() {
-    document.querySelector('#rightinfo').style.right = '999px';
-  }
+    document.querySelector('#rightinfo').style.right = '-999px';
+    setTimeout(() => { core.rightinfo = false; }, 500);
+  },
+  rightinfo: false
 };
 
 if(localStorage.getItem('wp') === null) {
@@ -304,7 +307,9 @@ $('#rightinfo').on('click', function(e) {
 });
 
 $(document).on('click', function (e) {
+  if(core.rightinfo) {
     core.closr();
+  }
 });
 
 setInterval(function(){
