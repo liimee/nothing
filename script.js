@@ -170,6 +170,9 @@ var core = {
   },
   openr: function() {
     document.querySelector('#rightinfo').style.right = 0;
+  },
+  closr: function() {
+    document.querySelector('#rightinfo').style.right = 0;
   }
 };
 
@@ -295,6 +298,14 @@ if (navigator.connection) {
   document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
   core.networkTooltip.setContent('It seems like this browser does not support the JavaScript Network Information API.');
 }
+
+$('#rightinfo').on('click', function(e) {
+    e.stopPropagation();
+});
+
+$(document).on('click', function (e) {
+    core.closr();
+});
 
 setInterval(function(){
   let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
