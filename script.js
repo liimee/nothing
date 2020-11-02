@@ -167,6 +167,9 @@ var core = {
     } else {
       document.title = (document.querySelectorAll('.window').length == 1) ? '1 running app — nothing' : document.querySelectorAll('.window').length.toString() + ' running apps — nothing';
     }
+  },
+  openr: function() {
+    document.querySelector('#rightinfo').style.right = 0;
   }
 };
 
