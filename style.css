@@ -61,7 +61,8 @@
   overflow-y: scroll;
   height: 100%;
   z-index: 1000;
-  transition: .5s;
+  top: 0;
+  transition: .5s ease-in-out;
   background-color: #545454;
 }
 
