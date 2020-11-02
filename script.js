@@ -170,7 +170,7 @@ var core = {
   },
   openr: function() {
     document.querySelector('#rightinfo').style.right = 0;
-    core.rightinfo = true;
+    setTimeout(() => { core.rightinfo = true; }, 550);
   },
   closr: function() {
     document.querySelector('#rightinfo').style.right = '-999px';
