@@ -68,7 +68,7 @@
 
 #rightinfo #rclck {
   font-size: 3em;
-  margin-left: 2em;
+  margin-left: 1em;
   color: white;
 }
 
@@ -153,8 +153,8 @@
   cursor: pointer;
 }
 
-#bar #device {
-  margin-right: 10px;
+#rightinfo #device {
+  margin-right: .6em;
   cursor: pointer;
 }
 
