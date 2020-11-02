@@ -56,7 +56,7 @@
 
 #rightinfo {
   position: fixed;
-  width: 22%;
+  width: 30%;
   right: -999px;
   overflow-y: scroll;
   height: 100%;
