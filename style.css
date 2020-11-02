@@ -56,6 +56,12 @@
   overflow-y: scroll;
   height: 100%;
   z-index: 1000%;
+  backrgound-color: #545454;
+}
+
+#rightinfo #rclck {
+  font-size: 3em;
+  margin-left: 2em;
 }
 
 #desktop {
