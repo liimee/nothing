@@ -62,7 +62,7 @@
   height: 100%;
   z-index: 1000;
   top: 0;
-  transition: .5s ease-in-out;
+  transition: .5s cubic-bezier(.03, .97, .98, .02);
   background-color: #545454;
 }
 
