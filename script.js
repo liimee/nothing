@@ -170,12 +170,12 @@ var core = {
   },
   openr: function() {
     document.querySelector('#rightinfo').style.right = 0;
-    setTimeout(() => { core.rightInfo = true; }, 500);
+    core.rightinfo = true;
   },
   closr: function() {
     document.querySelector('#rightinfo').style.right = '-999px';
-    setTimeout(() => { core.rightinfo = false; }, 500);
-  },
+    core.rightinfo = false;
+  }
   rightinfo: false
 };
 
