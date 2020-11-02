@@ -172,7 +172,7 @@ var core = {
     document.querySelector('#rightinfo').style.right = 0;
   },
   closr: function() {
-    document.querySelector('#rightinfo').style.right = 0;
+    document.querySelector('#rightinfo').style.right = '999px';
   }
 };
 
