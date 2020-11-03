@@ -23,6 +23,13 @@
   transition: top .5s;
 }
 
+#bar #aps {
+  width: -webkit-fill-available;
+  width: -moz-available;
+  width: available;
+  overflow-x: scroll;
+}
+
 #bar #fps {
   margin-right: 10px;
   cursor: pointer;
