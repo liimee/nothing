@@ -2,6 +2,7 @@ console.log('%cNothing WIP', 'padding: 8px; background-color: #007bff; color: wh
 
 var core = {
   root: document.documentElement,
+  currentno: 0,
   homeOpen: false,
   openHome: function() {
     document.querySelector('#home').removeAttribute('onclick');
@@ -36,6 +37,8 @@ var core = {
     thatNewWindow.classList.add('window');
     thatNewWindow.classList.add(app.id);
     thatNewWindow.setAttribute('data-maximized', 'false');
+    thatNewWindow.setAttribute('data-bar-id', core.currentno);
+    core.currentno += 1;
     thatNewWindow.style.width = '450px';
     thatNewWindow.style.top = '75px';
     thatNewWindow.style.left = '85px';
@@ -54,6 +57,10 @@ var core = {
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
+    let barel = document.createElement('span');
+    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"> ${app.name}`;
+    barel.id = thatNewWindow.getAttribute('data-bar-id');
+    document.querySelector('#bar aps').appendChild(barel);
     core.calculateRunningApps();
     let position = { x: 0, y: 0 }
 
@@ -100,6 +107,7 @@ var core = {
   closeWindow: function(el) {
     el.parentElement.parentElement.style.transition = '.4s';
     el.parentElement.parentElement.style.opacity = 0;
+    document.getElementById(el.parentElement.parentElement.getAttribute('data-bar-id')).remove();
     setTimeout(function() {
       $(el).parent().parent().remove();
       core.calculateRunningApps();
