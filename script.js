@@ -58,7 +58,7 @@ var core = {
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
     let barel = document.createElement('span');
-    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"> ${app.name}`;
+    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${app.name}</span>`;
     barel.id = thatNewWindow.getAttribute('data-bar-id');
     barel.style.display = 'inline-flex';
     document.querySelector('#bar #aps').appendChild(barel);
