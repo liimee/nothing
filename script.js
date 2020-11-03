@@ -60,6 +60,7 @@ var core = {
     let barel = document.createElement('span');
     barel.innerHTML = `<img src="${app.icon}" width="30" height="30"> ${app.name}`;
     barel.id = thatNewWindow.getAttribute('data-bar-id');
+    barel.style.display = 'inline-flex';
     document.querySelector('#bar #aps').appendChild(barel);
     core.calculateRunningApps();
     let position = { x: 0, y: 0 }
