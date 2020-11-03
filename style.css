@@ -191,6 +191,8 @@
 #bar #right {
   transition: opacity .4s;
   right: 0;
+  position: fixed;
+  background-color: var(--bar-bg);
 }
 
 #power-off {
