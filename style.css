@@ -24,10 +24,9 @@
 }
 
 #bar #aps {
-  width: -webkit-fill-available;
-  width: -moz-available;
-  width: available;
+  width: 70%;
   overflow-x: scroll;
+  overflow-y: hidden;
 }
 
 #bar #fps {
