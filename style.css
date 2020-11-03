@@ -25,7 +25,6 @@
 
 #bar #aps {
   width: 70%;
-  overflow: auto;
 }
 
 #bar #fps {
@@ -190,7 +189,7 @@
 
 #bar #right {
   transition: opacity .4s;
-  float: right;
+  right: 0;
 }
 
 #power-off {
