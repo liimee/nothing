@@ -191,7 +191,6 @@
   position: fixed;
   background-color: var(--bar-bg);
   z-index: 2;
-  height: 100%;
 }
 
 #power-off {

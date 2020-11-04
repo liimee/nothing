@@ -307,7 +307,7 @@ window.addEventListener('storage', function() {
 document.addEventListener('DOMContentLoaded', function() {
 document.title = 'Running — nothing';
 core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
-core.deviceTooltip = tippy(document.querySelector('#bar #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
+core.deviceTooltip = tippy(document.querySelector('#rightinfo #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
 core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
 core.networkTooltip = tippy(document.querySelector('#bar #network'), {trigger: 'click', arrow: false});
 core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
