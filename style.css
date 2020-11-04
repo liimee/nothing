@@ -21,11 +21,8 @@
   background-color: var(--bar-bg);
   color: var(--text-color);
   transition: top .5s;
-  overflow-x: scroll;
-}
-
-#bar #aps {
-  width: 100%;
+  overflow: scroll;
+  white-space: nowrap;
 }
 
 #bar #fps {
@@ -193,6 +190,7 @@
   right: 0;
   position: fixed;
   background-color: var(--bar-bg);
+  z-index: 2;
 }
 
 #power-off {

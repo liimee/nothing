@@ -58,10 +58,18 @@ var core = {
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
     let barel = document.createElement('span');
-    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${app.name}</span>`;
-    barel.id = thatNewWindow.getAttribute('data-bar-id');
     barel.style.display = 'inline-flex';
-    document.querySelector('#bar #aps').appendChild(barel);
+    barel.style.marginRight = '10px';
+    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${app.name}</span>`;
+    barel.style.transition = '.4s'
+    barel.style.maxWidth = '10em';
+    barel.style.overflow = 'hidden';
+    barel.style.opacity = 0;
+    setTimeout(() => {
+      barel.style.opacity = 1;
+    }, 90);
+    barel.id = thatNewWindow.getAttribute('data-bar-id');
+    document.querySelector('#bar').appendChild(barel);
     core.calculateRunningApps();
     let position = { x: 0, y: 0 }
 
@@ -108,8 +116,9 @@ var core = {
   closeWindow: function(el) {
     el.parentElement.parentElement.style.transition = '.4s';
     el.parentElement.parentElement.style.opacity = 0;
-    document.getElementById(el.parentElement.parentElement.getAttribute('data-bar-id')).remove();
+    document.getElementById(el.parentElement.parentElement.getAttribute('data-bar-id')).style.opacity = 0;
     setTimeout(function() {
+      document.getElementById(el.parentElement.parentElement.getAttribute('data-bar-id')).remove();
       $(el).parent().parent().remove();
       core.calculateRunningApps();
     }, 400);
