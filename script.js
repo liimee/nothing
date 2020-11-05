@@ -60,7 +60,7 @@ var core = {
     let barel = document.createElement('span');
     barel.style.display = 'inline-flex';
     barel.style.marginRight = '10px';
-    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${app.name}</span>`;
+    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${(app.name.length > 9) ? app.name.slice(0, 10) + '...' : app.name}</span>`;
     barel.style.transition = '.4s'
     barel.style.maxWidth = '10em';
     barel.style.overflow = 'hidden';
