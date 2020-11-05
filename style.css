@@ -21,7 +21,8 @@
   background-color: var(--bar-bg);
   color: var(--text-color);
   transition: top .5s;
-  overflow: scroll;
+  overflow-x: scroll;
+  overflow-y: hidden;
   white-space: nowrap;
   -ms-overflow-style: none;
   scrollbar-width: none;
