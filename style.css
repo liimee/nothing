@@ -23,6 +23,12 @@
   transition: top .5s;
   overflow: scroll;
   white-space: nowrap;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+#bar::-webkit-scrollbar {
+  display: none;
 }
 
 #bar #fps {
