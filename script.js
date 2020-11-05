@@ -266,7 +266,10 @@ setInterval(function(){
 
 setInterval(function(){
   document.querySelector('#bar #fps').innerText = core.fps;
-  core.fpsTooltip.setContent(core.fps + ' FPS');
+  core.fpsTooltip.setContent(`${core.fps} FPS; ${ (core.fps < 20) ? 'Bad'
+         : (core.fps < 41) ? 'OK'
+         : (core.fps < 71) ? 'Very Good'
+         : 'Amazing' }`);
   core.fps = 0;
 }, 1000);
 
