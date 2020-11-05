@@ -68,7 +68,7 @@ var core = {
       barel.style.opacity = 1;
     }, 90);
     barel.id = thatNewWindow.getAttribute('data-bar-id');
-    let g = tippy(barel, {trigger: 'manual', content: `<div onclick="core.barthing(${barel.id});">Close</div>`, hideOnClick: true, allowHTML: true});
+    let g = tippy(barel, {trigger: 'manual', content: `<div onclick="core.barthing('${barel.id}');">Close</div>`, hideOnClick: true, allowHTML: true});
     barel.addEventListener('contextmenu', (e) => {
       e.preventDefault();
       g.show();
