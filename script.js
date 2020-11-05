@@ -64,14 +64,32 @@ var core = {
     barel.style.width = '10em';
     barel.style.overflow = 'hidden';
     barel.style.opacity = 0;
+    barel.style.userSelect = 'none';
     setTimeout(() => {
       barel.style.opacity = 1;
     }, 90);
     barel.id = thatNewWindow.getAttribute('data-bar-id');
-    let g = tippy(barel, {trigger: 'manual', content: `<div onclick="core.barthing('${barel.id}');">Close</div>`, hideOnClick: false, allowHTML: true});
+    let brctx = document.createElement('div');
+    brctx.style.display = 'none';
+    brctx.style.position = 'fixed';
+    brctx.innerHTML = '<div style="width: max-content;" onclick="core.closeWindow(document.querySelectorAll(\'[data-bar-id=\"' + thatNewWindow.getAttribute('data-bar-id') + '\"\'));">Close</div>';
+    brctx.setAttribute('data-bar-id', thatNewWindow.getAttribute('data-bar-id'));
+    brctx.style.zIndex = 1001;
+    brctx.style.borderRadius = '8px';
+    brctx.style.width = '8em';
+    brctx.style.padding = '1em';
+    brctx.style.backgroundColor = 'white';
+    document.body.appendChild(brctx);
     barel.addEventListener('contextmenu', (e) => {
-      e.preventDefault();
-      g.show();
+      brctx.style.top = e.clientY + 'px';
+      brctx.style.left = e.clientX + 'px';
+      brctx.style.display = 'block';
+    });
+    $(brctx).on('click', (e) => {
+      e.stopPropagation();
+    })
+    $(document).on('click', (e) => {
+      brctx.style.display = 'none';
     });
     document.querySelector('#bar').appendChild(barel);
     core.calculateRunningApps();
@@ -198,10 +216,7 @@ var core = {
     document.querySelector('#rightinfo').style.right = '-999px';
     core.rightinfo = false;
   },
-  rightinfo: false,
-  barthing: function(el) {
-    core.closeWindow(document.querySelector(`.window[data-bar-id=${el}]`));
-  }
+  rightinfo: false
 };
 
 if(localStorage.getItem('wp') === null) {
