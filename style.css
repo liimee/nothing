@@ -190,7 +190,7 @@
 }
 
 #bar > span:last-child:not(#right) {
-  margin-right: 10em;
+  margin-right: 20em;
 }
 
 #bar #right {
