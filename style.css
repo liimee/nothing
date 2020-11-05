@@ -189,6 +189,10 @@
   margin-left: 27px;
 }
 
+#bar > span:last-child:not(#right) {
+  margin-right: 10em;
+}
+
 #bar #right {
   transition: opacity .4s;
   right: 0;

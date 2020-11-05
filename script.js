@@ -62,7 +62,7 @@ var core = {
     barel.style.marginRight = '10px';
     barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${(app.name.length > 9) ? app.name.slice(0, 10) + '...' : app.name}</span>`;
     barel.style.transition = '.4s'
-    barel.style.maxWidth = '10em';
+    barel.style.width = '10em';
     barel.style.overflow = 'hidden';
     barel.style.opacity = 0;
     setTimeout(() => {
