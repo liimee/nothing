@@ -42,13 +42,15 @@ var core = {
     thatNewWindow.style.width = '450px';
     thatNewWindow.style.top = '75px';
     thatNewWindow.style.left = '85px';
+    thatNewWindow.setAttribute('data-minimized', 'false');
     thatNewWindow.style.height = '310px';
     thatNewWindow.style.zIndex = 4;
     thatNewWindow.setAttribute('onclick', 'core.bringWindowToFront(this)');
     let thatNewTop = document.createElement('div');
     thatNewTop.className = 'top';
+    thatNewTop.title = app.name;
     thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
-    thatNewTop.innerHTML = '<i class="bx bx-x" onclick="core.closeWindow(this);" style="margin-right: 6px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i>' + app.name;
+    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow(this.parentElement.parentElement);" title="Hide"></i>' + app.name;
     let thatNewFrame = document.createElement('div');
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
@@ -65,9 +67,13 @@ var core = {
     barel.style.overflow = 'hidden';
     barel.style.opacity = 0;
     barel.style.userSelect = 'none';
+    barel.onclick = () => {
+      core.showWindow(document.querySelector(`[data-bar-id="${thatNewWindow.getAttribute('data-bar-id')}"]`));
+    }
     setTimeout(() => {
       barel.style.opacity = 1;
     }, 90);
+    barel.title = app.name;
     barel.id = thatNewWindow.getAttribute('data-bar-id');
     let brctx = document.createElement('div');
     brctx.style.display = 'none';
@@ -219,6 +225,30 @@ var core = {
   rightinfo: false,
   hmm: function(attr) {
     core.closeWindow(document.querySelector(`[data-bar-id="${attr}"]`).children[0].children[0]);
+  },
+  hideWindow: function(el) {
+    if(el.getAttribute('data-minimized') == 'false') {
+      el.style.transition = '.4s';
+      el.style.opacity = 0;
+      setTimeout(() => {
+        el.style.display = 'none';
+        el.setAttribute('data-minimized', 'true');
+        el.style.transition = 'initial';
+      }, 450);
+    }
+  },
+  showWindow: function(el) {
+    if (el.getAttribute('data-minimized') == 'true') {
+      el.style.transition = '.4s';
+      el.style.display = 'block';
+      setTimeout(() => {
+        el.style.opacity = 1;
+        el.setAttribute('data-minimized', 'false');
+        setTimeout(() => {
+          el.style.transition = 'initial';
+        }, 400);
+      }, 90);
+    }
   }
 };
 
