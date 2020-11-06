@@ -49,7 +49,7 @@ var core = {
     thatNewTop.className = 'top';
     thatNewTop.title = app.name;
     thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
-    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement, this.parentElement.parentElement.getAttribute(\'data-bar-id\'));"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow('+ core.currentno + ');" title="Hide"></i>' + app.name;
+    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement, this.parentElement.parentElement.getAttribute(\'data-bar-id\'));"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow('+ core.currentno + ');" title="Hide"></i>' + app.name + '<i class="bx bx-refresh" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #e0c200; padding: 3px; float: right;" onclick="core.reloadFrame(this.parentElement.parentElement.children[1]);"></i>';
     let thatNewFrame = document.createElement('div');
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
@@ -265,6 +265,9 @@ var core = {
   },
   idk: function(el) {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
+  },
+  reloadFrame: function(el) {
+    el.src = el.src;
   }
 };
 
