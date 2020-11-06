@@ -267,7 +267,7 @@ var core = {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
   },
   reloadFrame: function(el) {
-    el.contentDocument.location.reload(true);
+    el.src += '';
   }
 };
 
