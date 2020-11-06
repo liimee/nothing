@@ -67,7 +67,7 @@ var core = {
     barel.style.opacity = 0;
     barel.style.userSelect = 'none';
     barel.onclick = () => {
-      core.showWindow(core.currentno);
+      core.showWindow(thatNewWindow.getAttribute('data-bar-id'));
     }
     setTimeout(() => {
       barel.style.opacity = 1;
@@ -241,7 +241,7 @@ var core = {
     }
   },
   showWindow: function(el) {
-    if (document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
+    if(document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
       document.querySelector(`[data-ctxmn-id="${el}"]`).children[1].innerText = 'Hide';
       document.querySelector(`[data-bar-id="${el}"]`).style.transition = '.4s';
       document.querySelector(`[data-bar-id="${el}"]`).style.display = 'block';
