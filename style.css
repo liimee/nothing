@@ -126,6 +126,10 @@
   max-width: available;
 }
 
+.contextmenu > div:hover {
+  background-color: #7c7c7c;
+}
+
 #home {
   transition: .4s;
 }

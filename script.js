@@ -38,7 +38,6 @@ var core = {
     thatNewWindow.classList.add(app.id);
     thatNewWindow.setAttribute('data-maximized', 'false');
     thatNewWindow.setAttribute('data-bar-id', core.currentno);
-    core.currentno += 1;
     thatNewWindow.style.width = '450px';
     thatNewWindow.style.top = '75px';
     thatNewWindow.style.left = '85px';
@@ -50,7 +49,7 @@ var core = {
     thatNewTop.className = 'top';
     thatNewTop.title = app.name;
     thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
-    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow(this.parentElement.parentElement);" title="Hide"></i>' + app.name;
+    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow('+ core.currentno + ');" title="Hide"></i>' + app.name;
     let thatNewFrame = document.createElement('div');
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
@@ -68,7 +67,7 @@ var core = {
     barel.style.opacity = 0;
     barel.style.userSelect = 'none';
     barel.onclick = () => {
-      core.showWindow(document.querySelector(`[data-bar-id="${thatNewWindow.getAttribute('data-bar-id')}"]`));
+      core.showWindow(core.currentno);
     }
     setTimeout(() => {
       barel.style.opacity = 1;
@@ -78,12 +77,14 @@ var core = {
     let brctx = document.createElement('div');
     brctx.style.display = 'none';
     brctx.style.position = 'fixed';
-    brctx.innerHTML = `<div style="width: max-content;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div>`;
-    brctx.setAttribute('data-bar-id', core.currentno);
+    brctx.innerHTML = `<div style="width: 92%; padding: .6em;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div><div style="width: 92%; padding: .6em;" onclick="core.hmm2(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Hide</div>`;
+    brctx.setAttribute('data-ctxmn-id', core.currentno);
     brctx.style.zIndex = 1001;
     brctx.style.borderRadius = '8px';
-    brctx.style.width = '8em';
-    brctx.style.padding = '1em';
+    brctx.style.width = '9em';
+    brctx.className = 'contextmenu';
+    brctx.style.padding = '.6em';
+    brctx.style.paddingLeft = 0;
     brctx.style.backgroundColor = 'white';
     document.body.appendChild(brctx);
     barel.addEventListener('contextmenu', (e) => {
@@ -99,6 +100,7 @@ var core = {
     });
     document.querySelector('#bar').appendChild(barel);
     core.calculateRunningApps();
+    core.currentNo += 1;
     let position = { x: 0, y: 0 }
 
     interact(thatNewWindow).draggable({
@@ -227,27 +229,36 @@ var core = {
     core.closeWindow(document.querySelector(`[data-bar-id="${attr}"]`).children[0].children[0]);
   },
   hideWindow: function(el) {
-    if(el.getAttribute('data-minimized') == 'false') {
-      el.style.transition = '.4s';
-      el.style.opacity = 0;
+    if(document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'false') {
+      document.querySelector(`[data-ctxmn-id="${el}"]`).children[1].innerText = 'Show';
+      document.querySelector(`[data-bar-id="${el}"]`).style.transition = '.4s';
+      document.querySelector(`[data-bar-id="${el}"]`).style.opacity = 0;
       setTimeout(() => {
-        el.style.display = 'none';
-        el.setAttribute('data-minimized', 'true');
-        el.style.transition = 'initial';
+        document.querySelector(`[data-bar-id="${el}"]`).style.display = 'none';
+        document.querySelector(`[data-bar-id="${el}"]`).setAttribute('data-minimized', 'true');
+        document.querySelector(`[data-bar-id="${el}"]`).style.transition = 'initial';
       }, 450);
     }
   },
   showWindow: function(el) {
-    if (el.getAttribute('data-minimized') == 'true') {
-      el.style.transition = '.4s';
-      el.style.display = 'block';
+    if (document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
+      document.querySelector(`[data-ctxmn-id="${el}"]`).children[1].innerText = 'Hide';
+      document.querySelector(`[data-bar-id="${el}"]`).style.transition = '.4s';
+      document.querySelector(`[data-bar-id="${el}"]`).style.display = 'block';
       setTimeout(() => {
-        el.style.opacity = 1;
-        el.setAttribute('data-minimized', 'false');
+        document.querySelector(`[data-bar-id="${el}"]`).style.opacity = 1;
+        document.querySelector(`[data-bar-id="${el}"]`).setAttribute('data-minimized', 'false');
         setTimeout(() => {
-          el.style.transition = 'initial';
+          document.querySelector(`[data-bar-id="${el}"]`).style.transition = 'initial';
         }, 400);
       }, 90);
+    }
+  },
+  hmm2: function(el) {
+    if(document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
+      core.showWindow(el);
+    } else {
+      core.hideWindow(el);
     }
   }
 };
