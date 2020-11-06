@@ -100,7 +100,7 @@ var core = {
     });
     document.querySelector('#bar').appendChild(barel);
     core.calculateRunningApps();
-    core.currentNo += 1;
+    core.currentno += 1;
     let position = { x: 0, y: 0 }
 
     interact(thatNewWindow).draggable({
