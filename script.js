@@ -49,7 +49,7 @@ var core = {
     thatNewTop.className = 'top';
     thatNewTop.title = app.name;
     thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
-    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement);"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow('+ core.currentno + ');" title="Hide"></i>' + app.name;
+    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement, this.parentElement.parentElement.getAttribute(\'data-bar-id\'));"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow('+ core.currentno + ');" title="Hide"></i>' + app.name;
     let thatNewFrame = document.createElement('div');
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
@@ -77,7 +77,7 @@ var core = {
     let brctx = document.createElement('div');
     brctx.style.display = 'none';
     brctx.style.position = 'fixed';
-    brctx.innerHTML = `<div style="width: 92%; padding: .6em;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div><div style="width: 92%; padding: .6em;" onclick="core.hmm2(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Hide</div>`;
+    brctx.innerHTML = `<div style="width: 92%; padding: .6em;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div><div style="width: 92%; padding: .6em;" onclick="core.hmm2(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Hide</div><div style="padding: .6em; width: 92%;" onclick="core.idk(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Expand</div>`;
     brctx.setAttribute('data-ctxmn-id', core.currentno);
     brctx.style.zIndex = 1001;
     brctx.style.borderRadius = '8px';
@@ -153,9 +153,10 @@ var core = {
       core.calculateRunningApps();
     }, 400);
   },
-  maximizeWindow: function(el) {
+  maximizeWindow: function(el, attr) {
     el.style.transition = '.4s';
     if(el.getAttribute('data-maximized') == 'false') {
+      document.querySelector(`[data-ctxmn-id="${attr}"]`).children[2].innerText = 'Collapse';
       el.setAttribute('data-initial-pos', el.style.transform);
       el.style.transform = 'none';
       el.children[0].children[1].classList.remove('bx-expand');
@@ -170,6 +171,7 @@ var core = {
       interact(el).resizable(false);
       el.setAttribute('data-maximized', 'true');
     } else {
+      document.querySelector(`[data-ctxmn-id="${attr}"]`).children[2].innerText = 'Expand';
       el.style.top = '75px';
       el.style.left = '85px';
       el.style.transform = el.getAttribute('data-initial-pos');
@@ -260,6 +262,9 @@ var core = {
     } else {
       core.hideWindow(el);
     }
+  },
+  idk: function(el) {
+    core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
   }
 };
 
