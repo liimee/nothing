@@ -130,6 +130,10 @@
   background-color: #7c7c7c;
 }
 
+.contextmenu {
+  border: solid 1px black;
+}
+
 #home {
   transition: .4s;
 }
