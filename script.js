@@ -72,7 +72,7 @@ var core = {
     let brctx = document.createElement('div');
     brctx.style.display = 'none';
     brctx.style.position = 'fixed';
-    brctx.innerHTML = '<div style="width: max-content;" onclick="core.closeWindow(document.querySelectorAll(\'[data-bar-id=\"' + thatNewWindow.getAttribute('data-bar-id') + '\"\'));">Close</div>';
+    brctx.innerHTML = `<div style="width: max-content;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div>`;
     brctx.setAttribute('data-bar-id', thatNewWindow.getAttribute('data-bar-id'));
     brctx.style.zIndex = 1001;
     brctx.style.borderRadius = '8px';
@@ -216,7 +216,10 @@ var core = {
     document.querySelector('#rightinfo').style.right = '-999px';
     core.rightinfo = false;
   },
-  rightinfo: false
+  rightinfo: false,
+  hmm: function(attr) {
+    core.closeWindow(document.querySelector(`[data-bar-id="${attr}"]`).children[0].children[0]);
+  }
 };
 
 if(localStorage.getItem('wp') === null) {
