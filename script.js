@@ -79,7 +79,7 @@ var core = {
     brctx.style.display = 'none';
     brctx.style.position = 'fixed';
     brctx.innerHTML = `<div style="width: max-content;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div>`;
-    brctx.setAttribute('data-bar-id', thatNewWindow.getAttribute('data-bar-id'));
+    brctx.setAttribute('data-bar-id', core.currentno);
     brctx.style.zIndex = 1001;
     brctx.style.borderRadius = '8px';
     brctx.style.width = '8em';
