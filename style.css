@@ -128,10 +128,14 @@
 
 .contextmenu > div:hover {
   background-color: #7c7c7c;
+  cursor: pointer;
 }
 
 .contextmenu {
   border: solid 1px black;
+  user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
 }
 
 #home {
