@@ -88,6 +88,7 @@ var core = {
     brctx.style.backgroundColor = 'white';
     document.body.appendChild(brctx);
     barel.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
       brctx.style.top = e.clientY + 'px';
       brctx.style.left = e.clientX + 'px';
       brctx.style.display = 'block';
