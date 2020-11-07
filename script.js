@@ -80,7 +80,7 @@ var core = {
     brctx.innerHTML = `<div style="width: 92%; padding: .6em;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div><div style="width: 92%; padding: .6em;" onclick="core.hmm2(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Hide</div><div style="padding: .6em; width: 92%;" onclick="core.idk(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Expand</div>`;
     brctx.setAttribute('data-ctxmn-id', core.currentno);
     brctx.style.zIndex = 1001;
-    brctx.style.borderRadius = '8px';
+    brctx.style.borderRadius = '4px';
     brctx.style.width = '9em';
     brctx.className = 'contextmenu';
     brctx.style.padding = '.6em';
