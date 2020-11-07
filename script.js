@@ -66,6 +66,8 @@ var core = {
     barel.style.overflow = 'hidden';
     barel.style.opacity = 0;
     barel.style.userSelect = 'none';
+    barel.style.WebkitUserSelect = 'none';
+    barel.style.MsUserSelect = 'none';
     barel.onclick = () => {
       core.showWindow(thatNewWindow.getAttribute('data-bar-id'));
     }
