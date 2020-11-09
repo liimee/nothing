@@ -194,7 +194,7 @@ var core = {
     }, 500);
   },
   apps: function(app) {
-    $('#apps').append('<span id="' + app.id + '" class="app" onclick=\'if(core.homeOpen) {core.openApp(' + JSON.stringify(app) + ');}\'><div class="icon"><img alt="' + app.name + ' Icon" src="' + app.icon + '" width="45" height="45"></div><div class="appname">' + app.name + '</div></span>');
+    $('#apps').append('<span id="' + app.id + '" class="app" onclick=\'if(core.homeOpen) {core.openApp(' + JSON.stringify(app) + ');}\'><div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>');
   },
   fps: 0,
   powerOff: function() {
