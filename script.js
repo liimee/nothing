@@ -60,7 +60,7 @@ var core = {
     document.querySelector('#desktop').appendChild(thatNewWindow);
     let barel = document.createElement('span');
     barel.style.display = 'inline-flex';
-    barel.innerHTML = `<img src="${app.icon}" width="30" height="30"><span style="margin-top: auto; margin-bottom: auto;">${(app.name.length > 9) ? app.name.slice(0, 10) + '...' : app.name}</span>`;
+    barel.innerHTML = `<span style="background-image: url(${app.icon}); width: 30px; height: 30px; background-repeat: no-repeat; background-size: cover;"></span><span style="margin-top: auto; margin-bottom: auto;">${(app.name.length > 9) ? app.name.slice(0, 10) + '...' : app.name}</span>`;
     barel.style.transition = '.4s'
     barel.style.width = '10em';
     barel.style.overflow = 'hidden';
@@ -268,9 +268,6 @@ var core = {
   },
   idk: function(el) {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
-  },
-  reloadFrame: function(el) {
-    el.src += '';
   }
 };
 
