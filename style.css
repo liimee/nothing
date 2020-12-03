@@ -4,6 +4,18 @@
   --bar-bg: #fff;
   --text-color: black;
   --window-top: #dbdbdb;
+  --cursor-pointer: url('images/cursor/pointer.png');
+  --cursor-cursor: url('images/cursor/cursor.png');
+}
+
+body {
+  overflow: hidden;
+  background-size: cover;
+  font-family: 'Inter', system-ui, sans-serif;
+  background-image: var(--bg-img);
+  background-repeat: var(--bg-repeat);
+  transition: background-image .4s;
+  cursor: var(--cursor-cursor);
 }
 
 .bx {
@@ -25,6 +37,7 @@
   overflow-y: hidden;
   white-space: nowrap;
   -ms-overflow-style: none;
+  cursor: var(--cursor-cursor);
   scrollbar-width: none;
 }
 
@@ -34,17 +47,17 @@
 
 #bar #fps {
   margin-right: 10px;
-  cursor: pointer;
+  cursor: inherit;
 }
 
 #bar #network {
   margin-right: 10px;
-  cursor: pointer;
+  cursor: inherit;
 }
 
 #bar #openri {
   margin-right: 10px;
-  cursor: pointer;
+  cursor: inherit;
 }
 
 #overlay {
@@ -61,6 +74,7 @@
   color: white;
   user-select: none;
   overflow-y: scroll;
+  cursor: var(--cursor-cursor);
 }
 
 #rightinfo {
@@ -89,6 +103,7 @@
   margin-top: calc(25px + 8px + 6px);
   position: fixed;
   z-index: 2;
+  cursor: var(--cursor-cursor);
 }
 
 .window {
@@ -100,6 +115,7 @@
   border: 1px solid #969696;
   background-color: white;
   z-index: 3;
+  cursor: var(--cursor-cursor);
   box-sizing: border-box;
 }
 
@@ -128,7 +144,7 @@
 
 .contextmenu > div:hover {
   background-color: #7c7c7c;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
 }
 
 .contextmenu {
@@ -147,7 +163,7 @@
   padding: 10px;
   width: max-content;
   display: inline-flex;
-  cursor: pointer;
+  cursor: var(--cursor-pointer);
   border-radius: 8px;
 }
 
@@ -174,12 +190,12 @@
 
 #bar #clock {
   margin-right: 10px;
-  cursor: pointer;
+  cursor: inherit;
 }
 
 #rightinfo #device {
   margin-right: .6em;
-  cursor: pointer;
+  cursor: var(--cursor-cursor);
   float: right;
   font-size: 1.8em;
 }
@@ -201,7 +217,7 @@
 
 #bar #power-off-button {
   margin-right: 10px;
-  cursor: pointer;
+  cursor: inherit;
 }
 
 #bar > span:nth-child(3) {
@@ -256,13 +272,4 @@
 
 #notif #notifTitle {
   text-decoration: bold;
-}
-
-body {
-  overflow: hidden;
-  background-size: cover;
-  font-family: 'Inter', system-ui, sans-serif;
-  background-image: var(--bg-img);
-  background-repeat: var(--bg-repeat);
-  transition: background-image .4s;
 }
