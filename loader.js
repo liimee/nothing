@@ -15,13 +15,15 @@ function loadApp(ur) {
         main: document.createElement('html'),
         body: document.createElement('body')
       };
-      var s = {
+     /* var s = {
         btn: document.createElement('button')
-      };
+      }; */
       g.elements.forEach((v) => {
         switch(v.element) {
           case 'button':
-            b.body.appendChild(s.btn.cloneNode());
+            var s = document.createElement('button');
+            s.innerHTML = v.text;
+            b.body.appendChild(s)
         }
       });
       b.main.appendChild(b.body);

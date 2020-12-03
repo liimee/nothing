@@ -1,7 +1,8 @@
 {
   "elements": [
     {
-      "element": "button"
+      "element": "button",
+      "text": "test"
     }
   ]
 }
