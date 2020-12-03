@@ -1,28 +1,24 @@
-function getBlob(code, tye) {
-  const blob = new Blob([code], {type: tye})
-  return URL.createObjectURL(blob)
-}
-
 async function loadApp(ur) {
   var res = await fetch(ur);
       var g = await res.json();
-      var b = {
-        main: document.createElement('html'),
-        body: document.createElement('body')
-      };
-     /* var s = {
-        btn: document.createElement('button')
-      }; */
+      var b = [];
+      if('config' in g && 'scripts' in g.config) {
+        g.config.scripts.forEach((v) => {
+          var m = document.createElement('script');
+          m.src = v;
+          document.head.appendChild(m);
+        })
+      }
       g.elements.forEach((v) => {
         switch(v.element) {
           case 'button':
             var s = document.createElement('button');
             s.innerHTML = v.text;
-            b.body.appendChild(s)
+            if('onclick' in v) {
+              s.addEventListener('click', () => { eval(v.element.onclick) });
+            }
+            b.push(s);
         }
       });
-      b.main.appendChild(b.body);
-      let h = getBlob(`<!DOCTYPE HTML><html>${b.main.innerHTML}</html>`, 'text/html');
-      console.log(h)
-      return h;
+      return b;
 }

@@ -30,7 +30,7 @@ var core = {
       document.querySelector('#home').style.transform = 'scale(1, 1)';
     }, 500);
   },
-  openApp: function(app) {
+  openApp: async function(app) {
     core.closeHome();
     $('.window').css('z-index', 3);
     let thatNewWindow = document.createElement('div');
@@ -55,7 +55,12 @@ var core = {
     thatNewFrame.style.paddingLeft = '10px';
     thatNewFrame.style.height = '85%';
     if(app.nothinglang) {
-      thatNewFrame.innerHTML = `<iframe src="${loadApp(app.file)}"></iframe`;
+      thatNewFrame.style.overflow = 'scroll';
+      thatNewFrame.style.marginTop = '.6em';
+      let m = await loadApp(app.file);
+      m.forEach((v) => {
+        thatNewFrame.appendChild(v);
+      });
     } else {
       thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
     }

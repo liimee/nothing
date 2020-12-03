@@ -1,8 +1,14 @@
 {
+  "config": {
+    "scripts": [
+      "https://unpkg.com/sweetalert/dist/sweetalert.min.js"
+    ]
+  },
   "elements": [
     {
       "element": "button",
-      "text": "test"
+      "text": "test",
+      "onclick": "swal('test')"
     }
   ]
 }
