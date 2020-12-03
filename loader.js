@@ -15,7 +15,7 @@ async function loadApp(ur) {
             var s = document.createElement('button');
             s.innerHTML = v.text;
             if('onclick' in v) {
-              s.addEventListener('click', () => { eval(v.element.onclick) });
+              s.addEventListener('click', () => { eval(v.onclick) });
             }
             b.push(s);
         }
