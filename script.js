@@ -54,7 +54,11 @@ var core = {
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
     thatNewFrame.style.height = '85%';
-    thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
+    if(app.nothinglang) {
+      thatNewFrame.innerHTML = `<iframe src="${loadApp(app.file)}"></iframe`;
+    } else {
+      thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
+    }
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
@@ -444,19 +448,22 @@ if(localStorage.getItem('apps') === null) {
       name: 'CHEINSTTROARLY',
       file: 'minusone.html',
       id: 'CHEINSTTROARLY',
-      icon: 'images/minusone.png'
+      icon: 'images/minusone.png',
+      nothinglang: false
     },
     wallpaperthing: {
       name: 'Desktop Wallpaper Settings',
       file: 'wallpaperthing.html',
       id: 'wallpaperthing',
-      icon: 'images/wpthingicon.png'
+      icon: 'images/wpthingicon.png',
+      nothinglang: false
     },
     oof: {
       name: 'Endless OOF',
       file: 'oof.html',
       id: 'oof',
-      icon: 'images/oof.png'
+      icon: 'images/oof.png',
+      nothinglang: false
     }
   }
   localStorage.setItem('apps', JSON.stringify(aps));
@@ -471,6 +478,7 @@ if(localStorage.getItem('apps') === null) {
       name: 'CHEINSTTROARLY',
       file: 'minusone.html',
       id: 'CHEINSTTROARLY',
+      nothinglang: false,
       icon: 'images/minusone.png'
     };
     localStorage.setItem('apps', JSON.stringify(ia));
@@ -489,7 +497,8 @@ if(localStorage.getItem('apps') === null) {
       name: 'Endless OOF',
       file: 'oof.html',
       id: 'oof',
-      icon: 'images/oof.png'
+      icon: 'images/oof.png',
+      nothinglang: false
     }
     localStorage.setItem('apps', JSON.stringify(ia));
   }
