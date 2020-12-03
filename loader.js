@@ -3,14 +3,9 @@ function getBlob(code, tye) {
   return URL.createObjectURL(blob)
 }
 
-function loadApp(ur) {
-  fetch(ur)
-    .then(response => {
-      if (response.ok) return response.json()
-      return 'load app failed';
-    })
-    .then((data) => {
-      var g = JSON.parse(data);
+async function loadApp(ur) {
+  var res = await fetch(ur);
+      var g = await res.json();
       var b = {
         main: document.createElement('html'),
         body: document.createElement('body')
@@ -28,6 +23,6 @@ function loadApp(ur) {
       });
       b.main.appendChild(b.body);
       let h = getBlob(`<!DOCTYPE HTML><html>${b.main.innerHTML}</html>`, 'text/html');
+      console.log(h)
       return h;
-    });
 }
