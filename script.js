@@ -57,9 +57,9 @@ var core = {
     if(app.nothinglang) {
       thatNewFrame.style.overflow = 'scroll';
       thatNewFrame.style.marginTop = '.6em';
-      let m = await loadApp(app.file);
+      let m = await loadApp(app.file, core.currentno);
       m.forEach((v) => {
-        thatNewFrame.appendChild(v);
+        thatNewFrame.appendChild(v.el);
       });
     } else {
       thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';

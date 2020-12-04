@@ -23,12 +23,14 @@ body {
 }
 
 #bar {
-  width: 100%;
+  width: 85%;
   height: 25px;
   padding: 8px;
-  top: 0;
+  top: .3em;
   position: fixed;
-  left: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 9px;
   z-index: 999;
   background-color: var(--bar-bg);
   color: var(--text-color);
@@ -230,7 +232,7 @@ body {
 
 #bar #right {
   transition: opacity .4s;
-  right: 0;
+  right: 10%;
   position: fixed;
   background-color: var(--bar-bg);
   z-index: 2;

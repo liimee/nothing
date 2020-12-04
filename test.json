@@ -1,9 +1,0 @@
-{
-  "elements": [
-    {
-      "element": "button",
-      "text": "test",
-      "onclick": "alert('it workssss 🎉🎉')"
-    }
-  ]
-}
