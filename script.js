@@ -77,7 +77,7 @@ var core = {
     barel.style.userSelect = 'none';
     barel.style.WebkitUserSelect = 'none';
     barel.style.MsUserSelect = 'none';
-    tippy(barel, {
+    let nnm = tippy(barel, {
       followCursor: true,
       content: app.name,
       delay: 1000
@@ -108,6 +108,7 @@ var core = {
       brctx.style.top = e.clientY + 'px';
       brctx.style.left = e.clientX + 'px';
       brctx.style.display = 'block';
+      nnm.hide();
     });
     $(brctx).on('click', (e) => {
       e.stopPropagation();
