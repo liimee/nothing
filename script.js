@@ -49,12 +49,12 @@ var core = {
     thatNewTop.className = 'top';
     thatNewTop.title = app.name;
     thatNewTop.ondblclick = 'core.maximizeWindow(this.parentElement);';
-    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement, this.parentElement.parentElement.getAttribute(\'data-bar-id\'));"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow('+ core.currentno + ');" title="Hide"></i>' + app.name;
+    thatNewTop.innerHTML = '<i class="bx bx-x" title="Close" onclick="core.closeWindow(this);" style="margin-right: 6px; padding: 3px; background-color: #ff0000; color: white; border-radius: 30px; cursor: pointer;"></i><i class="bx bx-expand" title="Expand" style="margin-right: 5px; border-radius: 30px; cursor: pointer; color: white; background-color: #5cce00; padding: 3px;" onclick="core.maximizeWindow(this.parentElement.parentElement, this.parentElement.parentElement.getAttribute(\'data-bar-id\'));"></i><i class="bx bx-minus" style="padding: 3px; margin-right: 6px; background-color: #0094ff; color: white; border-radius: 30px; cursor: pointer;" onclick="core.hideWindow(' + core.currentno + ');" title="Hide"></i>' + app.name;
     let thatNewFrame = document.createElement('div');
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
     thatNewFrame.style.height = '85%';
-    if(app.nothinglang) {
+    if (app.nothinglang) {
       thatNewFrame.style.overflow = 'scroll';
       thatNewFrame.style.marginTop = '.6em';
       let m = await loadApp(app.file, core.currentno);
@@ -77,6 +77,11 @@ var core = {
     barel.style.userSelect = 'none';
     barel.style.WebkitUserSelect = 'none';
     barel.style.MsUserSelect = 'none';
+    tippy(barel, {
+      followCursor: true,
+      content: app.name,
+      delay: 1000
+    });
     barel.onclick = () => {
       core.showWindow(thatNewWindow.getAttribute('data-bar-id'));
     }
@@ -124,25 +129,28 @@ var core = {
         })
       ],
       listeners: {
-        start (event) {
+        start(event) {
           core.bringWindowToFront(thatNewWindow);
         },
-        move (event) {
+        move(event) {
           position.x += event.dx
           position.y += event.dy
 
           event.target.style.transform =
             `translate(${position.x}px, ${position.y}px)`
         },
+      },
+      cursorChecker() {
+        return null;
       }
     })
 
     interact('.window').resizable({
       edges: {
-        top   : false,
-        left  : true,
+        top: false,
+        left: true,
         bottom: true,
-        right : true
+        right: true
       }
     }).on('resizemove', event => {
       let { x, y } = event.target.dataset;
@@ -167,7 +175,7 @@ var core = {
   },
   maximizeWindow: function(el, attr) {
     el.style.transition = '.4s';
-    if(el.getAttribute('data-maximized') == 'false') {
+    if (el.getAttribute('data-maximized') == 'false') {
       document.querySelector(`[data-ctxmn-id="${attr}"]`).children[2].innerText = 'Collapse';
       el.setAttribute('data-initial-pos', el.style.transform);
       el.style.transform = 'none';
@@ -224,7 +232,7 @@ var core = {
     el.style.zIndex = 4;
   },
   calculateRunningApps: function() {
-    if(document.querySelectorAll('.window').length == 0) {
+    if (document.querySelectorAll('.window').length == 0) {
       document.title = 'Running — nothing';
     } else {
       document.title = (document.querySelectorAll('.window').length == 1) ? '1 running app — nothing' : document.querySelectorAll('.window').length.toString() + ' running apps — nothing';
@@ -243,7 +251,7 @@ var core = {
     core.closeWindow(document.querySelector(`[data-bar-id="${attr}"]`).children[0].children[0]);
   },
   hideWindow: function(el) {
-    if(document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'false') {
+    if (document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'false') {
       document.querySelector(`[data-ctxmn-id="${el}"]`).children[1].innerText = 'Show';
       document.querySelector(`[data-bar-id="${el}"]`).style.transition = '.4s';
       document.querySelector(`[data-bar-id="${el}"]`).style.opacity = 0;
@@ -255,7 +263,7 @@ var core = {
     }
   },
   showWindow: function(el) {
-    if(document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
+    if (document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
       document.querySelector(`[data-ctxmn-id="${el}"]`).children[1].innerText = 'Hide';
       document.querySelector(`[data-bar-id="${el}"]`).style.transition = '.4s';
       document.querySelector(`[data-bar-id="${el}"]`).style.display = 'block';
@@ -269,7 +277,7 @@ var core = {
     }
   },
   hmm2: function(el) {
-    if(document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
+    if (document.querySelector(`[data-bar-id="${el}"]`).getAttribute('data-minimized') == 'true') {
       core.showWindow(el);
     } else {
       core.hideWindow(el);
@@ -280,38 +288,38 @@ var core = {
   }
 };
 
-if(localStorage.getItem('wp') === null) {
+if (localStorage.getItem('wp') === null) {
   localStorage.setItem('wp', 'd-1');
   core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
 } else {
-  switch(localStorage.getItem('wp')) {
+  switch (localStorage.getItem('wp')) {
     case 'd-1':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
+      break;
     case 'd-2':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
+      break;
     case 'd-3':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-3.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-3.png')");
+      break;
     case 'd-4':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-4.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-4.png')");
+      break;
     case 'd-5':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-5.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-5.png')");
+      break;
     case 'd-6':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-6.png')");
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-6.png')");
   }
 }
 
-if(localStorage.getItem('wprepeat') === null) {
+if (localStorage.getItem('wprepeat') === null) {
   localStorage.setItem('wprepeat', 'false');
   core.root.style.setProperty('--bg-repeat', 'no-repeat');
 } else {
-  switch(localStorage.getItem('wprepeat')) {
+  switch (localStorage.getItem('wprepeat')) {
     case 'false':
-    core.root.style.setProperty('--bg-repeat', 'no-repeat');
+      core.root.style.setProperty('--bg-repeat', 'no-repeat');
   }
 }
 
@@ -344,11 +352,11 @@ function networkThing() {
   }
 }
 
-setInterval(function(){
+setInterval(function() {
   core.fps += 1;
 }, 16);
 
-setInterval(function(){
+setInterval(function() {
   document.querySelector('#bar #fps').innerText = core.fps;
   core.fpsTooltip.setContent(`${core.fps} FPS; ${ (core.fps < 20) ? 'Bad'
          : (core.fps < 41) ? 'OK'
@@ -357,7 +365,7 @@ setInterval(function(){
   core.fps = 0;
 }, 1000);
 
-if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
+if (localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
   localStorage.setItem('dm', 'false');
   core.root.style.setProperty('--bar-bg', '#fff');
   core.root.style.setProperty('--text-color', 'black');
@@ -369,162 +377,162 @@ if(localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false')
 }
 
 window.addEventListener('storage', function() {
-  switch(localStorage.getItem('wp')) {
+  switch (localStorage.getItem('wp')) {
     case 'd-1':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-1.png')");
+      break;
     case 'd-2':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-2.png')");
+      break;
     case 'd-3':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-3.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-3.png')");
+      break;
     case 'd-4':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-4.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-4.png')");
+      break;
     case 'd-5':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-5.png')");
-    break;
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-5.png')");
+      break;
     case 'd-6':
-    core.root.style.setProperty('--bg-img', "url('images/wallpaper-6.png')");
+      core.root.style.setProperty('--bg-img', "url('images/wallpaper-6.png')");
   }
 });
 
 document.addEventListener('DOMContentLoaded', function() {
-document.title = 'Running — nothing';
-core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
-core.deviceTooltip = tippy(document.querySelector('#rightinfo #device'), {trigger: 'click', arrow: false, content: navigator.appVersion });
-core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
-core.networkTooltip = tippy(document.querySelector('#bar #network'), {trigger: 'click', arrow: false});
-core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, appendTo: document.body, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
+  document.title = 'Running — nothing';
+  core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
+  core.deviceTooltip = tippy(document.querySelector('#rightinfo #device'), { trigger: 'click', arrow: false, content: navigator.appVersion });
+  core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
+  core.networkTooltip = tippy(document.querySelector('#bar #network'), { trigger: 'click', arrow: false });
+  core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, appendTo: document.body, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
 
-if (navigator.connection) {
-  networkThing();
-  navigator.connection.addEventListener('change', networkThing);
-} else {
-  document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
-  core.networkTooltip.setContent('It seems like this browser does not support the JavaScript Network Information API.');
-}
-
-$('#rightinfo').on('click', function(e) {
-    e.stopPropagation();
-});
-
-$(document).on('click', function (e) {
-  if(core.rightinfo) {
-    core.closr();
-  }
-});
-
-setInterval(function(){
-  let months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-  let date = new Date();
-  let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
-  let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
-  let year = date.getFullYear();
-  let month = months[date.getMonth()];
-  let day = date.getDate();
-  document.querySelector('#clock').innerText = hour + ':' + minute;
-  document.querySelector('#rclck').innerText = hour + ':' + minute;
-  document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
-  if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
-    document.querySelector('#overlayGreeting').innerText = 'Good morning!';
-  } else if (date.getHours() > 10 && date.getHours() < 17) {
-    document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
-  } else if (date.getHours() < 20 && date.getHours() > 16) {
-    document.querySelector('#overlayGreeting').innerText = 'Good evening!';
-  } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
-    document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
+  if (navigator.connection) {
+    networkThing();
+    navigator.connection.addEventListener('change', networkThing);
   } else {
-    document.querySelector('#overlayGreeting').innerText = 'Dude it\'s midnight';
+    document.querySelector('#bar #network').innerHTML = '<i class="bx bx-question-mark"></i><i class="bx bx-question-mark"></i>';
+    core.networkTooltip.setContent('It seems like this browser does not support the JavaScript Network Information API.');
   }
-  core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
-}, 10);
 
-if( /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ) {
-  document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
-} else {
-  document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
-}
-
-if(localStorage.getItem('apps') === null) {
-  let aps = {
-    CHEINSTTROARLY: {
-      name: 'CHEINSTTROARLY',
-      file: 'minusone.html',
-      id: 'CHEINSTTROARLY',
-      icon: 'images/minusone.png',
-      nothinglang: false
-    },
-    wallpaperthing: {
-      name: 'Desktop Wallpaper Settings',
-      file: 'wallpaperthing.html',
-      id: 'wallpaperthing',
-      icon: 'images/wpthingicon.png',
-      nothinglang: false
-    },
-    oof: {
-      name: 'Endless OOF',
-      file: 'oof.html',
-      id: 'oof',
-      icon: 'images/oof.png',
-      nothinglang: false
-    }
-  }
-  localStorage.setItem('apps', JSON.stringify(aps));
-  let ia = JSON.parse(localStorage.getItem('apps'));
-  for (let l = 0; l < Object.keys(ia).length; l++) {
-    core.apps(ia[Object.keys(ia)[l]]);
-  }
-} else {
-  let ia = JSON.parse(localStorage.getItem('apps'));
-  if (!('CHEINSTTROARLY' in ia)) {
-    ia.CHEINSTTROARLY = {
-      name: 'CHEINSTTROARLY',
-      file: 'minusone.html',
-      id: 'CHEINSTTROARLY',
-      nothinglang: false,
-      icon: 'images/minusone.png'
-    };
-    localStorage.setItem('apps', JSON.stringify(ia));
-  }
-  if (!('wallpaperthing' in ia)) {
-    ia.wallpaperthing = {
-      name: 'Desktop Wallpaper Settings',
-      file: 'wallpaperthing.html',
-      id: 'wallpaperthing',
-      icon: 'images/wpthingicon.png'
-    };
-    localStorage.setItem('apps', JSON.stringify(ia));
-  }
-  if (!('oof' in ia)) {
-    ia.oof = {
-      name: 'Endless OOF',
-      file: 'oof.html',
-      id: 'oof',
-      icon: 'images/oof.png',
-      nothinglang: false
-    }
-    localStorage.setItem('apps', JSON.stringify(ia));
-  }
-  if (('helloworld' in ia)) {
-    delete ia.helloworld;
-    localStorage.setItem('apps', JSON.stringify(ia));
-  }
-  if(('notiftest' in ia)) {
-    delete ia.notiftest;
-    localStorage.setItem('apps', JSON.stringify(ia));
-  }
-  Object.keys(ia).forEach(function(key) {
-    core.apps(ia[key]);
+  $('#rightinfo').on('click', function(e) {
+    e.stopPropagation();
   });
-}
+
+  $(document).on('click', function(e) {
+    if (core.rightinfo) {
+      core.closr();
+    }
+  });
+
+  setInterval(function() {
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let date = new Date();
+    let minute = (date.getMinutes() < 10) ? '0' + date.getMinutes() : date.getMinutes();
+    let hour = (date.getHours() < 10) ? '0' + date.getHours() : date.getHours();
+    let year = date.getFullYear();
+    let month = months[date.getMonth()];
+    let day = date.getDate();
+    document.querySelector('#clock').innerText = hour + ':' + minute;
+    document.querySelector('#rclck').innerText = hour + ':' + minute;
+    document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
+    if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
+      document.querySelector('#overlayGreeting').innerText = 'Good morning!';
+    } else if (date.getHours() > 10 && date.getHours() < 17) {
+      document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
+    } else if (date.getHours() < 20 && date.getHours() > 16) {
+      document.querySelector('#overlayGreeting').innerText = 'Good evening!';
+    } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
+      document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
+    } else {
+      document.querySelector('#overlayGreeting').innerText = 'Dude it\'s midnight';
+    }
+    core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
+  }, 10);
+
+  if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+    document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
+  } else {
+    document.querySelector('#device').innerHTML = '<i class="bx bx-laptop"></i>';
+  }
+
+  if (localStorage.getItem('apps') === null) {
+    let aps = {
+      CHEINSTTROARLY: {
+        name: 'CHEINSTTROARLY',
+        file: 'minusone.html',
+        id: 'CHEINSTTROARLY',
+        icon: 'images/minusone.png',
+        nothinglang: false
+      },
+      wallpaperthing: {
+        name: 'Desktop Wallpaper Settings',
+        file: 'wallpaperthing.html',
+        id: 'wallpaperthing',
+        icon: 'images/wpthingicon.png',
+        nothinglang: false
+      },
+      oof: {
+        name: 'Endless OOF',
+        file: 'oof.html',
+        id: 'oof',
+        icon: 'images/oof.png',
+        nothinglang: false
+      }
+    }
+    localStorage.setItem('apps', JSON.stringify(aps));
+    let ia = JSON.parse(localStorage.getItem('apps'));
+    for (let l = 0; l < Object.keys(ia).length; l++) {
+      core.apps(ia[Object.keys(ia)[l]]);
+    }
+  } else {
+    let ia = JSON.parse(localStorage.getItem('apps'));
+    if (!('CHEINSTTROARLY' in ia)) {
+      ia.CHEINSTTROARLY = {
+        name: 'CHEINSTTROARLY',
+        file: 'minusone.html',
+        id: 'CHEINSTTROARLY',
+        nothinglang: false,
+        icon: 'images/minusone.png'
+      };
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    if (!('wallpaperthing' in ia)) {
+      ia.wallpaperthing = {
+        name: 'Desktop Wallpaper Settings',
+        file: 'wallpaperthing.html',
+        id: 'wallpaperthing',
+        icon: 'images/wpthingicon.png'
+      };
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    if (!('oof' in ia)) {
+      ia.oof = {
+        name: 'Endless OOF',
+        file: 'oof.html',
+        id: 'oof',
+        icon: 'images/oof.png',
+        nothinglang: false
+      }
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    if (('helloworld' in ia)) {
+      delete ia.helloworld;
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    if (('notiftest' in ia)) {
+      delete ia.notiftest;
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    Object.keys(ia).forEach(function(key) {
+      core.apps(ia[key]);
+    });
+  }
 });
 
 document.addEventListener('keydown', function(event) {
   event.preventDefault();
   if (event.metaKey) {
-    if(core.homeOpen) {
+    if (core.homeOpen) {
       core.closeHome();
     } else {
       core.openHome();
