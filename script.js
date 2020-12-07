@@ -63,9 +63,11 @@ var core = {
       });
     } else {
       thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
-      thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
-        core.bringWindowToFront(thatNewWindow);
-      });
+      setTimeout(() => {
+        thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
+         core.bringWindowToFront(thatNewWindow);
+        });
+      }, 90);
     }
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
