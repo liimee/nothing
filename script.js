@@ -63,6 +63,9 @@ var core = {
       });
     } else {
       thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
+      thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
+        core.bringWindowToFront(thatNewWindow);
+      });
     }
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
@@ -80,7 +83,8 @@ var core = {
     let nnm = tippy(barel, {
       followCursor: true,
       content: app.name,
-      delay: 1000
+      delay: 1000,
+      offset: [0, 20]
     });
     barel.onclick = () => {
       core.showWindow(thatNewWindow.getAttribute('data-bar-id'));
