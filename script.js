@@ -544,5 +544,9 @@ document.addEventListener('keydown', function(event) {
     } else {
       core.openHome();
     }
+  } else if(event.keyCode == 17 && event.keyCode == 18 && event.keyCode == 72) {
+    document.querySelectorAll('.window').forEach((v) => {
+      core.hideWindow(v);
+    });
   }
 });
