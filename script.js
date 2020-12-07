@@ -413,6 +413,13 @@ document.addEventListener('DOMContentLoaded', function() {
   core.networkTooltip = tippy(document.querySelector('#bar #network'), { trigger: 'click', arrow: false });
   core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, appendTo: document.body, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
 
+  if(localStorage.getItem('nothingwelcome') === null) {
+    setTimeout(() => {
+      core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html'});
+      localStorage.setItem('nothingwelcome', 'ok');
+    }, 90);
+  }
+  
   if (navigator.connection) {
     networkThing();
     navigator.connection.addEventListener('change', networkThing);
@@ -550,10 +557,3 @@ document.addEventListener('keydown', function(event) {
     });
   }
 });
-
-if(localStorage.getItem('nothingwelcome') === null) {
-  setTimeout(() => {
-    core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html'});
-    localStorage.setItem('nothingwelcome', 'ok');
-  }, 90);
-}
