@@ -552,6 +552,8 @@ document.addEventListener('keydown', function(event) {
 });
 
 if(localStorage.getItem('nothingwelcome') === null) {
-  core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html'});
-  localStorage.setItem('nothingwelcome', 'ok');
+  setTimeout(() => {
+    core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html'});
+    localStorage.setItem('nothingwelcome', 'ok');
+  }, 90);
 }
