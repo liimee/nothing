@@ -5,29 +5,29 @@ var core = {
   currentno: 0,
   homeOpen: false,
   openHome: function() {
-    document.querySelector('#home').removeAttribute('onclick');
+    document.querySelector('#home').parentElement.removeAttribute('onclick');
     document.querySelector('#overlay').style.zIndex = 6;
     document.querySelector('#overlay').style.opacity = 0.85;
-    document.querySelector('#home').style.transform = 'scale(0, 0)';
-    document.querySelector('#home').title = 'Close';
-    $('#home').attr('onclick', 'core.closeHome();');
+    document.querySelector('#home').parentElement.style.transform = 'scale(0, 0)';
+    document.querySelector('#home').parentElement.title = 'Close';
+    document.querySelector('#home').parentElement.setAttribute('onclick', 'core.closeHome();');
     core.homeOpen = true;
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-x');
-      document.querySelector('#home').style.transform = 'scale(1, 1)';
+      document.querySelector('#home').parentElement.style.transform = 'scale(1, 1)';
     }, 500);
   },
   closeHome: function() {
     core.homeOpen = false;
-    document.querySelector('#home').removeAttribute('onclick');
+    document.querySelector('#home').parentElement.removeAttribute('onclick');
     document.querySelector('#overlay').style.opacity = 0;
     document.querySelector('#overlay').style.zIndex = 0;
-    document.querySelector('#home').style.transform = 'scale(0, 0)';
-    document.querySelector('#home').title = 'Home';
-    $('#home').attr('onclick', 'core.openHome();');
+    document.querySelector('#home').parentElement.style.transform = 'scale(0, 0)';
+    document.querySelector('#home').parentElement.title = 'Home';
+    document.querySelector('#home').parentElement.setAttribute('onclick', 'core.openHome();');
     setTimeout(function() {
       $('#home').attr('class', 'bx bx-circle');
-      document.querySelector('#home').style.transform = 'scale(1, 1)';
+      document.querySelector('#home').parentElement.style.transform = 'scale(1, 1)';
     }, 500);
   },
   openApp: async function(app) {
