@@ -28,6 +28,25 @@
     <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
   </head>
   <body>
+    <!--test-->
+    <script>
+      if(window.self !== window.top) {
+        let f = document.createElement('div');
+        f.style.width = '100%';
+        f.style.height = '100%';
+        f.style.position = 'fixed';
+        f.style.left = 0;
+        f.style.top = 0;
+        f.style.backgroundColor = 'white';
+        f.style.display = 'flex';
+        f.style.justifyContent = 'center';
+        f.style.alignItems = 'center';
+        f.innerHTML = '😉 | Did you try to iFrame <i>nothing</i>?';
+        document.body.appendChild(f);
+        window.stop();
+      }
+    </script>
+    <!--test-->
     <div id="notif">
       <div id="notifTitle"></div>
       <div id="notifContent"></div>
