@@ -4,7 +4,7 @@
   --bar-bg: #fff;
   --text-color: black;
   --window-top: #dbdbdb;
-  --cursor-pointer: url('images/cursor/pointer.png'), auto;
+  --cursor-pointer: url('images/cursor/pointer.png'), pointer;
   --cursor-cursor: url('images/cursor/cursor.png'), auto;
 }
 
