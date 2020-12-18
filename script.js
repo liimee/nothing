@@ -496,6 +496,12 @@ document.addEventListener('DOMContentLoaded', function() {
         id: 'oof',
         icon: 'images/oof.png',
         nothinglang: false
+      },
+      terminal: {
+        name: 'Terminal (Beta)',
+        file: 'uselessterminal.html',
+        id: 'terminal',
+        icon: 'images/terminal.png'
       }
     }
     localStorage.setItem('apps', JSON.stringify(aps));
@@ -512,6 +518,15 @@ document.addEventListener('DOMContentLoaded', function() {
         id: 'CHEINSTTROARLY',
         nothinglang: false,
         icon: 'images/minusone.png'
+      };
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    if (!('terminal' in ia)) {
+      ia.terminal = {
+        name: 'Terminal (Beta)',
+        file: 'uselessterminal.html',
+        id: 'terminal',
+        icon: 'images/terminal.png'
       };
       localStorage.setItem('apps', JSON.stringify(ia));
     }
