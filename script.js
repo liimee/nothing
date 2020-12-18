@@ -54,21 +54,18 @@ var core = {
     thatNewFrame.style.paddingRight = '10px';
     thatNewFrame.style.paddingLeft = '10px';
     thatNewFrame.style.height = '85%';
-    if (app.nothinglang) {
-      thatNewFrame.style.overflow = 'scroll';
-      thatNewFrame.style.marginTop = '.6em';
-      let m = await loadApp(app.file, core.currentno);
-      m.forEach((v) => {
-        thatNewFrame.appendChild(v.el);
+    thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
+    setTimeout(() => {
+      thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
+        core.bringWindowToFront(thatNewWindow);
       });
-    } else {
-      thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
-      setTimeout(() => {
-        thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
-         core.bringWindowToFront(thatNewWindow);
-        });
-      }, 90);
-    }
+    }, 90);
+    let channel = new MessageChannel();
+    let port1 = channel.port1;
+    thatNewFrame.children[0].addEventListener("load", () => {
+      port1.onmessage = core.onMessage;
+      thatNewFrame.children[0].contentWindow.postMessage('init', '*', [channel.port2]);
+    });
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
@@ -292,6 +289,14 @@ var core = {
   },
   idk: function(el) {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
+  },
+  onMessage: function(e) {
+    switch(e.data.name) {
+      case 'openapp':
+        if(e.data.value in JSON.parse(localStorage.getItem('apps'))) {
+          core.openApp(JSON.parse(localStorage.getItem('apps'))[e.data.value]);
+        }
+    }
   }
 };
 
@@ -413,13 +418,13 @@ document.addEventListener('DOMContentLoaded', function() {
   core.networkTooltip = tippy(document.querySelector('#bar #network'), { trigger: 'click', arrow: false });
   core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, appendTo: document.body, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
 
-  if(localStorage.getItem('nothingwelcome') === null) {
+  if (localStorage.getItem('nothingwelcome') === null) {
     setTimeout(() => {
-      core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html'});
+      core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html' });
       localStorage.setItem('nothingwelcome', 'ok');
     }, 90);
   }
-  
+
   if (navigator.connection) {
     networkThing();
     navigator.connection.addEventListener('change', networkThing);
@@ -551,7 +556,7 @@ document.addEventListener('keydown', function(event) {
     } else {
       core.openHome();
     }
-  } else if(event.keyCode == 17 && event.keyCode == 18 && event.keyCode == 72) {
+  } else if (event.keyCode == 17 && event.keyCode == 18 && event.keyCode == 72) {
     document.querySelectorAll('.window').forEach((v) => {
       core.hideWindow(v);
     });

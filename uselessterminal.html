@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Overpass+Mono:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    body,
+    body * {
+      font-family: 'Overpass Mono', monospace;
+      font-size: 1em;
+    }
+
+    #main {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      position: fixed;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="main"></div>
+  <script src="lib/ptty.js"></script>
+  <script>
+    var $ptty;
+    $(document).ready(function() {
+      $ptty = $('#main').Ptty({
+        i18n: {
+          welcome: '⌨️ Nothing Terminal ~ 0.1.0',
+          error_not_found: '🤔 Well yes you are right. Command was not found because this is nothing.',
+        },
+        ps: '&'
+      });
+
+      $ptty.register('command', {
+        name: 'betteros',
+        method: function(cmd) {
+          cmd.out = '😄 Sure. We will redirect you to a better OS!';
+          window.location = 'https://electogenius.github.io/HmmOS';
+          return cmd;
+        },
+        options: [],
+        help: 'Redirection to a better OS!'
+      });
+      
+      $ptty.register('command', {
+        name: 'open',
+        method: function(cmd) {
+          if(cmd.hasOwnProperty(1)) {
+            port2.postMessage({ name: 'openapp', value: cmd[1] });
+          }
+        },
+        options: [1],
+        help: 'Open an app using Terminal'
+      });
+
+    });
+    
+    var port2;
+    
+    window.addEventListener('message', (e) => {
+      port2 = e.ports[0];
+    });
+  </script>
+</body>
+
+</html>
