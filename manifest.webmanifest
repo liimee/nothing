@@ -1,0 +1,16 @@
+{
+  "background_color": "white",
+  "description": "There's nothing here",
+  "display": "standalone",
+  "icons": [
+    {
+      "src": "images/nothing.png",
+      "type": "image/png"
+    }
+  ],
+  "name": "nothing",
+  "short_name": "nothing",
+  "start_url": "index.html",
+  "lang": "en",
+  "theme_color": "white"
+}
