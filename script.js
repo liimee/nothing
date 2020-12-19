@@ -296,6 +296,9 @@ var core = {
         if(e.data.value in JSON.parse(localStorage.getItem('apps'))) {
           core.openApp(JSON.parse(localStorage.getItem('apps'))[e.data.value]);
         }
+        break;
+      case 'redirect':
+        window.location = e.data.value;
     }
   }
 };
