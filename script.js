@@ -291,9 +291,9 @@ var core = {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
   },
   onMessage: function(e) {
-    switch(e.data.name) {
+    switch (e.data.name) {
       case 'openapp':
-        if(e.data.value in JSON.parse(localStorage.getItem('apps'))) {
+        if (e.data.value in JSON.parse(localStorage.getItem('apps'))) {
           core.openApp(JSON.parse(localStorage.getItem('apps'))[e.data.value]);
         }
         break;
@@ -420,6 +420,10 @@ document.addEventListener('DOMContentLoaded', function() {
   core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
   core.networkTooltip = tippy(document.querySelector('#bar #network'), { trigger: 'click', arrow: false });
   core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, appendTo: document.body, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
+
+  new Howl({
+    src: ['sounds/startup.aac']
+  }).play();
 
   if (localStorage.getItem('nothingwelcome') === null) {
     setTimeout(() => {
