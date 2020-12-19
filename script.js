@@ -241,7 +241,7 @@ var core = {
     } else {
       let t = (document.querySelectorAll('.window').length == 1) ? '1 running app' : document.querySelectorAll('.window').length.toString() + ' running apps';
       if(document.querySelectorAll('[data-minimized="true"]').length == 0) {
-        document.title = t;
+        document.title = t + ' — nothing';
       } else {
         t += ' (' + document.querySelectorAll('[data-minimized="true"]').length + ' hidden) — nothing';
         document.title = t;
@@ -283,6 +283,7 @@ var core = {
         document.querySelector(`[data-bar-id="${el}"]`).setAttribute('data-minimized', 'false');
         setTimeout(() => {
           document.querySelector(`[data-bar-id="${el}"]`).style.transition = 'initial';
+          core.calculateRunningApps();
         }, 400);
       }, 90);
     }
