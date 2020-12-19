@@ -49,6 +49,17 @@
       });
       
       $ptty.register('command', {
+        name: 'actuallybetteros',
+        method: function(cmd) {
+          cmd.out = '😄 Sure. We will redirect you to the actual better OS (HmmOS)!';
+          port2.postMessage({ name: 'redirect', value: 'https://electogenius.github.io/HmmOS' });
+          return cmd;
+        },
+        options: [],
+        help: 'Redirection to the actual better OS!'
+      });
+      
+      $ptty.register('command', {
         name: 'open',
         method: function(cmd) {
           if(cmd.hasOwnProperty(1)) {
