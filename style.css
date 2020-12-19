@@ -10,12 +10,23 @@
 
 @keyframes openWindow {
   from {
-    width: 0;
-    height: 0;
+    transform: scale(.5);
+    opacity: 0;
   }
   to {
-    width: 450px;
-    height: 310px;
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes closeWindow {
+  from {
+    transform: scale(1);
+    opacity: 1;
+  }
+  to {
+    transform: scale(.5);
+    opacity: 0;
   }
 }
 
@@ -130,7 +141,7 @@ body {
   z-index: 3;
   cursor: var(--cursor-cursor);
   box-sizing: border-box;
-  animation: openWindow 1s;
+  animation: openWindow .4s ease-in-out;
   width: 450px;
   height: 310px;
 }

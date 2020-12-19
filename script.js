@@ -138,8 +138,8 @@ var core = {
           position.x += event.dx
           position.y += event.dy
 
-          event.target.style.transform =
-            `translate(${position.x}px, ${position.y}px)`
+          event.target.style.left = `${position.x}px`;
+          event.target.style.top = `${position.y}px`;
         },
       },
       cursorChecker() {
@@ -166,8 +166,7 @@ var core = {
     })
   },
   closeWindow: function(el) {
-    el.parentElement.parentElement.style.transition = '.4s';
-    el.parentElement.parentElement.style.opacity = 0;
+    el.parentElement.parentElement.style.animation = 'closeWindow .4s ease-in-out';
     document.getElementById(el.parentElement.parentElement.getAttribute('data-bar-id')).style.opacity = 0;
     setTimeout(function() {
       document.getElementById(el.parentElement.parentElement.getAttribute('data-bar-id')).remove();
