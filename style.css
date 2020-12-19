@@ -286,6 +286,7 @@ body {
   border: 2px solid grey;
   padding: 1em;
   border-radius: 8px;
+  z-index: 9999;
 }
 
 #restart > div + div {
