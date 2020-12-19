@@ -422,7 +422,7 @@ document.addEventListener('DOMContentLoaded', function() {
   core.powerOffBtnTooltip = tippy(document.querySelector('#power-off-button'), { trigger: 'click', interactive: true, appendTo: document.body, arrow: false, allowHTML: true, content: '<span onclick="core.powerOff();" style="background-color: #ff4242; color: white; width: 100%; border-radius: 8px; padding: 5px;">Power Off?</span>' });
 
   new Howl({
-    src: ['sounds/startup.aac']
+    src: ['sounds/startup.mp3']
   }).play();
 
   if (localStorage.getItem('nothingwelcome') === null) {
