@@ -8,6 +8,17 @@
   --cursor-cursor: url('images/cursor/cursor.png'), auto;
 }
 
+@keyframes openWindow {
+  from {
+    width: 0;
+    height: 0;
+  }
+  to {
+    width: 450px;
+    height: 310px;
+  }
+}
+
 body {
   overflow: hidden;
   background-size: cover;
@@ -119,6 +130,7 @@ body {
   z-index: 3;
   cursor: var(--cursor-cursor);
   box-sizing: border-box;
+  animation: openWindow 1s;
 }
 
 .window iframe {

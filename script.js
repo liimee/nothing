@@ -38,11 +38,9 @@ var core = {
     thatNewWindow.classList.add(app.id);
     thatNewWindow.setAttribute('data-maximized', 'false');
     thatNewWindow.setAttribute('data-bar-id', core.currentno);
-    thatNewWindow.style.width = '450px';
     thatNewWindow.style.top = '75px';
     thatNewWindow.style.left = '85px';
     thatNewWindow.setAttribute('data-minimized', 'false');
-    thatNewWindow.style.height = '310px';
     thatNewWindow.style.zIndex = 4;
     thatNewWindow.setAttribute('onclick', 'core.bringWindowToFront(this)');
     let thatNewTop = document.createElement('div');
