@@ -299,7 +299,18 @@ var core = {
         break;
       case 'redirect':
         window.location = e.data.value;
+        break;
+      case 'restartos':
+        core.restart(true);
     }
+  },
+  restart: function(fromapp) {
+    if(fromapp) {
+      document.querySelector('#restart').style.display = 'block';
+    }
+  },
+  realrestart: function() {
+    location.reload();
   }
 };
 

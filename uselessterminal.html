@@ -58,6 +58,15 @@
         options: [1],
         help: 'Open an app using Terminal'
       });
+      
+      $ptty.register('command', {
+        name: 'restart',
+        method: function(cmd) {
+          port2.postMessage({ name: 'restartos' });
+        },
+        options: [],
+        help: 'Restart Nothing'
+      });
 
     });
     

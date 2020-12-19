@@ -275,3 +275,27 @@ body {
 #notif #notifTitle {
   text-decoration: bold;
 }
+
+#restart {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  background-color: var(--bar-bg);
+  transform: translate(-50%, -50%);
+  display: none;
+  border: 2px solid grey;
+  padding: 1em;
+  border-radius: 8px;
+}
+
+#restart > div + div {
+  margin-top: .7em;
+}
+
+#restart button {
+  padding: .8em;
+  border-radius: 8px;
+  border: none;
+  background-color: #6e75b2;
+  color: white;
+}
