@@ -75,7 +75,7 @@
     <div id="restart">
       <div style="font-size: 1.5em;"><b>Restart?</b></div>
       <div>An app has requested to restart this OS.</div>
-      <div style="text-align: center;"><button onclick="core.realrestart()">Restart</button></div>
+      <div style="text-align: center; float: right;"><button onclick="document.querySelector('#restartcontainer').style.display = 'none';">Cancel</button> <button onclick="core.realrestart()">Restart</button></div>
     </div>
   </div>
   <script>
