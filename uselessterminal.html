@@ -74,6 +74,8 @@
         name: 'restart',
         method: function(cmd) {
           port2.postMessage({ name: 'restartos' });
+          cmd = { out: 'Restart request sent' };
+          return cmd;
         },
         options: [],
         help: 'Restart Nothing'
@@ -105,6 +107,9 @@
     
     window.addEventListener('message', (e) => {
       port2 = e.ports[0];
+      if(e.data.name == 'windowfocused') {
+        $ptty.get_terminal('.prompt').find('.input').focus();
+      }
     });
     
     window.addEventListener('click', () => {

@@ -30,7 +30,7 @@ var core = {
       document.querySelector('#home').parentElement.style.transform = 'scale(1, 1)';
     }, 500);
   },
-  openApp: async function(app) {
+  openApp: function(app) {
     core.closeHome();
     $('.window').css('z-index', 3);
     let thatNewWindow = document.createElement('div');
@@ -138,7 +138,6 @@ var core = {
       listeners: {
         start(event) {
           core.bringWindowToFront(thatNewWindow);
-          thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
         },
         move(event) {
           position.x += event.dx
