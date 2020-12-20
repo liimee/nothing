@@ -78,6 +78,15 @@
         options: [],
         help: 'Restart Nothing'
       });
+      
+      $ptty.register('command', {
+        name: 'sendtestnotif',
+        method: function(cmd) {
+          port2.postMessage({ name: 'sendnotification', content: 'yest', title: 'test' });
+        },
+        options: [],
+        help: 'Send test notification'
+      });
 
     });
     

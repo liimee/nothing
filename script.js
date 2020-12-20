@@ -307,6 +307,9 @@ var core = {
         break;
       case 'restartos':
         core.restart(true);
+        break;
+      case 'sendnotification':
+        core.sendNotif(e.data.title, e.data.content);
     }
   },
   restart: function(fromapp) {
@@ -316,6 +319,25 @@ var core = {
   },
   realrestart: function() {
     location.reload();
+  },
+  sendNotif: function(title, content) {
+    let ab = document.createElement('div');
+    let ac = document.createElement('div');
+    ac.className = 'notifTitle';
+    ac.innerText = title;
+    let ad = document.createElement('div');
+    ad.innerText = content;
+    ab.appendChild(ac);
+    ab.appendChild(ad);
+    document.body.appendChild(ab);
+    ab.className = 'notif';
+    setTimeout(() => {
+      ab.style.top = '-6em';
+      ab.style.animation = 'hideNotif .5s';
+      setTimeout(() => {
+        ab.remove();
+      }, 501);
+    }, 3000);
   }
 };
 
