@@ -69,6 +69,9 @@ var core = {
     thatNewWindow.addEventListener('click', () => {
       thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
     });
+    thatNewTop.addEventListener('click', () => {
+      thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
+    });
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
