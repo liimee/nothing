@@ -318,6 +318,7 @@ body {
   animation: sendNotif .5s;
   left: 50%;
   transform: translateX(-50%);
+  border: 2px solid #969696;
 }
 
 .notif .notifTitle {
