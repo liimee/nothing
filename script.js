@@ -64,7 +64,6 @@ var core = {
     setTimeout(() => {
       thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
         core.bringWindowToFront(thatNewWindow);
-        thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
       });
     }, 90);
     thatNewTop.addEventListener('click', () => {
