@@ -53,19 +53,20 @@ var core = {
     thatNewFrame.style.paddingLeft = '10px';
     thatNewFrame.style.height = '85%';
     thatNewFrame.innerHTML = '<iframe src="' + app.file + '"></iframe>';
-    setTimeout(() => {
-      thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
-        core.bringWindowToFront(thatNewWindow);
-      });
-    }, 90);
     let channel = new MessageChannel();
     let port1 = channel.port1;
     thatNewFrame.children[0].addEventListener("load", () => {
       port1.onmessage = (e) => {
         core.onMessage(e, thatNewWindow);
       };
-      thatNewFrame.children[0].contentWindow.postMessage('init', '*', [channel.port2]);
+      thatNewFrame.children[0].contentWindow.postMessage({ name: 'init' }, '*', [channel.port2]);
     });
+    setTimeout(() => {
+      thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
+        core.bringWindowToFront(thatNewWindow);
+        thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
+      });
+    }, 90);
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
