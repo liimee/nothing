@@ -82,7 +82,9 @@
       $ptty.register('command', {
         name: 'sendtestnotif',
         method: function(cmd) {
+          cmd = { out: 'test notif sent' };
           port2.postMessage({ name: 'sendnotification', content: 'yest', title: 'test' });
+          return cmd;
         },
         options: [],
         help: 'Send test notification'
