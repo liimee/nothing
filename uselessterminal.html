@@ -89,6 +89,15 @@
         options: [],
         help: 'Send test notification'
       });
+      
+      $ptty.register('command', {
+        name: 'exit',
+        method: function(cmd) {
+          port2.postMessage({ name: 'quit' });
+        },
+        options: [],
+        help: 'Exit the Terminal'
+      });
 
     });
     

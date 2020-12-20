@@ -61,7 +61,9 @@ var core = {
     let channel = new MessageChannel();
     let port1 = channel.port1;
     thatNewFrame.children[0].addEventListener("load", () => {
-      port1.onmessage = core.onMessage;
+      port1.onmessage = (e) => {
+        core.onMessage(e, thatNewWindow);
+      };
       thatNewFrame.children[0].contentWindow.postMessage('init', '*', [channel.port2]);
     });
     thatNewWindow.appendChild(thatNewTop);
@@ -295,7 +297,7 @@ var core = {
   idk: function(el) {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
   },
-  onMessage: function(e) {
+  onMessage: function(e, abc) {
     switch (e.data.name) {
       case 'openapp':
         if (e.data.value in JSON.parse(localStorage.getItem('apps'))) {
@@ -310,6 +312,9 @@ var core = {
         break;
       case 'sendnotification':
         core.sendNotif(e.data.title, e.data.content);
+        break;
+      case 'quit':
+        core.closeWindow(abc.children[1].children[0]);
     }
   },
   restart: function(fromapp) {
