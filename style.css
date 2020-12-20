@@ -325,13 +325,24 @@ body {
   font-weight: bold;
 }
 
+#restartcontainer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: none;
+  z-index: 9998;
+  background-color: #666666;
+  opacity: .9;
+}
+
 #restart {
   position: fixed;
   top: 50%;
   left: 50%;
   background-color: var(--bar-bg);
   transform: translate(-50%, -50%);
-  display: none;
   border: 2px solid grey;
   padding: 1em;
   border-radius: 8px;

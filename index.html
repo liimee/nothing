@@ -1,94 +1,96 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>nothing</title>
 
-    <meta name="description" content="nothing much here" />
-    <meta name="title" content="nothing">
-    <meta property="og:title" content="Nothing" />
-    <meta property="og:image" content="images/og.png" />
-    <meta property="og:description" content="you know the idea—there's nothing here" />
-    <meta property="og:url" content="https://liimee.github.io/nothing" />
-    <meta property="og:type" content="website" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="application-name" content="nothing" />
-    <meta itemprop="name" content="nothing: yes it's nothing" />
-    <meta itemprop="description" content="indeed—there's nothing here" />
-    <meta itemprop="image" content="images/og.png" />
+<head>
+  <meta charset="utf-8">
+  <title>nothing</title>
+  <meta name="description" content="nothing much here" />
+  <meta name="title" content="nothing">
+  <meta property="og:title" content="Nothing" />
+  <meta property="og:image" content="images/og.png" />
+  <meta property="og:description" content="you know the idea—there's nothing here" />
+  <meta property="og:url" content="https://liimee.github.io/nothing" />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="application-name" content="nothing" />
+  <meta itemprop="name" content="nothing: yes it's nothing" />
+  <meta itemprop="description" content="indeed—there's nothing here" />
+  <meta itemprop="image" content="images/og.png" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="shortcut icon" href="images/nothing.png" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/howler@2.2.1/dist/howler.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
+</head>
 
-    <link rel="manifest" href="manifest.webmanifest" />
-    <link rel="stylesheet" href="style.css" />
-    <link rel="shortcut icon" href="images/nothing.png" />
-
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://unpkg.com/interactjs/dist/interact.min.js"></script>
-    <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
-    <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/howler@2.2.1/dist/howler.min.js"></script>
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
-  </head>
-  <body>
-    <script>
-      if(window.self !== window.top) {
-        let f = document.createElement('div');
-        f.style.width = '100%';
-        f.style.height = '100%';
-        f.style.position = 'fixed';
-        f.style.left = 0;
-        f.style.top = 0;
-        f.style.backgroundColor = 'white';
-        f.style.display = 'flex';
-        f.style.justifyContent = 'center';
-        f.style.alignItems = 'center';
-        f.innerHTML = '😉 | Are you trying to iFrame <i>nothing</i>?';
-        document.body.appendChild(f);
-        window.stop();
-      }
-    </script>
-    <div id="power-off">
-      <div>Powered Off.</div>
+<body>
+  <script>
+    if (window.self !== window.top) {
+      let f = document.createElement('div');
+      f.style.width = '100%';
+      f.style.height = '100%';
+      f.style.position = 'fixed';
+      f.style.left = 0;
+      f.style.top = 0;
+      f.style.backgroundColor = 'white';
+      f.style.display = 'flex';
+      f.style.justifyContent = 'center';
+      f.style.alignItems = 'center';
+      f.innerHTML = '😉 | Are you trying to iFrame <i>nothing</i>?';
+      document.body.appendChild(f);
+      window.stop();
+    }
+  </script>
+  <div id="power-off">
+    <div>Powered Off.</div>
+  </div>
+  <div id="bar">
+    <span style="left: 0; cursor: var(--cursor-pointer); border-radius: 9px; padding: 2px 10px; position: fixed; background-color: var(--bar-bg); z-index: 2; height: 25px;" onclick="core.openHome();"><i class="bx bx-circle" id="home" style="font-weight: 700; cursor: inherit;" title="Home"></i></span>
+    <span id="right" style="display: none;">
+      <span id="fps"></span>
+      <span id="network"></span>
+      <span id="clock"></span>
+      <i class="bx bx-power-off" id="power-off-button"></i>
+      <i class="bx bx-chevron-left" id="openri" onclick="core.openr();"></i>
+    </span>
+  </div>
+  <div id="rightinfo">
+    <div id="rci"><span id="device"></span></div>
+    <div id="rclck"></div>
+  </div>
+  <div id="overlay">
+    <div id="overlayClock">
+      <div id="realOverlayClock"></div>
+      <div id="overlayGreeting"></div>
     </div>
-    <div id="bar">
-      <span style="left: 0; cursor: var(--cursor-pointer); border-radius: 9px; padding: 2px 10px; position: fixed; background-color: var(--bar-bg); z-index: 2; height: 25px;" onclick="core.openHome();"><i class="bx bx-circle" id="home" style="font-weight: 700; cursor: inherit;" title="Home"></i></span>
-      <span id="right" style="display: none;">
-        <span id="fps"></span>
-        <span id="network"></span>
-        <span id="clock"></span>
-        <i class="bx bx-power-off" id="power-off-button"></i>
-        <i class="bx bx-chevron-left" id="openri" onclick="core.openr();"></i>
-      </span>
-    </div>
-    <div id="rightinfo">
-      <div id="rci"><span id="device"></span></div>
-      <div id="rclck"></div>
-    </div>
-    <div id="overlay">
-      <div id="overlayClock">
-        <div id="realOverlayClock"></div>
-        <div id="overlayGreeting"></div>
-      </div>
-      <div id="apps"></div>
-    </div>
-    <div id="desktop"></div>
+    <div id="apps"></div>
+  </div>
+  <div id="desktop"></div>
+  <div id="restartcontainer">
     <div id="restart">
       <div style="font-size: 1.5em;"><b>Restart?</b></div>
       <div>An app has requested to restart this OS.</div>
       <div style="text-align: center;"><button onclick="core.realrestart()">Restart</button></div>
     </div>
-    <script>
-      // install service worker
-      if ('serviceWorker' in navigator) {
-        window.addEventListener('load', function() {
-          navigator.serviceWorker.register('script.js').then(function(registration) {
-            console.log('Service Worker installed successfully with scope: ', registration.scope);
-          }, function(err) {
-            console.log('Service Worker installation failed :( → ', err);
-          });
+  </div>
+  <script>
+    // install service worker
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('script.js').then(function(registration) {
+          console.log('Service Worker installed successfully with scope: ', registration.scope);
+        }, function(err) {
+          console.log('Service Worker installation failed :( → ', err);
         });
-      }
-    </script>
-    <script src="script.js"></script>
-  </body>
+      });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
 </html>

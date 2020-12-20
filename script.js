@@ -323,7 +323,7 @@ var core = {
   },
   restart: function(fromapp) {
     if(fromapp) {
-      document.querySelector('#restart').style.display = 'block';
+      document.querySelector('#restartcontainer').style.display = 'block';
     }
   },
   realrestart: function() {
