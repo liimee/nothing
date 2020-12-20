@@ -66,7 +66,7 @@ var core = {
         core.bringWindowToFront(thatNewWindow);
       });
     }, 90);
-    thatNewTop.addEventListener('click', () => {
+    thatNewWindow.addEventListener('click', () => {
       thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
     });
     thatNewWindow.appendChild(thatNewTop);
