@@ -67,6 +67,9 @@ var core = {
         thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
       });
     }, 90);
+    thatNewTop.addEventListener('click', () => {
+      thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
+    });
     thatNewWindow.appendChild(thatNewTop);
     thatNewWindow.appendChild(thatNewFrame);
     document.querySelector('#desktop').appendChild(thatNewWindow);
@@ -136,6 +139,7 @@ var core = {
       listeners: {
         start(event) {
           core.bringWindowToFront(thatNewWindow);
+          thatNewFrame.children[0].contentWindow.postMessage({ name: 'windowfocused' });
         },
         move(event) {
           position.x += event.dx
