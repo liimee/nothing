@@ -471,6 +471,8 @@ document.addEventListener('DOMContentLoaded', function() {
   new Howl({
     src: ['sounds/startup.mp3']
   }).play();
+  
+  core.sendNotif('Nothing', 'Welcome!');
 
   if (localStorage.getItem('nothingwelcome') === null) {
     setTimeout(() => {
