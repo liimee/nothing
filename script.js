@@ -120,7 +120,7 @@ var core = {
     document.querySelector('#bar').appendChild(barel);
     core.calculateRunningApps();
     core.currentno += 1;
-    let position = { x: 0, y: 0 }
+    let position = { x: 75, y: 85 };
 
     interact(thatNewWindow).draggable({
       allowFrom: '.top',
