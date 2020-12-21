@@ -56,6 +56,7 @@ body {
   background-repeat: var(--bg-repeat);
   transition: background-image .4s;
   cursor: var(--cursor-cursor);
+  background-color: var(--bar-bg);
 }
 
 .bx {
@@ -346,6 +347,7 @@ body {
   border: 2px solid grey;
   padding: 1em;
   border-radius: 8px;
+  color: var(--text-color);
   z-index: 9999;
 }
 
