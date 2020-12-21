@@ -27,6 +27,19 @@
   <div id="main"></div>
   <script src="lib/ptty.js"></script>
   <script>
+    var port2;
+    
+    window.addEventListener('message', (e) => {
+      port2 = e.ports[0];
+      if(e.data.name == 'windowfocused') {
+        $ptty.get_terminal('.prompt').find('.input').focus();
+      }
+    });
+    
+    window.addEventListener('click', () => {
+      $ptty.get_terminal('.prompt').find('.input').focus();
+    });
+  
     var $ptty;
     $(document).ready(function() {
       $ptty = $('#main').Ptty({
@@ -100,21 +113,29 @@
         options: [],
         help: 'Exit the Terminal'
       });
+      
+      $ptty.register('command', {
+        name: 'config',
+        method: function(cmd) {
+          if(cmd.hasOwnProperty(1)) {
+            switch(cmd[1]) {
+              case 'theme':
+                if(cmd.hasOwnProperty(2)) {
+                  if(cmd[2] == 'dark') {
+                    port2.postMessage({ name: 'settings', sets: 'theme', value: 'true' });
+                  } else if(cmd[2] == 'light') {
+                    port2.postMessage({ name: 'settings', sets: 'theme', value: 'false' });
+                  }
+                }
+            }
+          }
+        },
+        options: [1, 2],
+        help: 'OS configuration — config [setting] [value]'
+      });
 
     });
     
-    var port2;
-    
-    window.addEventListener('message', (e) => {
-      port2 = e.ports[0];
-      if(e.data.name == 'windowfocused') {
-        $ptty.get_terminal('.prompt').find('.input').focus();
-      }
-    });
-    
-    window.addEventListener('click', () => {
-      $ptty.get_terminal('.prompt').find('.input').focus();
-    });
   </script>
 </body>
 

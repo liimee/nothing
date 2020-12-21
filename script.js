@@ -321,6 +321,13 @@ var core = {
         break;
       case 'quit':
         core.closeWindow(abc.children[1].children[0]);
+        break;
+      case 'settings':
+        switch(e.data.sets) {
+          case 'theme':
+            localStorage.setItem('dm', e.data.value);
+            a();
+        }
     }
   },
   restart: function(fromapp) {
@@ -429,6 +436,7 @@ setInterval(function() {
   core.fps = 0;
 }, 1000);
 
+function a() {
 if (localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
   localStorage.setItem('dm', 'false');
   core.root.style.setProperty('--bar-bg', '#fff');
@@ -439,6 +447,9 @@ if (localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false'
   core.root.style.setProperty('--window-top', '#212121');
   core.root.style.setProperty('--text-color', 'white');
 }
+}
+
+a();
 
 window.addEventListener('storage', function() {
   switch (localStorage.getItem('wp')) {
