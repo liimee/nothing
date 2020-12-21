@@ -74,7 +74,7 @@ body {
   z-index: 999;
   background-color: var(--bar-bg);
   color: var(--text-color);
-  transition: top .5s;
+  transition: background-color .5s;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
