@@ -326,7 +326,8 @@ body {
   font-weight: bold;
 }
 
-#restartcontainer {
+#restartcontainer,
+#requestcontainer {
   position: fixed;
   left: 0;
   top: 0;
@@ -338,7 +339,8 @@ body {
   opacity: .9;
 }
 
-#restart {
+#restart,
+#req {
   position: fixed;
   top: 50%;
   left: 50%;
@@ -351,11 +353,13 @@ body {
   z-index: 9999;
 }
 
-#restart > div + div {
+#restart > div + div,
+#req > div + div {
   margin-top: .7em;
 }
 
-#restart button {
+#restart button,
+#req button {
   padding: .8em;
   border-radius: 8px;
   border: none;

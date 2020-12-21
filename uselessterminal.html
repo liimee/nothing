@@ -140,6 +140,20 @@
         options: [1, 2],
         help: 'OS configuration — config [setting] [value]'
       });
+      
+      $ptty.register('command', {
+        name: 'app',
+        method: function(cmd) {
+          if(cmd.hasOwnProperty(1)) {
+            switch(cmd[1]) {
+              case 'list':
+                port2.postMessage({ name: 'getapps'})
+            }
+          }
+        },
+        options: [1, 2],
+        help: 'Stuff related to apps'
+      })
 
     });
     

@@ -41,7 +41,9 @@ var core = {
     thatNewWindow.style.top = '75px';
     thatNewWindow.style.left = '85px';
     thatNewWindow.setAttribute('data-minimized', 'false');
+    thatNewWindow.setAttribute('data-allow-modify-sys', 'false')
     thatNewWindow.style.zIndex = 4;
+    thatNewWindow.setAttribute('data-name', app.name);
     thatNewWindow.setAttribute('onclick', 'core.bringWindowToFront(this)');
     let thatNewTop = document.createElement('div');
     thatNewTop.className = 'top';
@@ -323,10 +325,14 @@ var core = {
         core.closeWindow(abc.children[1].children[0]);
         break;
       case 'settings':
-        switch(e.data.sets) {
-          case 'theme':
-            localStorage.setItem('dm', e.data.value);
-            a();
+        if(abc.getAttribute('data-allow-modify-sys') == 'true') {
+          switch(e.data.sets) {
+            case 'theme':
+              localStorage.setItem('dm', e.data.value);
+              a();
+          }
+        } else {
+          core.requestSys(abc, e);
         }
     }
   },
@@ -356,6 +362,18 @@ var core = {
         ab.remove();
       }, 501);
     }, 3000);
+  },
+  requestSys: function(hmm, hm) {
+    document.querySelector('#req').children[1].children[0].innerText = hmm.getAttribute('data-name');
+    document.querySelector('#req').children[2].children[1].onclick = () => {
+      core.allowMod(hmm, hm);
+    }
+    document.querySelector('#requestcontainer').style.display = 'block';
+  },
+  allowMod: function(hmm, hm) {
+    document.querySelector('#requestcontainer').style.display = 'none';
+    hmm.setAttribute('data-allow-modify-sys', 'true');
+    core.onMessage(hm, hmm);
   }
 };
 
