@@ -182,6 +182,7 @@ body {
   -webkit-user-select: none;
   -ms-user-select: none;
   overflow: hidden;
+  transition: background-color .5s;
   border-radius: 8px;
   max-width: -webkit-fill-available;
   max-width: -moz-available; 
