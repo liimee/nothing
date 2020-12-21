@@ -127,7 +127,13 @@
                     port2.postMessage({ name: 'settings', sets: 'theme', value: 'false' });
                   }
                 }
+              default:
+                cmd = { out: '🤷‍♂️ Hm?' };
+                return cmd;
             }
+          } else {
+            cmd = { out: '❓ Hm?' };
+            return cmd;
           }
         },
         options: [1, 2],
