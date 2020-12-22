@@ -188,7 +188,8 @@ var core = {
     el.style.transition = '.4s';
     if (el.getAttribute('data-maximized') == 'false') {
       document.querySelector(`[data-ctxmn-id="${attr}"]`).children[2].innerText = 'Collapse';
-      el.setAttribute('data-initial-pos', el.style.transform);
+      el.setAttribute('data-initial-pos-left', el.style.left);
+      el.setAttribute('data-initial-pos-top', el.style.top);
       el.style.transform = 'none';
       el.children[0].children[1].classList.remove('bx-expand');
       el.children[0].children[1].classList.add('bx-collapse');
@@ -203,9 +204,8 @@ var core = {
       el.setAttribute('data-maximized', 'true');
     } else {
       document.querySelector(`[data-ctxmn-id="${attr}"]`).children[2].innerText = 'Expand';
-      el.style.top = '75px';
-      el.style.left = '85px';
-      el.style.transform = el.getAttribute('data-initial-pos');
+      el.style.left = el.getAttribute('data-initial-pos-left');
+      el.style.top = el.getAttribute('data-initial-pos-top');
       el.children[0].children[1].classList.remove('bx-collapse');
       el.children[0].children[1].classList.add('bx-expand');
       el.style.width = el.getAttribute('data-initial-width');
@@ -215,7 +215,8 @@ var core = {
       interact(el).resizable(true);
       el.removeAttribute('data-initial-width');
       el.removeAttribute('data-initial-height');
-      el.removeAttribute('data-initial-pos');
+      el.removeAttribute('data-initial-pos-left');
+      el.removeAttribute('data-initial-pos-top');
     }
     setTimeout(function() {
       el.style.transition = 'initial';
