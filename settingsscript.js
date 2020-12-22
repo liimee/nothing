@@ -33,6 +33,7 @@
           }
         },
         ex: function() {
+          port2.postMessage({name: 'openapp', value: 'settings'});
           port2.postMessage({ name: 'quit' });
         }
       };
