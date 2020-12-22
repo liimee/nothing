@@ -85,7 +85,7 @@
   <setting>
     Dark Mode
     <label class="switch">
-      <input type="checkbox" id="dm" onchange="t.dmh()">
+      <input type="checkbox" id="dm">
       <span class="slider"></span>
     </label>
   </setting>
@@ -117,11 +117,12 @@
           if(document.querySelector('#dm').checked) {
             port2.postMessage({ name: 'settings', sets: 'theme', value: 'true'});
           } else {
-            port2.postMessage({ name: 'settings', sets: 'theme', value: 'true'});
+            port2.postMessage({ name: 'settings', sets: 'theme', value: 'false'});
           }
         }
-      }
- 
+      };
+      
+      document.querySelector('#dm').onchange = t.dmh;
       port2.postMessage({ name: 'getdarkmode' });
     }
   </script>
