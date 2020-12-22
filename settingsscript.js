@@ -33,11 +33,13 @@
           }
         },
         ex: function() {
-          //port2.postMessage({name: 'openapp', value: 'settings'});
-          //port2.postMessage({ name: 'quit' });
           port2.postMessage({ name: 'getdarkmode' });
         }
       };
+      
+      document.querySelector('#wp').onclick = () => {
+        port2.postMessage({name: 'openapp', value: 'wallpaperthing'});
+      }
 
       document.querySelector('#dm').addEventListener('change', t.dmh);
       port2.postMessage({ name: 'getdarkmode' });

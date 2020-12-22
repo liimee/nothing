@@ -11,6 +11,7 @@
 
     setting {
       display: block;
+      margin-bottom: .5em;
     }
 
     .switch {
@@ -69,6 +70,8 @@
     info {
       color: #ccc;
       font-size: .7em;
+      display: block;
+      margin-bottom: .5em;
     }
 
     setting>*:last-child {
@@ -77,6 +80,14 @@
 
     h2 {
       margin-bottom: .4em;
+    }
+
+    button {
+      padding: .8em;
+      border-radius: 8px;
+      border: none;
+      background-color: #6e75b2;
+      color: white;
     }
   </style>
 </head>
@@ -91,6 +102,9 @@
     </label>
   </setting>
   <info>better at night</info>
+  <setting>
+    Wallpaper<button id="wp">Open Desktop Wallpaper Settings</button>
+  </setting>
   <script src="settingsscript.js"></script>
 </body>
 
