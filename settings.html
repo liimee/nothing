@@ -6,6 +6,7 @@
   <style>
     body {
       font-family: 'Inter', system-ui, sans-serif;
+      padding: .6em;
     }
 
     setting {
@@ -90,42 +91,7 @@
     </label>
   </setting>
   <info>better at night</info>
-  <script>
-    var port2;
-    var t;
-    window.addEventListener('message', (e) => {
-      port2 = e.ports[0];
-      switch (e.data.name) {
-        case 'darkmode':
-          t.dm(e.data.res);
-          break;
-        default:
-          ok();
-      }
-    });
-
-    function ok() {
-      t = {
-        dm: function(d) {
-          if (d == 'true') {
-            document.querySelector('#dm').checked = true;
-          } else {
-            document.querySelector('#dm').checked = false;
-          }
-        },
-        dmh: function() {
-          if(document.querySelector('#dm').checked) {
-            port2.postMessage({ name: 'settings', sets: 'theme', value: 'true'});
-          } else {
-            port2.postMessage({ name: 'settings', sets: 'theme', value: 'false'});
-          }
-        }
-      };
-      
-      document.querySelector('#dm').onchange = t.dmh;
-      port2.postMessage({ name: 'getdarkmode' });
-    }
-  </script>
+  <script src="settingsscript.js"></script>
 </body>
 
 </html>
