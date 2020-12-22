@@ -104,7 +104,7 @@ var core = {
     let brctx = document.createElement('div');
     brctx.style.display = 'none';
     brctx.style.position = 'fixed';
-    brctx.innerHTML = `<div style="width: 92%; padding: .6em;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div><div style="width: 92%; padding: .6em;" onclick="core.hmm2(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Hide</div><div style="padding: .6em; width: 92%;" onclick="core.idk(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Expand</div>`;
+    brctx.innerHTML = `<div style="width: 92%; padding: .6em;" onclick="core.hmm(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.remove();">Close</div><div style="width: 92%; padding: .6em;" onclick="core.hmm2(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Hide</div><div style="padding: .6em; width: 92%;" onclick="core.idk(${thatNewWindow.getAttribute('data-bar-id')}); this.parentElement.style.display = 'none';">Expand</div><div onclick="core.closeAll('${app.id}'); this.parentElement.style.display = 'none';" style="padding: .6em; width: 92%;">Close all ${app.name}</div>`;
     brctx.setAttribute('data-ctxmn-id', core.currentno);
     brctx.style.zIndex = 1001;
     brctx.style.borderRadius = '4px';
@@ -183,6 +183,11 @@ var core = {
       $(el).parent().parent().remove();
       core.calculateRunningApps();
     }, 400);
+  },
+  closeAll: function(cl) {
+    document.querySelectorAll(`.${cl}`).forEach((v) => {
+      core.closeWindow(v.children[0].children[0]);
+    });
   },
   maximizeWindow: function(el, attr) {
     el.style.transition = '.4s';
