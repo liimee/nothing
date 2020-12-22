@@ -157,7 +157,7 @@ var core = {
       }
     })
 
-    interact('.window').resizable({
+    interact(thatNewWindow).resizable({
       edges: {
         top: false,
         left: true,
