@@ -10,6 +10,8 @@
         case 'permdenied':
             t.ex();
           break;
+        case 'windowfocused':
+          break;
         default:
           ok();
       }
