@@ -85,35 +85,45 @@
   <setting>
     Dark Mode
     <label class="switch">
-      <input type="checkbox" id="dm">
+      <input type="checkbox" id="dm" onchange="t.dmh()">
       <span class="slider"></span>
     </label>
   </setting>
   <info>better at night</info>
   <script>
     var port2;
+    var t;
+    window.addEventListener('message', (e) => {
+      port2 = e.ports[0];
+      switch (e.data.name) {
+        case 'darkmode':
+          t.dm(e.data.res);
+          break;
+        default:
+          ok();
+      }
+    });
 
-    $(document).ready(() => {
-      window.addEventListener('message', (e) => {
-        port2 = e.ports[0];
-        switch (e.data.name) {
-          case 'darkmode':
-            t.dm(e.data.res);
-        }
-      });
-
-      var t = {
+    function ok() {
+      t = {
         dm: function(d) {
           if (d == 'true') {
             document.querySelector('#dm').checked = true;
           } else {
             document.querySelector('#dm').checked = false;
           }
+        },
+        dmh: function() {
+          if(document.querySelector('#dm').checked) {
+            port2.postMessage({ name: 'settings', sets: 'theme', value: 'true'});
+          } else {
+            port2.postMessage({ name: 'settings', sets: 'theme', value: 'true'});
+          }
         }
       }
-      
+ 
       port2.postMessage({ name: 'getdarkmode' });
-    });
+    }
   </script>
 </body>
 
