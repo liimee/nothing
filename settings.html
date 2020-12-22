@@ -94,6 +94,7 @@
 
     window.addEventListener('message', (e) => {
       port2 = e.ports[0];
+      port2.postMessage({ name: 'getdarkmode' });
       switch (e.data.name) {
         case 'darkmode':
           t.dm(e.data.res);
@@ -109,8 +110,6 @@
         }
       }
     }
-
-    port2.postMessage({ name: 'getdarkmode' });
   </script>
 </body>
 
