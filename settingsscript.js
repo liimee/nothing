@@ -7,6 +7,9 @@
         case 'darkmode':
           t.dm(e.data.res);
           break;
+        case 'permdenied':
+            t.ex();
+          break;
         default:
           ok();
       }
@@ -28,6 +31,9 @@
           } else {
             port2.postMessage({ name: 'settings', sets: 'theme', value: 'false' });
           }
+        },
+        ex: function() {
+          port2.postMessage({ name: 'quit' });
         }
       };
 

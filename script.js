@@ -377,12 +377,20 @@ var core = {
     document.querySelector('#req').children[2].children[1].onclick = () => {
       core.allowMod(hmm, hm);
     }
+    document.querySelector('#req').children[2].children[0].onclick = () => {
+      core.denyMod(hmm, hm);
+    }
     document.querySelector('#requestcontainer').style.display = 'block';
   },
   allowMod: function(hmm, hm) {
     document.querySelector('#requestcontainer').style.display = 'none';
     hmm.setAttribute('data-allow-modify-sys', 'true');
     core.onMessage(hm, hmm);
+  },
+  denyMod: function(hmm, hm) {
+    document.querySelector('#requestcontainer').style.display = 'none';
+    hmm.setAttribute('data-allow-modify-sys', 'false');
+    hmm.children[1].children[0].contentWindow.postMessage({ name: 'permdenied', sets: hm.data.name, value: localStorage.getItem('dm') });
   }
 };
 
