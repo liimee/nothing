@@ -1,6 +1,7 @@
 <html>
 
 <head>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
@@ -92,24 +93,27 @@
   <script>
     var port2;
 
-    window.addEventListener('message', (e) => {
-      port2 = e.ports[0];
-      port2.postMessage({ name: 'getdarkmode' });
-      switch (e.data.name) {
-        case 'darkmode':
-          t.dm(e.data.res);
-      }
-    });
+    $(document).ready(() => {
+      window.addEventListener('message', (e) => {
+        port2 = e.ports[0];
+        switch (e.data.name) {
+          case 'darkmode':
+            t.dm(e.data.res);
+        }
+      });
 
-    var t = {
-      dm: function(d) {
-        if (d == 'true') {
-          document.querySelector('#dm').checked = true;
-        } else {
-          document.querySelector('#dm').checked = false;
+      var t = {
+        dm: function(d) {
+          if (d == 'true') {
+            document.querySelector('#dm').checked = true;
+          } else {
+            document.querySelector('#dm').checked = false;
+          }
         }
       }
-    }
+      
+      port2.postMessage({ name: 'getdarkmode' });
+    });
   </script>
 </body>
 
