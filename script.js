@@ -480,7 +480,7 @@ if (localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false'
   core.root.style.setProperty('--window-top', '#dbdbdb');
 } else {
   core.root.style.setProperty('--bar-bg', '#212121');
-  core.root.style.setProperty('--window-top', '#212121');
+  core.root.style.setProperty('--window-top', '#565656');
   core.root.style.setProperty('--text-color', 'white');
 }
 }

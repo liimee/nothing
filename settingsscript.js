@@ -20,8 +20,12 @@
       t = {
         dm: function(d) {
           if (d == 'true') {
+            document.body.style.backgroundColor = '#212121';
+            document.body.style.color = 'white';
             document.querySelector('#dm').checked = true;
           } else {
+            document.body.style.backgroundColor = 'white';
+            document.body.style.color = 'black';
             document.querySelector('#dm').checked = false;
           }
         },
