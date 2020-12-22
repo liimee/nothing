@@ -40,6 +40,7 @@
         },
         ex: function() {
           port2.postMessage({ name: 'getdarkmode' });
+          port2.postMessage({ name: 'sendnotification', title: 'Permission Error — Settings', content: 'Permission denied :('});
         }
       };
       
