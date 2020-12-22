@@ -54,6 +54,8 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background-image: var(--bg-img);
   background-repeat: var(--bg-repeat);
+  background-attachment: fixed;
+  background-position: center;
   transition: background-image .4s;
   cursor: var(--cursor-cursor);
   background-color: var(--bar-bg);
