@@ -330,10 +330,19 @@ var core = {
             case 'theme':
               localStorage.setItem('dm', e.data.value);
               a();
+              document.querySelectorAll('.window').forEach((v) => {
+                v.children[1].children[0].contentWindow.postMessage({ name: 'darkmode', res: localStorage.getItem('dm') });
+              });
           }
         } else {
           core.requestSys(abc, e);
         }
+        break;
+      case 'getdarkmode':
+        abc.children[1].children[0].contentWindow.postMessage({ name: 'darkmode', res: localStorage.getItem('dm') });
+        break;
+      default:
+        console.error(abc.getAttribute('data-name') + ': unknown request');
     }
   },
   restart: function(fromapp) {
@@ -589,6 +598,12 @@ document.addEventListener('DOMContentLoaded', function() {
         file: 'uselessterminal.html',
         id: 'terminal',
         icon: 'images/terminal.png'
+      },
+      settings: {
+        name: 'Settings',
+        file: 'settings.html',
+        id: 'settings',
+        icon: 'images/settings.png'
       }
     }
     localStorage.setItem('apps', JSON.stringify(aps));
@@ -605,6 +620,16 @@ document.addEventListener('DOMContentLoaded', function() {
         id: 'CHEINSTTROARLY',
         nothinglang: false,
         icon: 'images/minusone.png'
+      };
+      localStorage.setItem('apps', JSON.stringify(ia));
+    }
+    if (!('settings' in ia)) {
+      ia.settings = {
+        name: 'Settings',
+        file: 'settings.html',
+        id: 'settings',
+        nothinglang: false,
+        icon: 'images/settings.png'
       };
       localStorage.setItem('apps', JSON.stringify(ia));
     }

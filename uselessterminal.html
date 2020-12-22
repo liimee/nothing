@@ -28,18 +28,18 @@
   <script src="lib/ptty.js"></script>
   <script>
     var port2;
-    
+
     window.addEventListener('message', (e) => {
       port2 = e.ports[0];
-      if(e.data.name == 'windowfocused') {
+      if (e.data.name == 'windowfocused') {
         $ptty.get_terminal('.prompt').find('.input').focus();
       }
     });
-    
+
     window.addEventListener('click', () => {
       $ptty.get_terminal('.prompt').find('.input').focus();
     });
-  
+
     var $ptty;
     $(document).ready(function() {
       $ptty = $('#main').Ptty({
@@ -60,7 +60,7 @@
         options: [],
         help: 'Redirection to a better OS!'
       });
-      
+
       $ptty.register('command', {
         name: 'actuallybetteros',
         method: function(cmd) {
@@ -71,18 +71,18 @@
         options: [],
         help: 'Redirection to the actual better OS!'
       });
-      
+
       $ptty.register('command', {
         name: 'open',
         method: function(cmd) {
-          if(cmd.hasOwnProperty(1)) {
+          if (cmd.hasOwnProperty(1)) {
             port2.postMessage({ name: 'openapp', value: cmd[1] });
           }
         },
         options: [1],
         help: 'Open an app using Terminal'
       });
-      
+
       $ptty.register('command', {
         name: 'restart',
         method: function(cmd) {
@@ -93,7 +93,7 @@
         options: [],
         help: 'Restart Nothing'
       });
-      
+
       $ptty.register('command', {
         name: 'sendtestnotif',
         method: function(cmd) {
@@ -104,7 +104,7 @@
         options: [],
         help: 'Send test notification'
       });
-      
+
       $ptty.register('command', {
         name: 'exit',
         method: function(cmd) {
@@ -113,17 +113,17 @@
         options: [],
         help: 'Exit the Terminal'
       });
-      
+
       $ptty.register('command', {
         name: 'config',
         method: function(cmd) {
-          if(cmd.hasOwnProperty(1)) {
-            switch(cmd[1]) {
+          if (cmd.hasOwnProperty(1)) {
+            switch (cmd[1]) {
               case 'theme':
-                if(cmd.hasOwnProperty(2)) {
-                  if(cmd[2] == 'dark') {
+                if (cmd.hasOwnProperty(2)) {
+                  if (cmd[2] == 'dark') {
                     port2.postMessage({ name: 'settings', sets: 'theme', value: 'true' });
-                  } else if(cmd[2] == 'light') {
+                  } else if (cmd[2] == 'light') {
                     port2.postMessage({ name: 'settings', sets: 'theme', value: 'false' });
                   }
                 }
@@ -140,14 +140,34 @@
         options: [1, 2],
         help: 'OS configuration — config [setting] [value]'
       });
-      
+
       $ptty.register('command', {
         name: 'app',
         method: function(cmd) {
-          if(cmd.hasOwnProperty(1)) {
-            switch(cmd[1]) {
+          if (cmd.hasOwnProperty(1)) {
+            switch (cmd[1]) {
               case 'list':
-                port2.postMessage({ name: 'getapps'})
+                let k = [];
+                port2.postMessage({ name: 'getapps' });
+                function g(e) {
+                  if (e.data.name == 'applist') {
+                    cmd = {};
+                    e.data.response.forEach((v) => {
+                      var ggggggg = {};
+                      ggggggg.id = v.id;
+                      ggggggg.name = v.name;
+                      k.push(ggggggg);
+                    });
+                    
+                    window.removeEventListener('message', g);
+                    k.forEach((v) => {
+                      cmd.out += v.name + ' (' + v.id + ') <br>';
+                      return cmd;
+                    });
+                    
+                  }
+                }
+                return window.addEventListener('message', g);
             }
           }
         },
@@ -156,7 +176,6 @@
       })
 
     });
-    
   </script>
 </body>
 

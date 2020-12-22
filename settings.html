@@ -1,105 +1,117 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <title>Settings</title>
-    <style>
-      body {
-        font-family: system-ui;
-        display: inline-grid;
-        grid-template-areas: 'sb mn';
-        grid-column-gap: 12px;
-      }
+<html>
 
-      #sidebar {
-        width: 25%;
-        grid-area: sb;
-        border-right: 2px solid grey;
-      }
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+    }
 
-      .selected {
-        background-color: #13c667;
-        color: white;
-      }
+    setting {
+      display: block;
+    }
 
-      .button {
-        width: 100%;
-        padding-top: 6px;
-        padding-bottom: 6px;
-      }
+    .switch {
+      position: relative;
+      display: inline-block;
+      width: 60px;
+      height: 34px;
+    }
 
-      #main {
-        width: -webkit-fill-available;
-        width: available;
-        height: 100%;
-        grid-area: mn;
-      }
+    .switch input {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
 
-      .switch {
-        position: relative;
-        display: inline-block;
-        width: 60px;
-        height: 34px;
-      }
+    .slider {
+      position: absolute;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: #ccc;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 34px;
+    }
 
-      .switch input {
-        opacity: 0;
-        width: 0;
-        height: 0;
-      }
+    .slider:before {
+      position: absolute;
+      content: "";
+      height: 26px;
+      width: 26px;
+      left: 4px;
+      bottom: 4px;
+      background-color: white;
+      -webkit-transition: .4s;
+      transition: .4s;
+      border-radius: 50%;
+    }
 
-      .slider {
-        position: absolute;
-        cursor: pointer;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background-color: #ccc;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 34px;
-      }
+    .switch input:checked+.slider {
+      background-color: #259667;
+    }
 
-      .slider:before {
-        position: absolute;
-        content: "";
-        height: 26px;
-        width: 26px;
-        left: 4px;
-        bottom: 4px;
-        background-color: white;
-        -webkit-transition: .4s;
-        transition: .4s;
-        border-radius: 50%;
-      }
+    .switch input:focus+.slider {
+      box-shadow: 0 0 1px #259667;
+    }
 
-      input:checked + .slider {
-        background-color: #2196F3;
-      }
+    .switch input:checked+.slider:before {
+      -webkit-transform: translateX(26px);
+      -ms-transform: translateX(26px);
+      transform: translateX(26px);
+    }
 
-      input:focus + .slider {
-        box-shadow: 0 0 1px #2196F3;
-      }
+    info {
+      color: #ccc;
+      font-size: .7em;
+    }
 
-      input:checked + .slider:before {
-        -webkit-transform: translateX(26px);
-        -ms-transform: translateX(26px);
-        transform: translateX(26px);
+    setting>*:last-child {
+      float: right;
+    }
+
+    h2 {
+      margin-bottom: .4em;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>Appearence</h2>
+  <setting>
+    Dark Mode
+    <label class="switch">
+      <input type="checkbox" id="dm">
+      <span class="slider"></span>
+    </label>
+  </setting>
+  <info>better at night</info>
+  <script>
+    var port2;
+
+    window.addEventListener('message', (e) => {
+      port2 = e.ports[0];
+      switch (e.data.name) {
+        case 'darkmode':
+          t.dm(e.data.res);
       }
-    </style>
-  </head>
-  <body>
-    <div id="sidebar">
-      <div style="font-size: 30px; border-bottom: 2px solid grey; padding: 8px;"><b>Settings</b></div>
-      <div><div class="button selected">&nbsp;Appearance</div></div>
-    </div>
-    <div id="main"></div>
-    <script>
-      var select = 1;
-      if(select == 1) {
-        document.querySelector('#main').innerHTML = '<label class="switch"><input type="checkbox"><span class="slider"></span></label>';
+    });
+
+    var t = {
+      dm: function(d) {
+        if (d == 'true') {
+          document.querySelector('#dm').checked = true;
+        } else {
+          document.querySelector('#dm').checked = false;
+        }
       }
-    </script>
-  </body>
+    }
+
+    port2.postMessage({ name: 'getdarkmode' });
+  </script>
+</body>
+
 </html>
