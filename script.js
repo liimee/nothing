@@ -514,6 +514,13 @@ window.addEventListener('storage', function() {
   }
 });
 
+setTimeout(() => {
+  document.querySelector('#startup').style.opacity = 0;
+  setTimeout(() => {
+    document.querySelector('#startup').style.display = 'none';
+  }, 90);
+}, 4000);
+
 document.addEventListener('DOMContentLoaded', function() {
   document.title = 'Running — nothing';
   core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
@@ -526,7 +533,9 @@ document.addEventListener('DOMContentLoaded', function() {
     src: ['sounds/startup.mp3']
   }).play();
   
-  core.sendNotif('Nothing', 'Welcome!');
+  setTimeout(() => {
+    core.sendNotif('Nothing', 'Welcome!');
+  }, 4001);
 
   if (localStorage.getItem('nothingwelcome') === null) {
     setTimeout(() => {

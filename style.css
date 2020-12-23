@@ -369,3 +369,24 @@ body {
   background-color: #6e75b2;
   color: white;
 }
+
+#startup {
+  display: grid;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  height: 100%;
+  background-color: var(--bar-bg);
+  top: 0;
+  z-index: 10000;
+  transition: .4s;
+}
+
+#nothinglogo {
+  width: 70px;
+  height: 70px;
+  background-image: url('images/nothing.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  margin: auto;
+}
