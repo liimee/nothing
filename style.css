@@ -84,6 +84,7 @@ body {
   -ms-overflow-style: none;
   cursor: var(--cursor-cursor);
   scrollbar-width: none;
+  opacity: .75;
 }
 
 #bar::-webkit-scrollbar {
