@@ -534,7 +534,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }).play();
   
   setTimeout(() => {
-    core.sendNotif('Nothing', 'Welcome!');
+    core.sendNotif('Nothing', 'Welcome! We also recommend switching to a fresh new browser if you\'re using an old browser :)');
   }, 4001);
 
   if (localStorage.getItem('nothingwelcome') === null) {
