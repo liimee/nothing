@@ -339,6 +339,9 @@ var core = {
               document.querySelectorAll('.window').forEach((v) => {
                 v.children[1].children[0].contentWindow.postMessage({ name: 'darkmode', res: localStorage.getItem('dm') });
               });
+              break;
+            case 'password':
+              core.changePass(e.data.value);
           }
         } else {
           core.requestSys(abc, e);
@@ -397,6 +400,24 @@ var core = {
     document.querySelector('#requestcontainer').style.display = 'none';
     hmm.setAttribute('data-allow-modify-sys', 'false');
     hmm.children[1].children[0].contentWindow.postMessage({ name: 'permdenied', sets: hm.data.name, value: localStorage.getItem('dm') });
+  },
+  changePass: function(p) {
+    if(confirm('⚠️ An app wants to change your password')) {
+      localStorage.setItem('pass', CryptoJS.AES.encrypt(p, 'nothinghhskpwpwueurrueioenxjdufhd'));
+    }
+  },
+  checkPass: function(e) {
+    if(e.keyCode == 13) {
+      if(document.querySelector('#password input').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
+        document.querySelector('#password').style.display = 'none';
+        document.querySelector('#password input').removeEventListener('keyup', core.checkPass);
+      } else {
+        document.querySelector('#password input').style.animation = 'wrongpass .5s';
+        setTimeout(() => {
+          document.querySelector('#password input').style.animation = 'none';
+        }, 501);
+      }
+    }
   }
 };
 
@@ -518,6 +539,10 @@ setTimeout(() => {
   document.querySelector('#startup').style.opacity = 0;
   setTimeout(() => {
     document.querySelector('#startup').style.display = 'none';
+    if(localStorage.getItem('pass') !== null) {
+      document.querySelector('#password').style.display = 'block';
+      document.querySelector('#password input').addEventListener('keyup', core.checkPass);
+    }
   }, 90);
 }, 4000);
 

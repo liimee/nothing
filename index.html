@@ -25,6 +25,7 @@
   <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
   <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/howler@2.2.1/dist/howler.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/aes.js"></script>
   <link rel="stylesheet" href="https://unpkg.com/boxicons@latest/css/boxicons.min.css">
 </head>
 
@@ -81,12 +82,18 @@
   <div id="requestcontainer">
     <div id="req">
       <div style="font-size: 1.5em;"><b>Allow this app to modify OS settings?</b></div>
-      <div><span></span> has requested to modify OS settings.</div>
+      <div><span></span> has requested to modify OS settings. Even changing your password.</div>
       <div style="text-align: center; float: right;"><button>Deny</button> <button>Allow</button></div>
     </div>
   </div>
   <div id="startup">
-    <div id="nothinglogo"></div>
+    <div class="nothinglogo"></div>
+  </div>
+  <div id="password">
+    <div>
+      <div class="nothinglogo"></div>
+      <input id="inppass" type="password" placeholder="Insert your password">
+    </div>
   </div>
   <script>
     // install service worker

@@ -89,13 +89,17 @@
       background-color: #6e75b2;
       color: white;
     }
+    
+    input[type="text"] {
+      width: auto;
+    }
   </style>
 </head>
 
 <body>
-  <h2>Appearence</h2>
+  <h2>👀 Appearence</h2>
   <setting>
-    Dark Mode
+    🌙 Dark Mode
     <label class="switch">
       <input type="checkbox" id="dm">
       <span class="slider"></span>
@@ -104,6 +108,10 @@
   <info>better at night</info>
   <setting>
     Wallpaper<button id="wp">Open Desktop Wallpaper Settings</button>
+  </setting>
+  <h2 style="margin-top: 1em;">🔒 Security</h2>
+  <setting>🔐 Password
+    <input type="password" id="pass" placeholder="Insert a password">
   </setting>
   <script src="settingsscript.js"></script>
 </body>

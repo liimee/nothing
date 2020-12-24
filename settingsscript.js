@@ -47,6 +47,16 @@
       document.querySelector('#wp').onclick = () => {
         port2.postMessage({name: 'openapp', value: 'wallpaperthing'});
       }
+      
+      document.querySelector('#pass').addEventListener('keyup', (e) => {
+        if(e.keyCode == 13) {
+          if(document.querySelector('#pass').value.length < 8) {
+            alert('❌ You need to enter at least 8 characters!');
+            return;
+          }
+          port2.postMessage({ name: 'settings', sets: 'password', value: document.querySelector('#pass').value });
+        }
+      })
 
       document.querySelector('#dm').addEventListener('change', t.dmh);
       port2.postMessage({ name: 'getdarkmode' });
