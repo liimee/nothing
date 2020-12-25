@@ -747,7 +747,7 @@ document.addEventListener('keyup', function(event) {
 });
 
 function filt() {
-  if (docuent.querySelector('#sapp').value.length == 0) {
+  if (document.querySelector('#sapp').value.length == 0) {
     sh.filter();
   } else {
     sh.filter(document.querySelector('#sapp').value.toLowerCase(), {
