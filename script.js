@@ -662,8 +662,11 @@ document.addEventListener('DOMContentLoaded', function() {
     localStorage.setItem('apps', JSON.stringify(aps));
     let ia = JSON.parse(localStorage.getItem('apps'));
     for (let l = 0; l < Object.keys(ia).length; l++) {
-      core.apps(ia[Object.keys(ia)[l]]);
+      (ia[Object.keys(ia)[l]]);
     }
+    sh = new Shuffle('#apps', {
+      itemSelector: '.app'
+    });
   } else {
     let ia = JSON.parse(localStorage.getItem('apps'));
     if (!('CHEINSTTROARLY' in ia)) {
@@ -726,10 +729,6 @@ document.addEventListener('DOMContentLoaded', function() {
       core.apps(ia[key]);
     });
   }
-
-  sh = new Shuffle('#apps', {
-    itemSelector: '.app'
-  });
 });
 
 document.addEventListener('keyup', function(event) {
