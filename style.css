@@ -443,3 +443,13 @@ body {
   color: #8a6af2;
   border-radius: 50%;
 }
+
+#sapp {
+  width: 90%;
+  font-size: 1em;
+  padding: .5em;
+  background: none;
+  outline: none;
+  color: white;
+  border: none;
+}

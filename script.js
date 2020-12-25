@@ -228,7 +228,7 @@ var core = {
     }, 500);
   },
   apps: function(app) {
-    $('#apps').append('<span id="' + app.id + '" class="app" onclick=\'if(core.homeOpen) {core.openApp(' + JSON.stringify(app) + ');}\'><div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>');
+    $('#apps').append('<span id="' + app.id + '" data-name="' + app.name + '" class="app" onclick=\'if(core.homeOpen) {core.openApp(' + JSON.stringify(app) + ');}\'><div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>');
   },
   fps: 0,
   powerOff: function() {
@@ -253,7 +253,7 @@ var core = {
       document.title = 'Running — nothing';
     } else {
       let t = (document.querySelectorAll('.window').length == 1) ? '1 running app' : document.querySelectorAll('.window').length.toString() + ' running apps';
-      if(document.querySelectorAll('[data-minimized="true"]').length == 0) {
+      if (document.querySelectorAll('[data-minimized="true"]').length == 0) {
         document.title = t + ' — nothing';
       } else {
         t += ' (' + document.querySelectorAll('[data-minimized="true"]').length + ' hidden) — nothing';
@@ -331,8 +331,8 @@ var core = {
         core.closeWindow(abc.children[1].children[0]);
         break;
       case 'settings':
-        if(abc.getAttribute('data-allow-modify-sys') == 'true') {
-          switch(e.data.sets) {
+        if (abc.getAttribute('data-allow-modify-sys') == 'true') {
+          switch (e.data.sets) {
             case 'theme':
               localStorage.setItem('dm', e.data.value);
               a();
@@ -355,7 +355,7 @@ var core = {
     }
   },
   restart: function(fromapp) {
-    if(fromapp) {
+    if (fromapp) {
       document.querySelector('#restartcontainer').style.display = 'block';
     }
   },
@@ -402,21 +402,21 @@ var core = {
     hmm.children[1].children[0].contentWindow.postMessage({ name: 'permdenied', sets: hm.data.name, value: localStorage.getItem('dm') });
   },
   changePass: function(p) {
-    if(confirm('⚠️ An app wants to change your password')) {
+    if (confirm('⚠️ An app wants to change your password')) {
       localStorage.setItem('pass', CryptoJS.AES.encrypt(p, 'nothinghhskpwpwueurrueioenxjdufhd'));
     }
   },
   checkPass: function(e) {
-  //  if(e.keyCode == 13) {
-      if(document.querySelector('#inppass').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
-        document.querySelector('#password').style.display = 'none';
-        //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
-      } else {
-        document.querySelector('#inppass').style.animation = 'wrongpass .5s';
-        setTimeout(() => {
-          document.querySelector('#inppass').style.animation = 'none';
-        }, 501);
-      }
+    //  if(e.keyCode == 13) {
+    if (document.querySelector('#inppass').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
+      document.querySelector('#password').style.display = 'none';
+      //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
+    } else {
+      document.querySelector('#inppass').style.animation = 'wrongpass .5s';
+      setTimeout(() => {
+        document.querySelector('#inppass').style.animation = 'none';
+      }, 501);
+    }
     //}
   }
 };
@@ -499,16 +499,16 @@ setInterval(function() {
 }, 1000);
 
 function a() {
-if (localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
-  localStorage.setItem('dm', 'false');
-  core.root.style.setProperty('--bar-bg', '#fff');
-  core.root.style.setProperty('--text-color', 'black');
-  core.root.style.setProperty('--window-top', '#dbdbdb');
-} else {
-  core.root.style.setProperty('--bar-bg', '#212121');
-  core.root.style.setProperty('--window-top', '#565656');
-  core.root.style.setProperty('--text-color', 'white');
-}
+  if (localStorage.getItem('dm') === null || localStorage.getItem('dm') == 'false') {
+    localStorage.setItem('dm', 'false');
+    core.root.style.setProperty('--bar-bg', '#fff');
+    core.root.style.setProperty('--text-color', 'black');
+    core.root.style.setProperty('--window-top', '#dbdbdb');
+  } else {
+    core.root.style.setProperty('--bar-bg', '#212121');
+    core.root.style.setProperty('--window-top', '#565656');
+    core.root.style.setProperty('--text-color', 'white');
+  }
 }
 
 a();
@@ -539,7 +539,7 @@ setTimeout(() => {
   document.querySelector('#startup').style.opacity = 0;
   setTimeout(() => {
     document.querySelector('#startup').style.display = 'none';
-    if(localStorage.getItem('pass') !== null) {
+    if (localStorage.getItem('pass') !== null) {
       document.querySelector('#password').style.display = 'block';
       /*document.querySelector('#inppass').addEventListener('keyup', (e) => {
         if(e.key == 'Enter') core.checkPass();
@@ -560,7 +560,7 @@ document.addEventListener('DOMContentLoaded', function() {
   new Howl({
     src: ['sounds/startup.mp3']
   }).play();
-  
+
   setTimeout(() => {
     core.sendNotif('Nothing', 'Welcome! We also recommend switching to a fresh new browser if you\'re using an old browser :)');
   }, 4001);
@@ -724,6 +724,11 @@ document.addEventListener('DOMContentLoaded', function() {
       core.apps(ia[key]);
     });
   }
+
+});
+
+var sh = new Shuffle('#apps', {
+  itemSelector: '.app'
 });
 
 document.addEventListener('keyup', function(event) {
@@ -740,3 +745,15 @@ document.addEventListener('keyup', function(event) {
     });
   }
 });
+
+function filt() {
+  if (docuent.querySelector('#sapp').value.length == 0) {
+    sh.filter();
+  } else {
+    sh.filter(document.querySelector('#sapp').value.toLowerCase(), {
+      by: function(element) {
+        return element.getAttribute('data-name').toLowerCase();
+      }
+    });
+}
+}
