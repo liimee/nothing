@@ -407,17 +407,17 @@ var core = {
     }
   },
   checkPass: function(e) {
-    if(e.keyCode == 13) {
-      if(document.querySelector('#password input').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
+  //  if(e.keyCode == 13) {
+      if(document.querySelector('#inppass').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
         document.querySelector('#password').style.display = 'none';
-        document.querySelector('#password input').removeEventListener('keyup', core.checkPass);
+        document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
       } else {
-        document.querySelector('#password input').style.animation = 'wrongpass .5s';
+        document.querySelector('#inppass').style.animation = 'wrongpass .5s';
         setTimeout(() => {
-          document.querySelector('#password input').style.animation = 'none';
+          document.querySelector('#inppass').style.animation = 'none';
         }, 501);
       }
-    }
+    //}
   }
 };
 
@@ -541,7 +541,10 @@ setTimeout(() => {
     document.querySelector('#startup').style.display = 'none';
     if(localStorage.getItem('pass') !== null) {
       document.querySelector('#password').style.display = 'block';
-      document.querySelector('#password input').addEventListener('keyup', core.checkPass);
+      /*document.querySelector('#inppass').addEventListener('keyup', (e) => {
+        if(e.key == 'Enter') core.checkPass();
+        return false;
+      }, false);*/
     }
   }, 90);
 }, 4000);

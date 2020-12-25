@@ -426,10 +426,20 @@ body {
   transform: translate(-50%, -50%);
 }
 
-#password input {
+#inppass {
   padding: .6em;
   border: none;
   border-radius: 8px;
   margin-top: .8em;
   outline: none;
+  width: 200px;
+}
+
+#password i {
+  font-size: 2em;
+  display: inline-block;
+  margin-left: .4em;
+  background-color: white;
+  color: #8a6af2;
+  border-radius: 50%;
 }
