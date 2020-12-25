@@ -410,7 +410,7 @@ var core = {
   //  if(e.keyCode == 13) {
       if(document.querySelector('#inppass').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
         document.querySelector('#password').style.display = 'none';
-        document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
+        //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
       } else {
         document.querySelector('#inppass').style.animation = 'wrongpass .5s';
         setTimeout(() => {
