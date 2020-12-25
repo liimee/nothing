@@ -549,6 +549,8 @@ setTimeout(() => {
   }, 90);
 }, 4000);
 
+var sh;
+
 document.addEventListener('DOMContentLoaded', function() {
   document.title = 'Running — nothing';
   core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
@@ -725,10 +727,9 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-});
-
-var sh = new Shuffle('#apps', {
-  itemSelector: '.app'
+  sh = new Shuffle('#apps', {
+    itemSelector: '.app'
+  });
 });
 
 document.addEventListener('keyup', function(event) {
@@ -755,5 +756,5 @@ function filt() {
         return element.getAttribute('data-name').toLowerCase();
       }
     });
-}
+  }
 }
