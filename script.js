@@ -664,7 +664,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let l = 0; l < Object.keys(ia).length; l++) {
       (ia[Object.keys(ia)[l]]);
     }
-    sh = new Shuffle('#apps', {
+    sh = new window.Shuffle(document.querySelector('#apps'), {
       itemSelector: '.app'
     });
   } else {
