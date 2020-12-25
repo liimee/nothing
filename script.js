@@ -726,7 +726,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keyup', function(event) {
   event.preventDefault();
   if (event.metaKey) {
     if (core.homeOpen) {
