@@ -549,8 +549,6 @@ setTimeout(() => {
   }, 90);
 }, 4000);
 
-var sh;
-
 document.addEventListener('DOMContentLoaded', function() {
   document.title = 'Running — nothing';
   core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
@@ -664,9 +662,6 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let l = 0; l < Object.keys(ia).length; l++) {
       (ia[Object.keys(ia)[l]]);
     }
-    sh = new window.Shuffle(document.querySelector('#apps'), {
-      itemSelector: '.app'
-    });
   } else {
     let ia = JSON.parse(localStorage.getItem('apps'));
     if (!('CHEINSTTROARLY' in ia)) {
@@ -729,6 +724,8 @@ document.addEventListener('DOMContentLoaded', function() {
       core.apps(ia[key]);
     });
   }
+  
+  document.querySelector('#sapp').oninput = filt;
 });
 
 document.addEventListener('keyup', function(event) {
@@ -747,13 +744,13 @@ document.addEventListener('keyup', function(event) {
 });
 
 function filt() {
-  if (document.querySelector('#sapp').value.length == 0) {
-    sh.filter();
-  } else {
-    sh.filter(document.querySelector('#sapp').value.toLowerCase(), {
-      by: function(element) {
-        return element.getAttribute('data-name').toLowerCase();
-      }
-    });
+  let txtValue;
+  for (let i = 0; i < document.querySelectorAll('.app').length; i++) {
+    txtValue = document.querySelectorAll('.app')[i].getAttribute('data-name').toUpperCase();
+    if (txtValue.toUpperCase().indexOf(document.querySelector('#sapp').value.toUpperCase()) > -1) {
+      document.querySelectorAll('.app')[i].style.display = "";
+    } else {
+      document.querySelectorAll('.app')[i].style.display = "none";
+    }
   }
 }
