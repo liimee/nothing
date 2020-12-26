@@ -451,5 +451,6 @@ body {
   background: none;
   outline: none;
   color: white;
+  font-family: 'Inter', system-ui, sans-serif;
   border: none;
 }
