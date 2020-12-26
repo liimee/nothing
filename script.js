@@ -662,6 +662,7 @@ document.addEventListener('DOMContentLoaded', function() {
     for (let l = 0; l < Object.keys(ia).length; l++) {
       (ia[Object.keys(ia)[l]]);
     }
+    document.querySelector('#sapp').oninput = filt;
   } else {
     let ia = JSON.parse(localStorage.getItem('apps'));
     if (!('CHEINSTTROARLY' in ia)) {
@@ -723,9 +724,8 @@ document.addEventListener('DOMContentLoaded', function() {
     Object.keys(ia).forEach(function(key) {
       core.apps(ia[key]);
     });
+    document.querySelector('#sapp').oninput = filt;
   }
-  
-  document.querySelector('#sapp').oninput = filt;
 });
 
 document.addEventListener('keyup', function(event) {
