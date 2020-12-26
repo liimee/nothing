@@ -713,19 +713,11 @@ document.addEventListener('DOMContentLoaded', function() {
       }
       localStorage.setItem('apps', JSON.stringify(ia));
     }
-    if (('helloworld' in ia)) {
-      delete ia.helloworld;
-      localStorage.setItem('apps', JSON.stringify(ia));
-    }
-    if (('notiftest' in ia)) {
-      delete ia.notiftest;
-      localStorage.setItem('apps', JSON.stringify(ia));
-    }
     Object.keys(ia).forEach(function(key) {
       core.apps(ia[key]);
     });
-    document.querySelector('#sapp').oninput = filt;
   }
+  document.querySelector('#sapp').oninput = filt;
 });
 
 document.addEventListener('keyup', function(event) {
