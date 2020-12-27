@@ -1,9 +1,19 @@
 <!DOCTYPE HTML>
 <html>
 <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
 <body style="font-family: 'Poppins', sans-serif; font-size: 1em; display: table; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-<img src="images/nothing.png" width="26px" height="26px">
-<div style="font-size: 1.3em;"><b>Welcome to nothing!</b></div>
-<div>This is the one and only bad OS. Period.</div>
+  <img src="images/nothing.png" width="26px" height="26px">
+  <div style="font-size: 1.3em;"><b>Welcome to nothing!</b></div>
+  <div>It is also recommended to <a id="rld">restart nothing</a> if you use nothing for the first time on this device.</div>
+  <div>fyi, This is the only bad OS. Period.</div>
+  <script>
+  var port2;
+    window.addEventListener('message', (e) => {
+      port2 = e.ports[0];
+      document.querySelector('#rld').href = 'javascript:port2.postMessage({name: \'restartos\'});';
+    });
+  </script>
 </body>
+
 </html>
