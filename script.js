@@ -8,6 +8,8 @@ var core = {
     document.querySelector('#home').parentElement.removeAttribute('onclick');
     document.querySelector('#overlay').style.zIndex = 6;
     document.querySelector('#overlay').style.opacity = 0.85;
+    document.querySelector('#sapp').value = '';
+    filt();
     document.querySelector('#home').parentElement.style.transform = 'scale(0, 0)';
     document.querySelector('#home').parentElement.title = 'Close';
     document.querySelector('#home').parentElement.setAttribute('onclick', 'core.closeHome();');
