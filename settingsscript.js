@@ -4,8 +4,8 @@
     window.addEventListener('message', (e) => {
       g = e.ports[0];
       switch (e.data.name) {
-        case 'darkmode':
-          t.dm(e.data.res);
+        case 'settings':
+          t.dm(e.data.value);
           break;
         case 'permdenied':
             t.ex();
@@ -27,7 +27,7 @@
       var port2 = g;
       t = {
         dm: function(d) {
-          if (d == 'true') {
+          if (d.darkmode == 'true') {
             document.body.style.backgroundColor = '#212121';
             document.body.style.color = 'white';
             document.querySelector('#dm').checked = true;
@@ -36,6 +36,8 @@
             document.body.style.color = 'black';
             document.querySelector('#dm').checked = false;
           }
+          alert(d.timeformat)
+          document.querySelector('#timef').value = d.timeformat;
         },
         dmh: function() {
           if (document.querySelector('#dm').checked) {
@@ -70,5 +72,5 @@
       })
 
       document.querySelector('#dm').addEventListener('change', t.dmh);
-      port2.postMessage({ name: 'getdarkmode' });
+      port2.postMessage({ name: 'getsettings' });
     }

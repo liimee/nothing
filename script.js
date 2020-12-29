@@ -378,8 +378,13 @@ var core = {
           core.requestSys(abc, e);
         }
         break;
-      case 'getdarkmode':
-        abc.children[1].children[0].contentWindow.postMessage({ name: 'darkmode', res: localStorage.getItem('dm') });
+      case 'getsettings':
+        db.settings.get('timeformat', a => {
+          abc.children[1].children[0].contentWindow.postMessage({ name: 'settings', value: {
+            darkmode: localStorage.getItem('dm'),
+            timeformat: a.val
+          }});
+        });
         break;
       default:
         console.error(abc.getAttribute('data-name') + ': unknown request');
@@ -461,6 +466,7 @@ var core = {
     });
   }
 };
+
 
 if (localStorage.getItem('wp') === null) {
   localStorage.setItem('wp', 'd-1');
