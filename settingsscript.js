@@ -12,6 +12,8 @@
           break;
         case 'windowfocused':
           break;
+        case 'ready':
+          break;
         default:
           ok();
       }

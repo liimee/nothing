@@ -64,6 +64,7 @@ var core = {
         core.onMessage(e, thatNewWindow);
       };
       thatNewFrame.children[0].contentWindow.postMessage({ name: 'init' }, '*', [channel.port2]);
+      thatNewFrame.children[0].contentWindow.postMessage({ name: 'ready' });
     });
     setTimeout(() => {
       thatNewFrame.children[0].contentWindow.addEventListener('click', () => {
