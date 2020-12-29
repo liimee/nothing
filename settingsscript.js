@@ -14,6 +14,10 @@
           break;
         case 'ready':
           break;
+        case 'expand':
+          break;
+        case 'collapse':
+          break;
         default:
           ok();
       }

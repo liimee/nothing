@@ -210,6 +210,9 @@ var core = {
       interact(el).draggable(false);
       interact(el).resizable(false);
       el.setAttribute('data-maximized', 'true');
+      setTimeout(() => {
+        el.children[1].children[0].contentWindow.postMessage({ name: 'expand' });
+      }, 401);
     } else {
       document.querySelector(`[data-ctxmn-id="${attr}"]`).children[2].innerText = 'Expand';
       el.style.left = el.getAttribute('data-initial-pos-left');
@@ -225,6 +228,9 @@ var core = {
       el.removeAttribute('data-initial-height');
       el.removeAttribute('data-initial-pos-left');
       el.removeAttribute('data-initial-pos-top');
+      setTimeout(() => {
+        el.children[1].children[0].contentWindow.postMessage({ name: 'collapse' });
+      }, 401);
     }
     setTimeout(function() {
       el.style.transition = 'initial';
