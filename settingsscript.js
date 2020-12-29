@@ -47,12 +47,17 @@
         ex: function() {
           port2.postMessage({ name: 'getdarkmode' });
           port2.postMessage({ name: 'sendnotification', title: 'Permission Error — Settings', content: 'Permission denied :('});
+        },
+        tf: function() {
+          port2.postMessage({ name: 'settings', sets: 'timeformat', value: document.querySelector('#timef').value });
         }
       };
       
       document.querySelector('#wp').onclick = () => {
         port2.postMessage({name: 'openapp', value: 'wallpaperthing'});
       }
+      
+      document.querySelector('#timef').onchange = t.tf;
       
       document.querySelector('#pass').addEventListener('keyup', (e) => {
         if(e.keyCode == 13) {

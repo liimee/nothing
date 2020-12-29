@@ -1,5 +1,22 @@
 console.log('%cNothing', 'padding: 8px; background-color: #007bff; color: white; border: 2px solid #00a1ff; font-size: 35px;');
 
+// Load settings
+var db = new Dexie('stgdb');
+db.version(1).stores({
+  settings: 'sets, val'
+});
+
+db.settings.get('timeformat', (v) => {
+  if(v === undefined) {
+    db.settings.put({
+      sets: 'timeformat',
+      val: '24'
+    }, 'timeformat');
+  } else {
+    core.stg.timeformat = v.val;
+  }
+});
+
 var core = {
   root: document.documentElement,
   currentno: 0,
@@ -292,6 +309,7 @@ var core = {
         document.querySelector(`[data-bar-id="${el}"]`).setAttribute('data-minimized', 'true');
         document.querySelector(`[data-bar-id="${el}"]`).style.transition = 'initial';
         core.calculateRunningApps();
+        el.children[1].children[0].contentWindow.postMessage
       }, 450);
     }
   },
@@ -351,6 +369,10 @@ var core = {
               break;
             case 'password':
               core.changePass(e.data.value);
+              break;
+            case 'timeformat':
+              core.stg.timeformat = e.data.value + '';
+              core.onstgchg();
           }
         } else {
           core.requestSys(abc, e);
@@ -426,7 +448,17 @@ var core = {
         document.querySelector('#inppass').style.animation = 'none';
       }, 501);
     }
-    //}
+  },
+  stg: {
+    timeformat: '24'
+  },
+  onstgchg: function() {
+    Object.keys(core.stg).forEach(v => {
+      db.settings.put({
+        sets: v,
+        val: core.stg[v]
+      }, v);
+    });
   }
 };
 
@@ -464,6 +496,11 @@ if (localStorage.getItem('wprepeat') === null) {
       core.root.style.setProperty('--bg-repeat', 'no-repeat');
   }
 }
+
+/*db.settings.get('timeformat', (v) => {
+  alert(v.val);
+});*/
+
 
 function networkThing() {
   let ty = navigator.connection.type;
@@ -607,9 +644,19 @@ document.addEventListener('DOMContentLoaded', function() {
     let year = date.getFullYear();
     let month = months[date.getMonth()];
     let day = date.getDate();
-    document.querySelector('#clock').innerText = hour + ':' + minute;
-    document.querySelector('#rclck').innerText = hour + ':' + minute;
-    document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
+    let x = date.getHours() % 12;
+    if (x == 0) x = 12;
+    db.settings.get('timeformat', v => {
+      if(v.val == '12') {
+        document.querySelector('#clock').innerText = x + ':' + minute + (date.getHours() < 12 ? ' AM' : ' PM');
+        document.querySelector('#rclck').innerText = x + ':' + minute + (date.getHours() < 12 ? ' AM' : ' PM');
+        document.querySelector('#realOverlayClock').innerText = x + ':' + minute + (date.getHours() < 12 ? ' AM' : ' PM');
+      } else {
+        document.querySelector('#clock').innerText = hour + ':' + minute;
+        document.querySelector('#rclck').innerText = hour + ':' + minute;
+        document.querySelector('#realOverlayClock').innerText = hour + ':' + minute;
+      }
+    });
     if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
       document.querySelector('#overlayGreeting').innerText = 'Good morning!';
     } else if (date.getHours() > 10 && date.getHours() < 17) {
