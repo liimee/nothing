@@ -468,16 +468,17 @@ var core = {
       }, v);
     });
   },
-  installAppsFromUrl: function(u) {
+  installAppFromUrl: function(u) {
     console.log('nothing app installer alpha 1 | Buggy');
     console.warn('⚠️ Make sure to pass the raw html file url!');
     console.time('Instalation');
     fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`)
       .then(response => {
-        if (response.ok) return response.json()
+        if (response.ok) return response.text()
         throw new Error('Network response was not ok.')
       })
       .then(data => {
+        alert(data);
         let parsed = new DOMParser().parseFromString(data, 'text/html');
         console.log('Checking required HTML tags...');
         if(parsed.querySelectorAll('meta[name="nothing-app-name"]').length == 0) {
@@ -490,7 +491,7 @@ var core = {
           console.error('Missing <meta name="nothing-app-id" content="Your App ID (must be unique!)">');
           return;
         }
-        if (parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content') in JSON.parse(localStorage.getItem('apps'))) {
+        if (JSON.parse(localStorage.getItem('apps')).hasOwnProperty(parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content'))) {
           console.timeEnd('Instalation');
           console.error('An app with the same ID exists!');
           return;
@@ -513,9 +514,11 @@ var core = {
           name: parsed.querySelector('meta[name="nothing-app-name"]').getAttribute('content'),
           icon: `https://api.allorigins.win/raw?url=${encodeURIComponent(parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href'))}`,
           file: `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
-          id: parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href')
-        }
+          id: parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content')
+        };
         localStorage.setItem('apps', JSON.stringify(p));
+        document.querySelector('#apps').innerHTML = '';
+        core.apps();
       });
   }
 };
