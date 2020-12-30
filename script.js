@@ -469,7 +469,7 @@ var core = {
     });
   },
   installAppFromUrl: function(u) {
-    console.log('nothing app installer alpha 1 | Buggy');
+    console.log('nothing app installer alpha 1 | may be buggy');
     console.warn('⚠️ Make sure to pass the raw html file url!');
     console.time('Instalation');
     fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`)
@@ -478,7 +478,6 @@ var core = {
         throw new Error('Network response was not ok.')
       })
       .then(data => {
-        alert(data);
         let parsed = new DOMParser().parseFromString(data, 'text/html');
         console.log('Checking required HTML tags...');
         if(parsed.querySelectorAll('meta[name="nothing-app-name"]').length == 0) {
@@ -501,10 +500,14 @@ var core = {
           console.error('Missing <link rel="nothing-app-icon" href="Your App Icon URL">');
           return;
         }
-        console.log('Loading app icon...');
         if(!parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href').startsWith('https://')) {
           console.timeEnd('Instalation')
           console.error('Invalid icon url: Must be a whole URL, and use HTTPS!');
+          return;
+        }
+        if (parsed.querySelectorAll('link[rel="nothing-app-page"]').length == 0) {
+          console.timeEnd('Instalation');
+          console.error('Missing <link rel="nothing-app-page" href="Your App Page—users will see this page">');
           return;
         }
         console.timeEnd('Instalation');
@@ -513,12 +516,15 @@ var core = {
         p[parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content')] = {
           name: parsed.querySelector('meta[name="nothing-app-name"]').getAttribute('content'),
           icon: `https://api.allorigins.win/raw?url=${encodeURIComponent(parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href'))}`,
-          file: `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+          file: parsed.querySelector('link[rel="nothing-app-page"]').getAttribute('href'),
           id: parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content')
         };
         localStorage.setItem('apps', JSON.stringify(p));
         document.querySelector('#apps').innerHTML = '';
-        core.apps();
+        Object.keys(JSON.parse(localStorage.getItem('apps'))).forEach((g) => {
+          core.apps(JSON.parse(localStorage.getItem('apps'))[g]);
+        });
+        console.log('☑️ done—installation complete!');
       });
   }
 };
