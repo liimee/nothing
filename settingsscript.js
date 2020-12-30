@@ -36,7 +36,6 @@
             document.body.style.color = 'black';
             document.querySelector('#dm').checked = false;
           }
-          alert(d.timeformat)
           document.querySelector('#timef').value = d.timeformat;
         },
         dmh: function() {
