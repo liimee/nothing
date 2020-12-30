@@ -472,7 +472,7 @@ var core = {
     console.log('nothing app installer alpha 1 | may be buggy');
     console.warn('⚠️ Make sure to pass the raw html file url!');
     console.time('Instalation');
-    fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`)
+    fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}?t=${new Date().getSeconds()}`)
       .then(response => {
         if (response.ok) return response.text()
         throw new Error('Network response was not ok.')
