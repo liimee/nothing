@@ -7,7 +7,7 @@ db.version(1).stores({
 });
 
 db.settings.get('timeformat', (v) => {
-  if(v === undefined) {
+  if (v === undefined) {
     db.settings.put({
       sets: 'timeformat',
       val: '24'
@@ -380,10 +380,13 @@ var core = {
         break;
       case 'getsettings':
         db.settings.get('timeformat', a => {
-          abc.children[1].children[0].contentWindow.postMessage({ name: 'settings', value: {
-            darkmode: localStorage.getItem('dm'),
-            timeformat: a.val
-          }});
+          abc.children[1].children[0].contentWindow.postMessage({
+            name: 'settings',
+            value: {
+              darkmode: localStorage.getItem('dm'),
+              timeformat: a.val
+            }
+          });
         });
         break;
       default:
@@ -464,6 +467,56 @@ var core = {
         val: core.stg[v]
       }, v);
     });
+  },
+  installAppsFromUrl: function(u) {
+    console.log('nothing app installer alpha 1 | Buggy');
+    console.warn('⚠️ Make sure to pass the raw html file url!');
+    console.time('Instalation');
+    fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`)
+      .then(response => {
+        if (response.ok) return response.json()
+        throw new Error('Network response was not ok.')
+      })
+      .then(data => {
+        let parsed = new DOMParser().parseFromString(data, 'text/html');
+        console.log('Checking required HTML tags...');
+        if(parsed.querySelectorAll('meta[name="nothing-app-name"]').length == 0) {
+          console.timeEnd('Instalation');
+          console.error('Missing <meta name="nothing-app-name" content="Your App Name">');
+          return;
+        }
+        if (parsed.querySelectorAll('meta[name="nothing-app-id"]').length == 0) {
+          console.timeEnd('Instalation');
+          console.error('Missing <meta name="nothing-app-id" content="Your App ID (must be unique!)">');
+          return;
+        }
+        if (parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content') in JSON.parse(localStorage.getItem('apps'))) {
+          console.timeEnd('Instalation');
+          console.error('An app with the same ID exists!');
+          return;
+        }
+        if (parsed.querySelectorAll('link[rel="nothing-app-icon"]').length == 0) {
+          console.timeEnd('Instalation');
+          console.error('Missing <link rel="nothing-app-icon" href="Your App Icon URL">');
+          return;
+        }
+        console.log('Loading app icon...');
+        if(!parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href').startsWith('https://')) {
+          console.timeEnd('Instalation')
+          console.error('Invalid icon url: Must be a whole URL, and use HTTPS!');
+          return;
+        }
+        console.timeEnd('Instalation');
+        console.log('Adding app to the database...')
+        let p = JSON.parse(localStorage.getItem('apps'));
+        p[parsed.querySelector('meta[name="nothing-app-id"]').getAttribute('content')] = {
+          name: parsed.querySelector('meta[name="nothing-app-name"]').getAttribute('content'),
+          icon: `https://api.allorigins.win/raw?url=${encodeURIComponent(parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href'))}`,
+          file: `https://api.allorigins.win/raw?url=${encodeURIComponent(u)}`,
+          id: parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href')
+        }
+        localStorage.setItem('apps', JSON.stringify(p));
+      });
   }
 };
 
@@ -653,7 +706,7 @@ document.addEventListener('DOMContentLoaded', function() {
     let x = date.getHours() % 12;
     if (x == 0) x = 12;
     db.settings.get('timeformat', v => {
-      if(v.val == '12') {
+      if (v.val == '12') {
         document.querySelector('#clock').innerText = x + ':' + minute + (date.getHours() < 12 ? ' AM' : ' PM');
         document.querySelector('#rclck').innerText = x + ':' + minute + (date.getHours() < 12 ? ' AM' : ' PM');
         document.querySelector('#realOverlayClock').innerText = x + ':' + minute + (date.getHours() < 12 ? ' AM' : ' PM');
