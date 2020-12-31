@@ -571,6 +571,20 @@ var core = {
       modifysysreqtitle: 'ndhe scheyyiye moremeyōde (m)atsa(m)modeya(r‍)veye (m)āthe wdenumā?',
       modifysysreqcontent: 'iekkamore (m)atsa(m)modeya(r‍)veye (m)āthe Xētrkœ.'
     }
+  },
+  uninstallApp: function(ap) {
+    if(!(ap in JSON.parse(localStorage.getItem('apps')))) {
+      console.error('❌ App doesn\'t exist');
+      return;
+    }
+    let u = JSON.parse(localStorage.getItem('apps'))[ap];
+    delete u[ap];
+    localStorage.setItem('apps', JSON.stringify(u));
+    console.log('Done.');
+    document.querySelector('#apps').innerHTML = '';
+    Object.keys(JSON.parse(localStorage.getItem('apps'))).forEach((g) => {
+      core.apps(JSON.parse(localStorage.getItem('apps'))[g]);
+    });
   }
 };
 
