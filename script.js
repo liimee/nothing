@@ -16,6 +16,17 @@ db.settings.get('timeformat', (v) => {
     core.stg.timeformat = v.val;
   }
 });
+db.settings.get('lang', (v) => {
+  if (v === undefined) {
+    db.settings.put({
+      sets: 'lang',
+      val: 'en'
+    }, 'lang');
+    core.stg.lang = 'en';
+  } else {
+    core.stg.lang = v.val;
+  }
+});
 
 var core = {
   root: document.documentElement,
@@ -373,6 +384,15 @@ var core = {
             case 'timeformat':
               core.stg.timeformat = e.data.value + '';
               core.onstgchg();
+              break;
+            case 'language':
+              if(e.data.value == 'english') {
+                core.stg.lang = 'en';
+                core.onstgchg();
+              } else if (e.data.value == 'undardese') {
+                core.stg.lang = 'un';
+                core.onstgchg();
+              }
           }
         } else {
           core.requestSys(abc, e);
@@ -380,12 +400,15 @@ var core = {
         break;
       case 'getsettings':
         db.settings.get('timeformat', a => {
+          db.settings.get('lang', b => {
           abc.children[1].children[0].contentWindow.postMessage({
             name: 'settings',
             value: {
               darkmode: localStorage.getItem('dm'),
-              timeformat: a.val
+              timeformat: a.val,
+              language: b.val
             }
+          });
           });
         });
         break;
@@ -526,9 +549,36 @@ var core = {
         });
         console.log('☑️ done—installation complete!');
       });
+  },
+  langs: {
+    en: {
+      restartreqtitle: 'Restart?',
+      restartreqcontent: 'An app has requested to restart this OS.',
+      cancel: 'Cancel',
+      ok: 'OK',
+      allow: 'Allow',
+      deny: 'Deny',
+      modifysysreqtitle: 'Allow this app to modify OS settings?',
+      modifysysreqcontent: 'has requested to modify OS settings. Even changing your password.'
+    },
+    un: {
+      cancel: 'llenrthœ',
+      ok: 'seri',
+      allow: 'wdœ',
+      deny: 'wdādhe',
+      restartreqtitle: 'maruththodakkanumā?',
+      restartreqcontent: 'orœ scheyyi ndhe iekkamoremeye maruththodakke Xētrkœ',
+      modifysysreqtitle: 'ndhe scheyyiye moremeyōde (m)atsa(m)modeya(r‍)veye (m)āthe wdenumā?',
+      modifysysreqcontent: 'iekkamore (m)atsa(m)modeya(r‍)veye (m)āthe Xētrkœ.'
+    }
   }
 };
 
+setInterval(() => {
+  document.querySelectorAll('[data-translate]').forEach((v) => {
+    v.innerHTML = core.langs[core.stg.lang][v.getAttribute('data-translate')];
+  });
+}, 10)
 
 if (localStorage.getItem('wp') === null) {
   localStorage.setItem('wp', 'd-1');
@@ -726,15 +776,15 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
-      document.querySelector('#overlayGreeting').innerText = 'Good morning!';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : 'Nangāle!';
     } else if (date.getHours() > 10 && date.getHours() < 17) {
-      document.querySelector('#overlayGreeting').innerText = 'Good afternoon!';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good afternoon!' : 'Nammadhyāno(m)!';
     } else if (date.getHours() < 20 && date.getHours() > 16) {
-      document.querySelector('#overlayGreeting').innerText = 'Good evening!';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good evening!' : 'Nanjaendhro(m)!';
     } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
-      document.querySelector('#overlayGreeting').innerText = 'Good night 🌃';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good night 🌃' : 'Nanrāthri 🌃';
     } else {
-      document.querySelector('#overlayGreeting').innerText = 'Dude it\'s midnight';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Dude it\'s midnight' : 'Dēi nadrāthri āwdhœ';
     }
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);

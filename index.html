@@ -78,16 +78,16 @@
   <div id="desktop"></div>
   <div id="restartcontainer">
     <div id="restart">
-      <div style="font-size: 1.5em;"><b>Restart?</b></div>
+      <div style="font-size: 1.5em;"><b data-translate="restartreqtitle"><!--Restart?--></b></div>
       <div>An app has requested to restart this OS.</div>
       <div style="text-align: center; float: right;"><button onclick="document.querySelector('#restartcontainer').style.display = 'none';">Cancel</button> <button onclick="core.realrestart()">Restart</button></div>
     </div>
   </div>
   <div id="requestcontainer">
     <div id="req">
-      <div style="font-size: 1.5em;"><b>Allow this app to modify OS settings?</b></div>
-      <div><span></span> has requested to modify OS settings. Even changing your password.</div>
-      <div style="text-align: center; float: right;"><button>Deny</button> <button>Allow</button></div>
+      <div style="font-size: 1.5em;"><b data-translate="modifysysreqtitle"></b></div>
+      <div><span></span> <span data-translate="modifysysreqcontent"></span></div>
+      <div style="text-align: center; float: right;"><button data-translate="deny"></button> <button data-translate="allow"></button></div>
     </div>
   </div>
   <div id="startup">

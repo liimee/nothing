@@ -37,6 +37,11 @@
             document.querySelector('#dm').checked = false;
           }
           document.querySelector('#timef').value = d.timeformat;
+          if(d.language == 'en') {
+            document.querySelector('#langf').value = 'english';
+          } else {
+            document.querySelector('#langf').value = 'undardese';
+          }
         },
         dmh: function() {
           if (document.querySelector('#dm').checked) {
@@ -51,8 +56,13 @@
         },
         tf: function() {
           port2.postMessage({ name: 'settings', sets: 'timeformat', value: document.querySelector('#timef').value });
+        },
+        lng: function() {
+          port2.postMessage({ name: 'settings', sets: 'language', value: document.querySelector('#langf').value });
         }
       };
+      
+      document.querySelector('#langf').onchange = t.lng;
       
       document.querySelector('#wp').onclick = () => {
         port2.postMessage({name: 'openapp', value: 'wallpaperthing'});
