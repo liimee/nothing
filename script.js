@@ -386,7 +386,7 @@ var core = {
               core.onstgchg();
               break;
             case 'language':
-              if(e.data.value == 'english') {
+              if (e.data.value == 'english') {
                 core.stg.lang = 'en';
                 core.onstgchg();
               } else if (e.data.value == 'undardese') {
@@ -401,14 +401,14 @@ var core = {
       case 'getsettings':
         db.settings.get('timeformat', a => {
           db.settings.get('lang', b => {
-          abc.children[1].children[0].contentWindow.postMessage({
-            name: 'settings',
-            value: {
-              darkmode: localStorage.getItem('dm'),
-              timeformat: a.val,
-              language: b.val
-            }
-          });
+            abc.children[1].children[0].contentWindow.postMessage({
+              name: 'settings',
+              value: {
+                darkmode: localStorage.getItem('dm'),
+                timeformat: a.val,
+                language: b.val
+              }
+            });
           });
         });
         break;
@@ -503,7 +503,7 @@ var core = {
       .then(data => {
         let parsed = new DOMParser().parseFromString(data, 'text/html');
         console.log('Checking required HTML tags...');
-        if(parsed.querySelectorAll('meta[name="nothing-app-name"]').length == 0) {
+        if (parsed.querySelectorAll('meta[name="nothing-app-name"]').length == 0) {
           console.timeEnd('Instalation');
           console.error('Missing <meta name="nothing-app-name" content="Your App Name">');
           return;
@@ -523,7 +523,7 @@ var core = {
           console.error('Missing <link rel="nothing-app-icon" href="Your App Icon URL">');
           return;
         }
-        if(!parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href').startsWith('https://')) {
+        if (!parsed.querySelector('link[rel="nothing-app-icon"]').getAttribute('href').startsWith('https://')) {
           console.timeEnd('Instalation')
           console.error('Invalid icon url: Must be a whole URL, and use HTTPS!');
           return;
@@ -573,7 +573,7 @@ var core = {
     }
   },
   uninstallApp: function(ap) {
-    if(!(ap in JSON.parse(localStorage.getItem('apps')))) {
+    if (!(ap in JSON.parse(localStorage.getItem('apps')))) {
       console.error('❌ App doesn\'t exist');
       return;
     }
@@ -767,6 +767,18 @@ document.addEventListener('DOMContentLoaded', function() {
       core.closr();
     }
   });
+
+  // test
+  (function(h, o, t, j, a, r) {
+    h.hj = h.hj || function() {
+      (h.hj.q = h.hj.q || []).push(arguments) };
+    h._hjSettings = { hjid: 2177636, hjsv: 6 };
+    a = o.getElementsByTagName('head')[0];
+    r = o.createElement('script');
+    r.async = 1;
+    r.src = t + h._hjSettings.hjid + j + h._hjSettings.hjsv;
+    a.appendChild(r);
+  })(window, document, 'https://static.hotjar.com/c/hotjar-', '.js?sv=');
 
   setInterval(function() {
     let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
