@@ -27,12 +27,15 @@
   <div id="main"></div>
   <script src="lib/ptty.js"></script>
   <script>
-    var port2;
+    var por2;
 
     window.addEventListener('message', (e) => {
-      port2 = e.ports[0];
+      por2 = e.ports[0];
       if (e.data.name == 'windowfocused') {
         $ptty.get_terminal('.prompt').find('.input').focus();
+      }
+      if(e.data.name == 'init') {
+        read();
       }
     });
 
@@ -41,7 +44,8 @@
     });
 
     var $ptty;
-    $(document).ready(function() {
+    function read() {
+      var port2 = por2;
       $ptty = $('#main').Ptty({
         i18n: {
           welcome: '⌨️ Nothing Terminal ~ 0.1.0',
@@ -175,7 +179,7 @@
         help: 'Stuff related to apps'
       })
 
-    });
+    }
   </script>
 </body>
 

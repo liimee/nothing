@@ -552,23 +552,23 @@ var core = {
   },
   langs: {
     en: {
-      restartreqtitle: 'Restart?',
+      restartreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-refresh" style="font-size: 1.5em;"></i></div> Restart?',
       restartreqcontent: 'An app has requested to restart this OS.',
       cancel: 'Cancel',
       ok: 'OK',
       allow: 'Allow',
       deny: 'Deny',
-      modifysysreqtitle: 'Allow this app to modify OS settings?',
+      modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> Allow this app to modify OS settings?',
       modifysysreqcontent: 'has requested to modify OS settings. Even changing your password.'
     },
     un: {
-      cancel: 'llenrthœ',
-      ok: 'seri',
-      allow: 'wdœ',
-      deny: 'wdādhe',
-      restartreqtitle: 'maruththodakkanumā?',
-      restartreqcontent: 'orœ scheyyi ndhe iekkamoremeye maruththodakke Xētrkœ',
-      modifysysreqtitle: 'ndhe scheyyiye moremeyōde (m)atsa(m)modeya(r‍)veye (m)āthe wdenumā?',
+      cancel: 'Llenrthœ',
+      ok: 'Seri',
+      allow: 'Wdœ',
+      deny: 'Wdādhe',
+      restartreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-refresh" style="font-size: 1.5em;"></i></div> Maruththodakkanumā?',
+      restartreqcontent: 'Orœ scheyyi ndhe iekkamoremeye maruththodakke Xētrkœ',
+      modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> Ndhe scheyyiye moremeyōde (m)atsa(m)modeya(r‍)veye (m)āthe wdenumā?',
       modifysysreqcontent: 'iekkamore (m)atsa(m)modeya(r‍)veye (m)āthe Xētrkœ.'
     }
   },
