@@ -28,17 +28,6 @@ db.settings.get('lang', (v) => {
   }
 });
 
-
-BrowserFS.install(window);
-BrowserFS.configure({
-  fs: 'IndexedDB'
-}, function(e) {
-  alert(JSON.stringify(window))
-  if (e) {
-    throw e;
-  }
-});
-
 var core = {
   root: document.documentElement,
   currentno: 0,
@@ -596,18 +585,8 @@ var core = {
     Object.keys(JSON.parse(localStorage.getItem('apps'))).forEach((g) => {
       core.apps(JSON.parse(localStorage.getItem('apps'))[g]);
     });
-  },
-  testFileThing: function(jj) {
-    let fs = require('fs');
-    fs.writeFile('/test.txt', 'Cool, I can do this in the browser!', function(err) {
-      fs.readFile('/test.txt', function(err, contents) {
-        alert(contents.toString());
-      });
-    });
   }
 };
-
-core.testFileThing();
 
 setInterval(() => {
   document.querySelectorAll('[data-translate]').forEach((v) => {
