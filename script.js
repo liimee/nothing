@@ -474,6 +474,7 @@ var core = {
     //  if(e.keyCode == 13) {
     if (document.querySelector('#inppass').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
       document.querySelector('#password').style.display = 'none';
+      localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
       //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
     } else {
       let kk = parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) + 1;
@@ -486,7 +487,6 @@ var core = {
     }
   },
   chck: function() {
-    alert(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8))
     if(parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) > 9) {
       document.querySelector('#wrongwrong').style.display = 'flex';
       window.stop();
