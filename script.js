@@ -485,6 +485,7 @@ var core = {
     }
   },
   chck: function() {
+    alert(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8))
     if(parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) > 9) {
       document.querySelector('#wrongwrong').style.display = 'flex';
       window.stop();
