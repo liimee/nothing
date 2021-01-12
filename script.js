@@ -28,6 +28,8 @@ db.settings.get('lang', (v) => {
   }
 });
 
+if(localStorage.getItem('wrong') === null) localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
+
 var core = {
   root: document.documentElement,
   currentno: 0,
@@ -474,11 +476,17 @@ var core = {
       document.querySelector('#password').style.display = 'none';
       //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
     } else {
+      localStorage.setItem('wrong', parseInt(CryptoJS.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) + 1);
+      core.chck();
       document.querySelector('#inppass').style.animation = 'wrongpass .5s';
       setTimeout(() => {
         document.querySelector('#inppass').style.animation = 'none';
       }, 501);
     }
+  },
+  chck: function() {
+    if(parseInt(CryptoJS.decrypt(localStorage.getItem('wrong'), 'wrong')) > 9) document.querySelector('#wrongwrong').style.display = 'flex';
+    window.stop();
   },
   stg: {
     timeformat: '24'
@@ -587,6 +595,8 @@ var core = {
     });
   }
 };
+
+core.chck();
 
 setInterval(() => {
   document.querySelectorAll('[data-translate]').forEach((v) => {

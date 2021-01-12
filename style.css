@@ -292,6 +292,29 @@ body {
   cursor: inherit;
 }
 
+#wrongwrong {
+  background-color: red;
+  position: fixed;
+  width: 100%;
+  z-index: 80000;
+  height: 100%;
+  color: #fff;
+  left: 0;
+  top: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#wrongwrong > div > i {
+  font-size: 140px;
+}
+
+#wrongwrong > div {
+  font-size: 29px;
+}
+
 #bar > span:nth-child(3) {
   margin-left: 30px;
 }
