@@ -476,7 +476,8 @@ var core = {
       document.querySelector('#password').style.display = 'none';
       //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
     } else {
-      localStorage.setItem('wrong', parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) + 1);
+      let kk = parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) + 1;
+      localStorage.setItem('wrong', CryptoJS.AES.encrypt(kk.toString(), 'wrong'));
       core.chck();
       document.querySelector('#inppass').style.animation = 'wrongpass .5s';
       setTimeout(() => {
