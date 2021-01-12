@@ -485,8 +485,10 @@ var core = {
     }
   },
   chck: function() {
-    if(parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong')) > 9) document.querySelector('#wrongwrong').style.display = 'flex';
-    window.stop();
+    if(parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) > 9) {
+      document.querySelector('#wrongwrong').style.display = 'flex';
+      window.stop();
+    }
   },
   stg: {
     timeformat: '24'
