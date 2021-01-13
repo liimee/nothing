@@ -7,7 +7,7 @@ db.version(1).stores({
 });
 
 var favapps = new Dexie('favapps');
-db.version(1).stores({
+favapps.version(1).stores({
   apps: 'id'
 });
 
