@@ -6,6 +6,11 @@ db.version(1).stores({
   settings: 'sets, val'
 });
 
+var favapps = new Dexie('favapps');
+db.version(1).stores({
+  apps: 'id'
+});
+
 db.settings.get('timeformat', (v) => {
   if (v === undefined) {
     db.settings.put({
@@ -25,6 +30,14 @@ db.settings.get('lang', (v) => {
     core.stg.lang = 'en';
   } else {
     core.stg.lang = v.val;
+  }
+});
+
+favapps.apps.get('aps', (v) => {
+  if (v === undefined) {
+    favapps.apps.put({
+      id: []
+    }, 'aps');
   }
 });
 
@@ -267,7 +280,37 @@ var core = {
     }, 500);
   },
   apps: function(app) {
-    $('#apps').append('<span id="' + app.id + '" data-name="' + app.name + '" class="app" onclick=\'if(core.homeOpen) {core.openApp(' + JSON.stringify(app) + ');}\'><div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>');
+    let as = document.createElement('span');
+    as.oncontextmenu = (e) => {
+      core.ctxmnaps(e, app.id)
+    };
+    as.id = app.id;
+    as.setAttribute('data-name', app.name);
+    as.className = "app"; 
+    as.onclick = () => {
+      if(core.homeOpen) core.openApp(app);
+    }
+    as.innerHTML = '<div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>';
+    document.querySelector('#apps').appendChild(as);
+    $('body').append('<div style="z-index: 5000; background-color: var(--bar-bg); position: fixed; color: var(--text-color); width: max-content; display: none; padding: 10px; border-radius: 8px" class="contextmenu" data-ctx-for="' + app.id + '"><div onclick="addToFavs(\'' + app.id + '\')">Add to Favorites</div></div>');
+    document.addEventListener('click', () => {
+      document.querySelector('[data-ctx-for="' + app.id + '"]').style.display = 'none';
+    })
+  },
+  ctxmnaps: function(e, id) {
+    e.preventDefault();
+    document.querySelector('[data-ctx-for="' + id + '"]').style.display = 'block';
+    document.querySelector('[data-ctx-for="' + id + '"]').style.left = e.clientX + 'px';
+    document.querySelector('[data-ctx-for="' + id + '"]').style.top = e.clientY + 'px';
+  },
+  addToFavs: function(id) {
+    favapps.apps.get('aps', (v) => {
+      let jj = v.push(id);
+      favapps.apps.put({
+        id: jj
+      }, 'aps');
+    });
+    core.refreshFavApps();
   },
   fps: 0,
   powerOff: function() {
@@ -377,7 +420,7 @@ var core = {
               localStorage.setItem('dm', e.data.value);
               a();
               document.querySelectorAll('.window').forEach((v) => {
-                v.children[1].children[0].contentWindow.postMessage({ name: 'darkmode', res: localStorage.getItem('dm') });
+                core.onMessage('getsettings', v);
               });
               break;
             case 'password':
@@ -501,6 +544,11 @@ var core = {
         sets: v,
         val: core.stg[v]
       }, v);
+    });
+  },
+  refreshFavApps: function() {
+    favapps.apps.get('aps', (v) => {
+      alert(v);
     });
   },
   installAppFromUrl: function(u) {
