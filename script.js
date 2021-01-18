@@ -292,7 +292,7 @@ var core = {
     }
     as.innerHTML = '<div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>';
     document.querySelector('#apps').appendChild(as);
-    $('body').append('<div style="z-index: 5000; background-color: var(--bar-bg); position: fixed; color: var(--text-color); width: max-content; display: none; padding: 10px; border-radius: 8px" class="contextmenu" data-ctx-for="' + app.id + '"><div onclick="addToFavs(\'' + app.id + '\')">Add to Favorites</div></div>');
+    $('body').append('<div style="z-index: 5000; background-color: var(--bar-bg); position: fixed; color: var(--text-color); width: max-content; display: none; padding: 10px; border-radius: 8px" class="contextmenu" data-ctx-for="' + app.id + '"><div onclick="core.addToFavs(\'' + app.id + '\')">Add to Favorites</div></div>');
     document.addEventListener('click', () => {
       document.querySelector('[data-ctx-for="' + app.id + '"]').style.display = 'none';
     })
