@@ -281,9 +281,9 @@ var core = {
   },
   apps: function(app) {
     let as = document.createElement('span');
-    as.oncontextmenu = (e) => {
+    /*as.oncontextmenu = (e) => {
       core.ctxmnaps(e, app.id)
-    };
+    };*/
     as.id = app.id;
     as.setAttribute('data-name', app.name);
     as.className = "app"; 
@@ -867,6 +867,13 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);
+  
+  new Sortable(document.querySelector('#apps'), {
+    animation: 150,
+    delay: 100,
+	  delayOnTouchOnly: true,
+    draggable: '.app'
+  });
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
