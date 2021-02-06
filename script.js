@@ -632,6 +632,7 @@ var core = {
       modifysysreqcontent: 'iekkamore (m)atsa(m)modeya(r‍)veye (m)āthe Xētrkœ.'
     }
   },
+  favapps: [],
   uninstallApp: function(ap) {
     if (!(ap in JSON.parse(localStorage.getItem('apps')))) {
       console.error('❌ App doesn\'t exist');
@@ -872,8 +873,32 @@ document.addEventListener('DOMContentLoaded', function() {
     animation: 150,
     delay: 100,
 	  delayOnTouchOnly: false,
-    draggable: '.app'
+    draggable: '.app',
+    group: {
+        name: 'shared',
+        pull: 'clone' // To clone: set pull to 'clone'
+    },
+    onClone: e => {
+      e.clone.id = '';
+    }
   });
+  
+  new Sortable(document.querySelector('#favapps'), {
+    animation: 150,
+    draggable: '.app',
+    group: {
+        name: 'shared',
+        pull: false
+    },
+    onAdd: e => {
+      if(core.favapps.includes(e.item.id)) {
+        e.item.remove();
+        return;
+      }
+      core.favapps.push(e.item.id);
+      e.item.children[1].remove();
+    }
+  })
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';

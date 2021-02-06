@@ -227,14 +227,27 @@ body {
 }
 
 #favapps {
-  position: fixed;
+  position: absolute;
   left: 50%;
   transform: translateX(-50%);
   bottom: 30px;
   border-radius: 10px;
-  width: 35%;
+  width: max-content;
+  min-width: 35%;
   background-color: var(--bar-bg);
   padding: 10px;
+  max-width: 60%;
+  height: 45px;
+  z-index: 5000;
+  transition: .4s ease-in-out;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  white-space: nowrap;
+  display: flex;
+}
+
+#favapps > * + * {
+  margin-left: 10px;
 }
 
 #bar > span:nth-child(1) {
