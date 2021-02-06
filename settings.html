@@ -94,33 +94,35 @@
       width: auto;
     }
   </style>
+  <script src="https://unpkg.com/@popperjs/core@2/dist/umd/popper.min.js"></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js"></script>
 </head>
 
 <body>
   <h2>👀 Appearence</h2>
-  <setting>
+  <setting data-tippy-content="Some apps may support dark mode">
     🌙 Dark Mode
     <label class="switch">
       <input type="checkbox" id="dm">
       <span class="slider"></span>
     </label>
   </setting>
-  <info>better at night</info>
-  <setting>
+  <setting data-tippy-content="Currently changing wallpaper is only possible via the built-in Desktop Wallpaper Settings app.">
     Wallpaper<button id="wp">Open Desktop Wallpaper Settings</button>
   </setting>
   <h2 style="margin-top: 1em;">🔒 Security</h2>
-  <setting>🔐 Password
+  <setting data-tippy-content="Your password is encrypted.">🔐 Password
     <input type="password" id="pass" placeholder="Insert a password">
   </setting>
   <h2>➡️ Others</h2>
   <setting>🕒 Time
     <select id="timef"><option value="24">24-hour</option><option value="12">12-hour</option></select>
   </setting>
-  <setting>🌐 Language
+  <setting data-tippy-content="Currently, this will only affect the system UI">🌐 Language
     <select id="langf"><option value="english">English</option><option value="undardese">Undardese</option></select>
   </setting>
   <script src="settingsscript.js"></script>
+  <script>tippy('[data-tippy-content]');</script>
 </body>
 
 </html>
