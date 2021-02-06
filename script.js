@@ -871,7 +871,7 @@ document.addEventListener('DOMContentLoaded', function() {
   new Sortable(document.querySelector('#apps'), {
     animation: 150,
     delay: 100,
-	  delayOnTouchOnly: true,
+	  delayOnTouchOnly: false,
     draggable: '.app'
   });
 
