@@ -41,7 +41,7 @@ favapps.apps.get('aps', (v) => {
   }
 });
 
-if(localStorage.getItem('wrong') === null) localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
+if (localStorage.getItem('wrong') === null) localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
 
 var core = {
   root: document.documentElement,
@@ -286,9 +286,9 @@ var core = {
     };*/
     as.id = app.id;
     as.setAttribute('data-name', app.name);
-    as.className = "app"; 
+    as.className = "app";
     as.onclick = () => {
-      if(core.homeOpen) core.openApp(app);
+      if (core.homeOpen) core.openApp(app);
     }
     as.innerHTML = '<div style="background-image: url(' + app.icon + '); width: 45px; height: 45px; background-repeat: no-repeat; background-size: cover;"></div><div class="appname">' + app.name + '</div></span>';
     document.querySelector('#apps').appendChild(as);
@@ -530,7 +530,7 @@ var core = {
     }
   },
   chck: function() {
-    if(parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) > 9) {
+    if (parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) > 9) {
       document.querySelector('#wrongwrong').style.display = 'flex';
       window.stop();
     }
@@ -868,35 +868,37 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);
-  
+
   new Sortable(document.querySelector('#apps'), {
     animation: 150,
     delay: 100,
-	  delayOnTouchOnly: false,
+    delayOnTouchOnly: false,
     draggable: '.app',
     group: {
-        name: 'shared',
-        pull: 'clone' // To clone: set pull to 'clone'
+      name: 'shared',
+      pull: 'clone' // To clone: set pull to 'clone'
     },
     onClone: e => {
-      e.clone.id = '';
+      e.item.id = '';
+      e.item.setAttribute('data-app-id', e.item.id);
     }
   });
-  
+
   new Sortable(document.querySelector('#favapps'), {
     animation: 150,
     draggable: '.app',
     group: {
-        name: 'shared',
-        pull: false
+      name: 'shared',
+      pull: false
     },
     onAdd: e => {
-      if(core.favapps.includes(e.item.id)) {
+      if (core.favapps.includes(e.item.id)) {
         e.item.remove();
-        return;
+      } else {
+        core.favapps.push(e.item.id);
+        e.item.children[1].remove();
+        e.item.id="";
       }
-      core.favapps.push(e.item.id);
-      e.item.children[1].remove();
     }
   })
 
