@@ -208,7 +208,8 @@ body {
   -ms-user-select: none;
   overflow: hidden;
   transition: background-color .5s;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   max-width: -webkit-fill-available;
   max-width: -moz-available; 
   max-width: available;
