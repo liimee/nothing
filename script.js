@@ -881,7 +881,6 @@ document.addEventListener('DOMContentLoaded', function() {
     onClone: e => {
       e.item.id = '';
       e.clone.onclick = e.item.onclick;
-      e.item.setAttribute('data-app-id', e.item.id);
     }
   });
 
@@ -893,12 +892,11 @@ document.addEventListener('DOMContentLoaded', function() {
       pull: false
     },
     onAdd: e => {
-      if (core.favapps.includes(e.item.id)) {
+      if (core.favapps.includes(e.clone.id)) {
         e.item.remove();
       } else {
-        core.favapps.push(e.item.id);
+        core.favapps.push(e.clone.id);
         e.item.children[1].remove();
-        e.item.id="";
       }
     }
   })
