@@ -880,6 +880,7 @@ document.addEventListener('DOMContentLoaded', function() {
     },
     onClone: e => {
       e.item.id = '';
+      e.clone.onclick = e.item.onclick;
       e.item.setAttribute('data-app-id', e.item.id);
     }
   });
