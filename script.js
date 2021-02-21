@@ -6,11 +6,6 @@ db.version(1).stores({
   settings: 'sets, val'
 });
 
-var favapps = new Dexie('favapps');
-favapps.version(1).stores({
-  apps: 'id'
-});
-
 db.settings.get('timeformat', (v) => {
   if (v === undefined) {
     db.settings.put({
@@ -30,14 +25,6 @@ db.settings.get('lang', (v) => {
     core.stg.lang = 'en';
   } else {
     core.stg.lang = v.val;
-  }
-});
-
-favapps.apps.get('aps', (v) => {
-  if (v === undefined) {
-    favapps.apps.put({
-      id: []
-    }, 'aps');
   }
 });
 
@@ -303,15 +290,6 @@ var core = {
     document.querySelector('[data-ctx-for="' + id + '"]').style.left = e.clientX + 'px';
     document.querySelector('[data-ctx-for="' + id + '"]').style.top = e.clientY + 'px';
   },
-  addToFavs: function(id) {
-    favapps.apps.get('aps', (v) => {
-      let jj = v.push(id);
-      favapps.apps.put({
-        id: jj
-      }, 'aps');
-    });
-    core.refreshFavApps();
-  },
   fps: 0,
   powerOff: function() {
     document.title = 'Shutting down — nothing';
@@ -546,11 +524,6 @@ var core = {
       }, v);
     });
   },
-  refreshFavApps: function() {
-    favapps.apps.get('aps', (v) => {
-      alert(v);
-    });
-  },
   installAppFromUrl: function(u) {
     console.log('nothing app installer alpha 1 | may be buggy');
     console.warn('⚠️ Make sure to pass the raw html file url!');
@@ -632,7 +605,6 @@ var core = {
       modifysysreqcontent: 'iekkamore (m)atsa(m)modeya(r‍)veye (m)āthe Xētrkœ.'
     }
   },
-  favapps: [],
   uninstallApp: function(ap) {
     if (!(ap in JSON.parse(localStorage.getItem('apps')))) {
       console.error('❌ App doesn\'t exist');
@@ -869,7 +841,7 @@ document.addEventListener('DOMContentLoaded', function() {
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);
 
-  new Sortable(document.querySelector('#apps'), {
+ /* new Sortable(document.querySelector('#apps'), {
     animation: 150,
     delay: 100,
     delayOnTouchOnly: false,
@@ -899,7 +871,7 @@ document.addEventListener('DOMContentLoaded', function() {
         e.item.children[1].remove();
       }
     }
-  })
+  })*/
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
