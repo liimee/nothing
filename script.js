@@ -16,17 +16,6 @@ db.settings.get('timeformat', (v) => {
     core.stg.timeformat = v.val;
   }
 });
-db.settings.get('lang', (v) => {
-  if (v === undefined) {
-    db.settings.put({
-      sets: 'lang',
-      val: 'en'
-    }, 'lang');
-    core.stg.lang = 'en';
-  } else {
-    core.stg.lang = v.val;
-  }
-});
 
 if (localStorage.getItem('wrong') === null) localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
 
@@ -621,9 +610,22 @@ var core = {
   }
 };
 
+db.settings.get('lang', (v) => {
+  if (v === undefined) {
+    db.settings.put({
+      sets: 'lang',
+      val: 'en'
+    }, 'lang');
+    core.stg.lang = 'en';
+  } else {
+    core.stg.lang = v.val;
+  }
+});
+
 core.chck();
 
 setInterval(() => {
+	if(!core.stg.lang) return;
   document.querySelectorAll('[data-translate]').forEach((v) => {
     v.innerHTML = core.langs[core.stg.lang][v.getAttribute('data-translate')];
   });
