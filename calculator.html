@@ -15,6 +15,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow-y: scroll;
+  }
+  #dis {
+    width: 100%;
+    border-radius: 8px;
+    height: 1em;
+    background: #b5b5b5;
+    padding: 10px;
   }
   .btns {
     display: flex;
@@ -62,24 +70,30 @@
     </div>
     <div class="btns">
       <span>0</span>
-      <span onclick="clear()">C</span>
+      <span>.</span>
+      <span onclick="clea()">C</span>
       <span>+</span>
       <span style="background-color: orange" onclick="calc();">=</span>
     </div>
   </div></div>
   <script>
+  var ay = false;
   function add(a) {
+    if(ay) document.querySelector('#dis').innerText='';
     document.querySelector('#dis').innerText += a;
+    ay=false;
   }
-  function clear() {
+  function clea() {
     document.querySelector('#dis').innerText='';
   }
   function calc() {
+    if(ay) return;
     let t = document.querySelector('#dis').innerText;
-    t.replace(/÷/g, '/');
-    t.replace(/×/g, '*');
-    t.replace(/−/g, '-');
+    t=t.replace(/÷/g, '/');
+    t=t.replace(/×/g, '*');
+    t=t.replace(/−/g, '-');
     document.querySelector('#dis').innerText = eval(t);
+    ay=true;
   }
   document.querySelectorAll('span').forEach(v => {
     if(v.innerText == '=' || v.innerText == 'C') return;

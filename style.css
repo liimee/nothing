@@ -181,7 +181,7 @@ body {
   position: fixed;
   border: 1px solid #969696;
   background-color: var(--bar-bg);
-  z-index: 3;
+  z-index: 6;
   cursor: var(--cursor-cursor);
   box-sizing: border-box;
   animation: openWindow .4s ease-in-out;

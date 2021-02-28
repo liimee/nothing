@@ -890,18 +890,17 @@ document.addEventListener('DOMContentLoaded', function() {
         icon: 'images/minusone.png',
         nothinglang: false
       },
+      stockcalculator: {
+        name: 'Calculator',
+        file: 'calculator.html',
+        id: 'stockcalculator',
+        icon: 'images/calculator.png'
+      },
       wallpaperthing: {
         name: 'Desktop Wallpaper Settings',
         file: 'wallpaperthing.html',
         id: 'wallpaperthing',
         icon: 'images/wpthingicon.png',
-        nothinglang: false
-      },
-      oof: {
-        name: 'Endless OOF',
-        file: 'oof.html',
-        id: 'oof',
-        icon: 'images/oof.png',
         nothinglang: false
       },
       terminal: {
@@ -963,14 +962,13 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       localStorage.setItem('apps', JSON.stringify(ia));
     }
-    if (!('oof' in ia)) {
-      ia.oof = {
-        name: 'Endless OOF',
-        file: 'oof.html',
-        id: 'oof',
-        icon: 'images/oof.png',
-        nothinglang: false
-      }
+    if(!('stockcalculator' in ia)) {
+      ia.stockcalculator = {
+        name: 'Calculator',
+        file: 'calculator.html',
+        id: 'stockcalculator',
+        icon: 'images/calculator.png'
+      };
       localStorage.setItem('apps', JSON.stringify(ia));
     }
     Object.keys(ia).forEach(function(key) {
