@@ -782,7 +782,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (localStorage.getItem('nothingwelcome') === null) {
     setTimeout(() => {
-      core.openApp({ name: 'Welcome!', icon: 'images/nothing.png', file: 'welcome.html' });
+      core.openApp({ name: 'Welcome!', icon: 'images/nw.png', file: 'welcome.html' });
       localStorage.setItem('nothingwelcome', 'ok');
     }, 90);
   }
