@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <title>Calculator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
+  <style>
+  body{font-family: 'Inter', sans-serif;}
+  #main {
+    width: 100%;
+    position: fixed;
+    left: 0;
+    top: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .btns {
+    display: flex;
+    justify-content: space-between;
+    margin: 9px;
+  }
+  * {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+  .btns>span {
+    width: auto;
+    height: auto;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #b5b5b5;
+    margin: 9px;
+    transition: transform .4s;
+  }
+  .btns>span:active {
+    transform: scale(.8);
+  }
+  </style>
+</head>
+<body>
+  <div id="main">
+    <div><div id="dis"></div>
+    <div class="btns">
+      <span>7</span>
+      <span>8</span>
+      <span>9</span>
+      <span>÷</span>
+    </div>
+    <div class="btns">
+      <span>4</span>
+      <span>5</span>
+      <span>6</span>
+      <span>×</span>
+    </div>
+    <div class="btns">
+      <span>1</span>
+      <span>2</span>
+      <span>3</span>
+      <span>−</span>
+    </div>
+    <div class="btns">
+      <span>0</span>
+      <span onclick="clear()">C</span>
+      <span>+</span>
+      <span style="background-color: orange" onclick="calc();">=</span>
+    </div>
+  </div></div>
+  <script>
+  function add(a) {
+    document.querySelector('#dis').innerText += a;
+  }
+  function clear() {
+    document.querySelector('#dis').innerText='';
+  }
+  function calc() {
+    let t = document.querySelector('#dis').innerText;
+    t.replace(/÷/g, '/');
+    t.replace(/×/g, '*');
+    t.replace(/−/g, '-');
+    document.querySelector('#dis').innerText = eval(t);
+  }
+  document.querySelectorAll('span').forEach(v => {
+    if(v.innerText == '=' || v.innerText == 'C') return;
+    v.onclick = () => add(v.innerText);
+  });
+  </script>
+</body>
+</html>
