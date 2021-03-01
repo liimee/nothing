@@ -343,8 +343,12 @@ body {
   margin-left: 30px;
 }
 
-#bar > span:last-child:not(#right) {
+/*#bar > span:last-child:not(#right) {
   margin-right: 12em;
+}*/
+
+#bar > span+span {
+  margin-left: 14px;
 }
 
 #bar #right {
