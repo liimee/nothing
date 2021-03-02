@@ -1,0 +1,25 @@
+@import url('button.css');
+@import url('he.css');
+@import url('img.css');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body {
+  padding: 10px;
+}
+
+*:not(code) {
+  font-family: 'Inter', sans-serif;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+hr:not(.dis) {
+  border: none;
+  height: 2px;
+  background-color: #4c4c4c;
+  border-radius: 5px;
+}
+
+hr[light]:not(.dis) {
+  background-color: #999;
+}

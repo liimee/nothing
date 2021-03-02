@@ -1,0 +1,58 @@
+button:not(.dis) {
+  border-radius: 8px;
+  padding: 10px;
+  width: max-content;
+  min-width: 56px;
+  border: none;
+  box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.25);
+  transition: box-shadow .3s, transform .3s;
+  outline: none;
+  margin: 6px;
+}
+
+button[red]:not(.dis) {
+  background-color: #ce2321;
+  box-shadow: 0 5px 0 0 #8e1b19;
+  color: #fff;
+}
+
+button[green]:not(.dis) {
+  background-color: #20bf42;
+  box-shadow: 0 5px 0 0 #1c9636;
+  color: #fff;
+}
+
+button[orange]:not(.dis) {
+  background-color: #e07218;
+  box-shadow: 0 5px 0 0 #a35210;
+  color: #fff;
+}
+
+button[yellow]:not(.dis) {
+  background-color: #d8c10f;
+  box-shadow: 0 5px 0 0 #99880c;
+  color: #fff;
+}
+
+button[purple]:not(.dis) {
+  background-color: #b10cd6;
+  box-shadow: 0 5px 0 0 #780891;
+  color: #fff;
+}
+
+button[blue]:not(.dis) {
+  background-color: #174fd3;
+  box-shadow: 0 5px 0 0 #0e3287;
+  color: #fff;
+}
+
+button[black]:not(.dis) {
+  background-color: #333333;
+  box-shadow: 0 5px 0 0 #000;
+  color: #fff;
+}
+
+button:active:not(.dis) {
+  box-shadow: none;
+  transform: translateY(5px);
+}

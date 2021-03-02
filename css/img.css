@@ -1,0 +1,5 @@
+img:not(.dis) {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+}
