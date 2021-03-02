@@ -778,7 +778,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }).play();
 
   setTimeout(() => {
-    core.sendNotif('Nothing', 'Welcome! We also recommend switching to a fresh new browser if you\'re using an old browser :)');
+    core.sendNotif('Nothing', 'Yeah, the nothing app design system is very weird');
   }, 4001);
 
   if (localStorage.getItem('nothingwelcome') === null) {
