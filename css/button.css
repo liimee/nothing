@@ -2,7 +2,7 @@ button:not(.dis) {
   border-radius: 8px;
   padding: 10px;
   width: max-content;
-  min-width: 56px;
+  min-width: 15%;
   border: none;
   box-shadow: 0 5px 0 0 rgba(0, 0, 0, 0.25);
   transition: box-shadow .3s, transform .3s;
