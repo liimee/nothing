@@ -1,0 +1,27 @@
+input[type="text"]:not(.dis) {
+  background: none;
+  padding: 10px;
+  border-radius: 8px;
+  border: solid 2px grey;
+  outline: none;
+  box-shadow: 0 3px 0 0 grey;
+  margin: 6px;
+  transition: box-shadow .3s, border-color .3s, transform .3s;
+}
+
+input[type="text"][dark]:not(.dis) {
+  background-color: #232323;
+  box-shadow: 0 3px 0 0 #070707;
+  border-color: #474747;
+  color: #fff;
+}
+
+input[type="text"]:invalid:not(.dis) {
+  border-color: red;
+  box-shadow: 0 3px 0 0 red;
+}
+
+input[type="text"]:focus:not(.dis) {
+  box-shadow: 0 0 0 0 grey;
+  transform: translateY(3px);
+}
