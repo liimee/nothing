@@ -925,6 +925,9 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#sapp').oninput = filt;
   } else {
     let ia = JSON.parse(localStorage.getItem('apps'));
+    if('oof' in ia) {
+      delete ia.oof;
+    }
     if (!('CHEINSTTROARLY' in ia)) {
       ia.CHEINSTTROARLY = {
         name: 'CHEINSTTROARLY',
