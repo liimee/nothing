@@ -3,7 +3,6 @@
 <head>
   <meta charset="utf-8">
   <title>Calculator</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet">
   <style>
   body{font-family: 'Inter', sans-serif;}
   #main {
@@ -29,11 +28,11 @@
     justify-content: space-between;
     margin: 9px;
   }
-  * {
+  /** {
     user-select: none;
     -webkit-user-select: none;
   }
-  .btns>span {
+  .btns>button {
     width: auto;
     height: auto;
     padding: 10px;
@@ -42,38 +41,39 @@
     margin: 9px;
     transition: transform .4s;
   }
-  .btns>span:active {
+  .btns>button:active {
     transform: scale(.8);
-  }
+  }*/
   </style>
+  <link rel="stylesheet" href="css/main.css">
 </head>
 <body>
   <div id="main">
     <div><div id="dis"></div>
     <div class="btns">
-      <span>7</span>
-      <span>8</span>
-      <span>9</span>
-      <span>÷</span>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button green>÷</button>
     </div>
     <div class="btns">
-      <span>4</span>
-      <span>5</span>
-      <span>6</span>
-      <span>×</span>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button green>×</button>
     </div>
     <div class="btns">
-      <span>1</span>
-      <span>2</span>
-      <span>3</span>
-      <span>−</span>
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button green>−</button>
     </div>
     <div class="btns">
-      <span>0</span>
-      <span>.</span>
-      <span onclick="clea()">C</span>
-      <span>+</span>
-      <span style="background-color: orange" onclick="calc();">=</span>
+      <button>0</button>
+      <button>.</button>
+      <button onclick="clea()">C</button>
+      <button green>+</button>
+      <button orange onclick="calc();">=</button>
     </div>
   </div></div>
   <script>
@@ -95,7 +95,7 @@
     document.querySelector('#dis').innerText = eval(t);
     ay=true;
   }
-  document.querySelectorAll('span').forEach(v => {
+  document.querySelectorAll('button').forEach(v => {
     if(v.innerText == '=' || v.innerText == 'C') return;
     v.onclick = () => add(v.innerText);
   });
