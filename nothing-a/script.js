@@ -1,10 +1,25 @@
-var por2, data;
+var por2, data, ap, appps, install;
 var tabb = '🏠 Home';
 window.addEventListener('message', (e) => {
   por2 = e.ports[0];
+  
+  install = function() {
+   try{ por2.postMessage({
+      name: 'install',
+      value: {
+        name: ap.name,
+        id: ap.id,
+        icon: ap.icon,
+        file: Object.values(ap.versions)[0].mf,
+        version: Object.keys(ap.versions)[0]
+      }
+    });} catch(e) {alert(e)}
+  }
   if (e.data.name == 'init') {
     read();
-  } else if (e.data.name == 'apps') show(e.data.value);
+  } else if (e.data.name == 'apps') {
+    appps = e.data.value;
+  }
 });
 
 fetch('repo.json').then(r => { return r.json() }).then(d => {
@@ -27,13 +42,14 @@ function tab(a) {
       h = document.createElement('div');
       h.className = 'apps';
       h.innerHTML = `<img src="${v.icon}" style="width: auto; height: 36px; vertical-align: middle; border-radius: 8px; display: inline-block; margin-right: 9px">${v.name}`;
+      h.onclick = () => {
+        ap = v;
+        document.querySelector('#pp').style.top = 0;
+        document.querySelector('#pp').innerHTML = `<img src="${v.icon}" style="width: auto; height: 36px; vertical-align: middle; border-radius: 8px; display: inline-block; margin-right: 9px">${v.name}<div><button onclick="install()" blue>Install</button></div>`
+      }
       document.querySelector('#main').appendChild(h);
     })
   }
-}
-
-function show(aa) {
-  alert(JSON.stringify(aa))
 }
 
 function read() {

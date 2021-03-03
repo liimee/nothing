@@ -1,4 +1,5 @@
 console.log('%cNothing', 'padding: 8px; background-color: #007bff; color: white; border: 2px solid #00a1ff; font-size: 35px;');
+console.log('Say hello to the poorly made web "OS".');
 
 // Load settings
 var db = new Dexie('stgdb');
@@ -62,7 +63,8 @@ var core = {
     thatNewWindow.style.top = '75px';
     thatNewWindow.style.left = '85px';
     thatNewWindow.setAttribute('data-minimized', 'false');
-    thatNewWindow.setAttribute('data-allow-modify-sys', 'false')
+    thatNewWindow.setAttribute('data-allow-modify-sys', 'false');
+    thatNewWindow.setAttribute('data-install-app', 'f');
     thatNewWindow.style.zIndex = 4;
     thatNewWindow.setAttribute('data-name', app.name);
     thatNewWindow.setAttribute('onclick', 'core.bringWindowToFront(this)');
@@ -364,8 +366,39 @@ var core = {
   idk: function(el) {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
   },
+  askInst: function(op, lp, jp) {
+    if(op) {
+      lp.setAttribute('data-install-app', 't');
+      core.onMessage(jp, lp);
+    }
+    if(core.stg.lang == 'un') {
+      document.querySelector('#install').children[0].children[0].innerText=`${e.data.value.name}e erko(m) seynumā?`;
+      document.querySelector('#install').children[1].innerText=`${lp.getAttribute('data-name')}ku ${jp.data.value.name}e erko(m) seynuma(m)`;
+    } else {
+      document.querySelector('#install').children[0].children[0].innerText=`Install ${e.data.value.name}?`;
+      document.querySelector('#install').children[1].innerText=`${lp.getAttribute('data-name')} wants to install ${jp.data.value.name}.`;
+    }
+    document.querySelector('#install').children[2].children[1].onclick=()=>askInst(true, lp);
+    document.querySelector('#instcont').style.display='flex';
+  },
   onMessage: function(e, abc) {
     switch (e.data.name) {
+      case 'install':
+        if(abc.getAttribute('data-install-app') == 'f') {
+          core.askInst(false, abc, e);
+          return;
+        }
+        let ia = JSON.parse(localStorage.getItem('apps'));
+        if(e.data.value.id in ia) throw new Error('App exists.');
+        ia[e.data.value.id] = {
+          name: e.data.value.name,
+          id: e.data.value.id,
+          icon: e.data.value.icon,
+          version: e.data.value.version,
+          file: e.data.value.file
+        };
+        localStorage.setItem('apps', JSON.stringify(ia));
+        break;
       case 'apps':
         abc.children[1].children[0].contentWindow.postMessage({
           name: 'apps',
