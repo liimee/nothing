@@ -224,9 +224,10 @@ var core = {
       el.setAttribute('data-initial-width', el.style.width);
       el.setAttribute('data-initial-height', el.style.height);
       el.style.top = 'calc(25px + 8px + 12px)';
-      el.style.left = '12px';
-      el.style.width = '95%';
+      el.style.left = '0';
+      el.style.width = '100%';
       el.style.height = '93%';
+      el.style.borderRadius = '0';
       interact(el).draggable(false);
       interact(el).resizable(false);
       el.setAttribute('data-maximized', 'true');
@@ -240,6 +241,7 @@ var core = {
       el.children[0].children[1].classList.remove('bx-collapse');
       el.children[0].children[1].classList.add('bx-expand');
       el.style.width = el.getAttribute('data-initial-width');
+      el.style.borderRadius='8px';
       el.style.height = el.getAttribute('data-initial-height');
       el.setAttribute('data-maximized', 'false');
       interact(el).draggable(true);
@@ -364,6 +366,12 @@ var core = {
   },
   onMessage: function(e, abc) {
     switch (e.data.name) {
+      case 'apps':
+        abc.children[1].children[0].contentWindow.postMessage({
+          name: 'apps',
+          value: JSON.parse(localStorage.getItem('apps'))
+        });
+        break;
       case 'openapp':
         if (e.data.value in JSON.parse(localStorage.getItem('apps'))) {
           core.openApp(JSON.parse(localStorage.getItem('apps'))[e.data.value]);
@@ -884,6 +892,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (localStorage.getItem('apps') === null) {
     let aps = {
+      NothingApps: {
+        name: '—nothing—a',
+        file: 'nothing-a/test.html',
+        id: 'NothingApps',
+        icon: 'images/store.png',
+        version: '1.0.0'
+      },
       CHEINSTTROARLY: {
         name: 'CHEINSTTROARLY',
         file: 'minusone.html',

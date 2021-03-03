@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+      .apps {
+        width: 90%;
+        padding: 10px;
+        border-radius: 8px;
+        margin: auto;
+        background-color: #bcbcbc;
+      }
+      
+      #b {
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        position: fixed;
+        bottom: 0;
+        background-color: #191919;
+        padding: 10px 0;
+        border-radius: 8px;
+        text-align: center;
+      }
+      #top {
+        left: 0;
+        z-index: 999;
+        width: 100%;
+        position: fixed;
+        top: 0;
+        background-color: #c6c6c6;
+        padding: 10px 0;
+        font-weight: bold;
+        text-align: center;
+        border-radius: 8px;
+      }
+      #main {
+        margin-top: 60px;
+        margin-bottom: 60px;
+      }
+      #pp {
+        position: fixed;
+        top: -100%;
+        height: 100%;
+        z-index: 9999;
+        left: 0;
+        width: 100%;
+      }
+    </style>
+    <link rel="stylesheet" href="https://liimee.gitlab.io/nothing/css/main.css">
+  </head>
+  <body>
+    <div id="top">−nothing−a</div>
+    <div id="main"></div>
+    <div id="b">
+      <button green onclick="tab(this)">🏠 Home</button>
+      <button black onclick="tab(this)">🔄 Updates</button>
+      <button black onclick="tab(this)">ℹ️ About</button>
+    </div>
+    <div id="pp"></div>
+    <script src="script.js" charset="utf-8"></script>
+  </body>
+</html>

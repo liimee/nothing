@@ -404,7 +404,8 @@ body {
 }
 
 #restartcontainer,
-#requestcontainer {
+#requestcontainer,
+#instcont{
   position: fixed;
   left: 0;
   top: 0;
@@ -417,7 +418,8 @@ body {
 }
 
 #restart,
-#req {
+#req,
+#install {
   position: fixed;
   top: 50%;
   left: 50%;

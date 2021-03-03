@@ -1,0 +1,13 @@
+{
+  "apps": {
+    "CHEINSTTROARLY": {
+      "name": "CHEINSTTROARLY",
+      "icon": "../images/minusone.png",
+      "versions": {
+        "1.0.0": {
+          "mf": "../minusone.html"
+        }
+      }
+    }
+  }
+}
