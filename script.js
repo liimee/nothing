@@ -243,7 +243,7 @@ var core = {
       el.children[0].children[1].classList.remove('bx-collapse');
       el.children[0].children[1].classList.add('bx-expand');
       el.style.width = el.getAttribute('data-initial-width');
-      el.style.borderRadius='8px';
+      el.style.borderRadius = '8px';
       el.style.height = el.getAttribute('data-initial-height');
       el.setAttribute('data-maximized', 'false');
       interact(el).draggable(true);
@@ -367,32 +367,32 @@ var core = {
     core.maximizeWindow(document.querySelector(`[data-bar-id="${el}"]`), el);
   },
   askInst: function(op, lp, jp) {
-    if(op) {
+    if (op) {
       lp.setAttribute('data-install-app', 't');
       core.onMessage(jp, lp);
     }
-    if(core.stg.lang == 'un') {
-      document.querySelector('#install').children[0].children[0].innerText=`${jp.data.value.name}e erko(m) seynumā?`;
-      document.querySelector('#install').children[1].innerText=`${lp.getAttribute('data-name')}ku ${jp.data.value.name}e erko(m) seynuma(m)`;
+    if (core.stg.lang == 'un') {
+      document.querySelector('#install').children[0].children[0].innerText = `${jp.data.value.name}e erko(m) seynumā?`;
+      document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')}ku ${jp.data.value.name}e erko(m) seynuma(m)`;
     } else {
-      document.querySelector('#install').children[0].children[0].innerText=`Install ${jp.data.value.name}?`;
-      document.querySelector('#install').children[1].innerText=`${lp.getAttribute('data-name')} wants to install ${jp.data.value.name}.`;
+      document.querySelector('#install').children[0].children[0].innerText = `Install ${jp.data.value.name}?`;
+      document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')} wants to install ${jp.data.value.name}.`;
     }
-    document.querySelector('#install').children[2].children[1].onclick=()=>{
+    document.querySelector('#install').children[2].children[1].onclick = () => {
       document.querySelector('#instcont').style.display = 'none';
       core.askInst(true, lp, jp);
     }
-    document.querySelector('#instcont').style.display='flex';
+    document.querySelector('#instcont').style.display = 'flex';
   },
   onMessage: function(e, abc) {
     switch (e.data.name) {
       case 'install':
-        if(abc.getAttribute('data-install-app') == 'f') {
+        let ia = JSON.parse(localStorage.getItem('apps'));
+        if (e.data.value.id in ia) throw new Error('App exists.');
+        if (abc.getAttribute('data-install-app') == 'f') {
           core.askInst(false, abc, e);
           return;
         }
-        let ia = JSON.parse(localStorage.getItem('apps'));
-        if(e.data.value.id in ia) throw new Error('App exists.');
         ia[e.data.value.id] = {
           name: e.data.value.name,
           id: e.data.value.id,
@@ -670,7 +670,7 @@ db.settings.get('lang', (v) => {
 core.chck();
 
 setInterval(() => {
-	if(!core.stg.lang) return;
+  if (!core.stg.lang) return;
   document.querySelectorAll('[data-translate]').forEach((v) => {
     v.innerHTML = core.langs[core.stg.lang][v.getAttribute('data-translate')];
   });
@@ -888,37 +888,37 @@ document.addEventListener('DOMContentLoaded', function() {
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);
 
- /* new Sortable(document.querySelector('#apps'), {
-    animation: 150,
-    delay: 100,
-    delayOnTouchOnly: false,
-    draggable: '.app',
-    group: {
-      name: 'shared',
-      pull: 'clone' // To clone: set pull to 'clone'
-    },
-    onClone: e => {
-      e.item.id = '';
-      e.clone.onclick = e.item.onclick;
-    }
-  });
+  /* new Sortable(document.querySelector('#apps'), {
+     animation: 150,
+     delay: 100,
+     delayOnTouchOnly: false,
+     draggable: '.app',
+     group: {
+       name: 'shared',
+       pull: 'clone' // To clone: set pull to 'clone'
+     },
+     onClone: e => {
+       e.item.id = '';
+       e.clone.onclick = e.item.onclick;
+     }
+   });
 
-  new Sortable(document.querySelector('#favapps'), {
-    animation: 150,
-    draggable: '.app',
-    group: {
-      name: 'shared',
-      pull: false
-    },
-    onAdd: e => {
-      if (core.favapps.includes(e.clone.id)) {
-        e.item.remove();
-      } else {
-        core.favapps.push(e.clone.id);
-        e.item.children[1].remove();
-      }
-    }
-  })*/
+   new Sortable(document.querySelector('#favapps'), {
+     animation: 150,
+     draggable: '.app',
+     group: {
+       name: 'shared',
+       pull: false
+     },
+     onAdd: e => {
+       if (core.favapps.includes(e.clone.id)) {
+         e.item.remove();
+       } else {
+         core.favapps.push(e.clone.id);
+         e.item.children[1].remove();
+       }
+     }
+   })*/
 
   if (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
     document.querySelector('#device').innerHTML = '<i class="bx bx-mobile-alt"></i>';
@@ -935,13 +935,13 @@ document.addEventListener('DOMContentLoaded', function() {
         icon: 'images/store.png',
         version: '1.0.0'
       },
-     /* CHEINSTTROARLY: {
-        name: 'CHEINSTTROARLY',
-        file: 'minusone.html',
-        id: 'CHEINSTTROARLY',
-        icon: 'images/minusone.png',
-        nothinglang: false
-      },*/
+      /* CHEINSTTROARLY: {
+         name: 'CHEINSTTROARLY',
+         file: 'minusone.html',
+         id: 'CHEINSTTROARLY',
+         icon: 'images/minusone.png',
+         nothinglang: false
+       },*/
       stockcalculator: {
         name: 'Calculator',
         file: 'calculator.html',
@@ -976,18 +976,8 @@ document.addEventListener('DOMContentLoaded', function() {
     document.querySelector('#sapp').oninput = filt;
   } else {
     let ia = JSON.parse(localStorage.getItem('apps'));
-    if('oof' in ia) {
+    if ('oof' in ia) {
       delete ia.oof;
-    }
-    if (!('CHEINSTTROARLY' in ia)) {
-      ia.CHEINSTTROARLY = {
-        name: 'CHEINSTTROARLY',
-        file: 'minusone.html',
-        id: 'CHEINSTTROARLY',
-        nothinglang: false,
-        icon: 'images/minusone.png'
-      };
-      localStorage.setItem('apps', JSON.stringify(ia));
     }
     if (!('settings' in ia)) {
       ia.settings = {
@@ -1017,7 +1007,7 @@ document.addEventListener('DOMContentLoaded', function() {
       };
       localStorage.setItem('apps', JSON.stringify(ia));
     }
-    if(!('stockcalculator' in ia)) {
+    if (!('stockcalculator' in ia)) {
       ia.stockcalculator = {
         name: 'Calculator',
         file: 'calculator.html',

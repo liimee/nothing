@@ -51,7 +51,7 @@ window.onload = () => {
           h.onclick = () => {
             ap = v;
             document.querySelector('#pp').style.top = 0;
-            document.querySelector('#pp').innerHTML = `<img src="${v.icon}" style="width: auto; height: 36px; vertical-align: middle; border-radius: 8px; display: inline-block; margin-right: 9px">${v.name}<div><button blue>Install</button></div>`;
+            document.querySelector('#pp').innerHTML = `<div style="margin-bottom: 8px"><span onclick="document.querySelector('#pp').style.top='-110%';">⬅️</span></div><img src="${v.icon}" style="width: auto; height: 36px; vertical-align: middle; border-radius: 8px; display: inline-block; margin-right: 9px">${v.name}<div><button ${(v.id in appps)?'red':'blue'}>${(v.id in appps)?'Uninstall':'Install'}</button></div>`;
             document.querySelector('#pp').children[1].children[0].onclick = () => install(por2);
           }
           document.querySelector('#main').appendChild(h);
