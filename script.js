@@ -372,13 +372,16 @@ var core = {
       core.onMessage(jp, lp);
     }
     if(core.stg.lang == 'un') {
-      document.querySelector('#install').children[0].children[0].innerText=`${e.data.value.name}e erko(m) seynumā?`;
+      document.querySelector('#install').children[0].children[0].innerText=`${jp.data.value.name}e erko(m) seynumā?`;
       document.querySelector('#install').children[1].innerText=`${lp.getAttribute('data-name')}ku ${jp.data.value.name}e erko(m) seynuma(m)`;
     } else {
-      document.querySelector('#install').children[0].children[0].innerText=`Install ${e.data.value.name}?`;
+      document.querySelector('#install').children[0].children[0].innerText=`Install ${jp.data.value.name}?`;
       document.querySelector('#install').children[1].innerText=`${lp.getAttribute('data-name')} wants to install ${jp.data.value.name}.`;
     }
-    document.querySelector('#install').children[2].children[1].onclick=()=>askInst(true, lp);
+    document.querySelector('#install').children[2].children[1].onclick=()=>{
+      document.querySelector('#instcont').style.display = 'none';
+      core.askInst(true, lp, jp);
+    }
     document.querySelector('#instcont').style.display='flex';
   },
   onMessage: function(e, abc) {
@@ -925,20 +928,20 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (localStorage.getItem('apps') === null) {
     let aps = {
-      /*NothingApps: {
+      NothingApps: {
         name: '—nothing—a',
         file: 'nothing-a/test.html',
         id: 'NothingApps',
         icon: 'images/store.png',
         version: '1.0.0'
-      },*/
-      CHEINSTTROARLY: {
+      },
+     /* CHEINSTTROARLY: {
         name: 'CHEINSTTROARLY',
         file: 'minusone.html',
         id: 'CHEINSTTROARLY',
         icon: 'images/minusone.png',
         nothinglang: false
-      },
+      },*/
       stockcalculator: {
         name: 'Calculator',
         file: 'calculator.html',
