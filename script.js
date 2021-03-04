@@ -925,13 +925,13 @@ document.addEventListener('DOMContentLoaded', function() {
 
   if (localStorage.getItem('apps') === null) {
     let aps = {
-      NothingApps: {
+      /*NothingApps: {
         name: '—nothing—a',
         file: 'nothing-a/test.html',
         id: 'NothingApps',
         icon: 'images/store.png',
         version: '1.0.0'
-      },
+      },*/
       CHEINSTTROARLY: {
         name: 'CHEINSTTROARLY',
         file: 'minusone.html',
