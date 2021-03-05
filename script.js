@@ -884,8 +884,8 @@ document.addEventListener('DOMContentLoaded', function() {
   if (localStorage.getItem('apps') === null) {
     let aps = {
       NothingApps: {
-        name: '—nothing—a',
-        file: 'nothing-a/test.html',
+        name: 'Nothing Marketplace',
+        file: 'nothing-marketplace/test.html',
         id: 'NothingApps',
         icon: 'images/store.png',
         version: '1.0.0'
