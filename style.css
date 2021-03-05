@@ -54,21 +54,6 @@
   }
 }
 
-@keyframes wrongpass {
-  25% {
-    transform: translateX(30px);
-  }
-  50% {
-    transform: translateX(-30px);
-  }
-  75% {
-    transform: translateX(30px);
-  }
-  100% {
-    transform: translateX(0);
-  }
-}
-
 body {
   overflow: hidden;
   background-size: cover;
@@ -316,29 +301,6 @@ body {
   cursor: inherit;
 }
 
-#wrongwrong {
-  background-color: red;
-  position: fixed;
-  width: 100%;
-  z-index: 80000;
-  height: 100%;
-  color: #fff;
-  left: 0;
-  top: 0;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-}
-
-#wrongwrong > div > i {
-  font-size: 140px;
-}
-
-#wrongwrong > div {
-  font-size: 29px;
-}
-
 #bar > span:nth-child(3) {
   margin-left: 30px;
 }
@@ -465,43 +427,6 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   margin: auto;
-}
-
-#password {
-  display: none;
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background-color: #578593;
-  opacity: .95;
-  z-index: 10001;
-}
-
-#password > div {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-#inppass {
-  padding: .6em;
-  border: none;
-  border-radius: 8px;
-  margin-top: .8em;
-  outline: none;
-  width: 200px;
-}
-
-#password i {
-  font-size: 2em;
-  display: inline-block;
-  margin-left: .4em;
-  background-color: white;
-  color: #8a6af2;
-  border-radius: 50%;
 }
 
 #sapp {

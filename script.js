@@ -18,8 +18,6 @@ db.settings.get('timeformat', (v) => {
   }
 });
 
-if (localStorage.getItem('wrong') === null) localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
-
 var core = {
   root: document.documentElement,
   currentno: 0,
@@ -435,9 +433,6 @@ var core = {
                 core.onMessage('getsettings', v);
               });
               break;
-            case 'password':
-              core.changePass(e.data.value);
-              break;
             case 'timeformat':
               core.stg.timeformat = e.data.value + '';
               core.onstgchg();
@@ -519,33 +514,6 @@ var core = {
     document.querySelector('#requestcontainer').style.display = 'none';
     hmm.setAttribute('data-allow-modify-sys', 'false');
     hmm.children[1].children[0].contentWindow.postMessage({ name: 'permdenied', sets: hm.data.name, value: localStorage.getItem('dm') });
-  },
-  changePass: function(p) {
-    if (confirm('⚠️ An app wants to change your password')) {
-      localStorage.setItem('pass', CryptoJS.AES.encrypt(p, 'nothinghhskpwpwueurrueioenxjdufhd'));
-    }
-  },
-  checkPass: function(e) {
-    //  if(e.keyCode == 13) {
-    if (document.querySelector('#inppass').value == CryptoJS.AES.decrypt(localStorage.getItem('pass'), 'nothinghhskpwpwueurrueioenxjdufhd').toString(CryptoJS.enc.Utf8)) {
-      document.querySelector('#password').style.display = 'none';
-      localStorage.setItem('wrong', CryptoJS.AES.encrypt('0', 'wrong'));
-      //document.querySelector('#inppass').removeEventListener('keyup', core.checkPass);
-    } else {
-      let kk = parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) + 1;
-      localStorage.setItem('wrong', CryptoJS.AES.encrypt(kk.toString(), 'wrong'));
-      core.chck();
-      document.querySelector('#inppass').style.animation = 'wrongpass .5s';
-      setTimeout(() => {
-        document.querySelector('#inppass').style.animation = 'none';
-      }, 501);
-    }
-  },
-  chck: function() {
-    if (parseInt(CryptoJS.AES.decrypt(localStorage.getItem('wrong'), 'wrong').toString(CryptoJS.enc.Utf8)) > 9) {
-      document.querySelector('#wrongwrong').style.display = 'flex';
-      window.stop();
-    }
   },
   stg: {
     timeformat: '24'
@@ -666,8 +634,6 @@ db.settings.get('lang', (v) => {
     core.stg.lang = v.val;
   }
 });
-
-core.chck();
 
 setInterval(() => {
   if (!core.stg.lang) return;
@@ -795,22 +761,11 @@ window.addEventListener('storage', function() {
   }
 });
 
-setTimeout(() => {
-  document.querySelector('#startup').style.opacity = 0;
-  setTimeout(() => {
-    document.querySelector('#startup').style.display = 'none';
-    if (localStorage.getItem('pass') !== null) {
-      document.querySelector('#password').style.display = 'block';
-      /*document.querySelector('#inppass').addEventListener('keyup', (e) => {
-        if(e.key == 'Enter') core.checkPass();
-        return false;
-      }, false);*/
-    }
-  }, 90);
-}, 4000);
-
 document.addEventListener('DOMContentLoaded', function() {
   document.title = 'Running — nothing';
+  setTimeout(() => {
+    document.querySelector('#startup').style.display = 'none';
+  }, 2600)
   core.clockTooltip = tippy(document.querySelector('#bar #clock'), { trigger: 'click', arrow: false });
   core.deviceTooltip = tippy(document.querySelector('#rightinfo #device'), { trigger: 'click', arrow: false, content: navigator.appVersion });
   core.fpsTooltip = tippy(document.querySelector('#bar #fps'), { trigger: 'click', arrow: false });
