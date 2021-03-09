@@ -372,6 +372,9 @@ var core = {
     if (core.stg.lang == 'un') {
       document.querySelector('#install').children[0].children[0].innerText = `${jp.data.value.name}e erko(m) seynumā?`;
       document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')}ku ${jp.data.value.name}e erko(m) seynuma(m)`;
+    } else if(core.stg.lang == 'hi') {
+      document.querySelector('#intstall').children[0].children[0].innerText = `क्या ${jp.data.value.name} को इन्स्टॉल करें?`;
+      document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')} ${jp.data.value.name} को इन्स्टॉल करना चाहता है।`;
     } else {
       document.querySelector('#install').children[0].children[0].innerText = `Install ${jp.data.value.name}?`;
       document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')} wants to install ${jp.data.value.name}.`;
