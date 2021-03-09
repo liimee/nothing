@@ -843,7 +843,7 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : (core.stg.lang == 'un') ? 'Nammadhyāno(m)!' : 'शुभ प्रभात';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : (core.stg.lang == 'un') ? 'Nangāle!' : 'शुभ प्रभात';
     } else if (date.getHours() > 10 && date.getHours() < 17) {
       document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good afternoon!' : (core.stg.lang == "un") ? 'Nammadhyāno(m)!' : 'नमस्कार';
     } else if (date.getHours() < 20 && date.getHours() > 16) {
