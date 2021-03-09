@@ -843,15 +843,15 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : 'Nangāle!';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : (core.stg.lang == 'un') ? 'Nangāle!' : 'शुभ प्रभात';
     } else if (date.getHours() > 10 && date.getHours() < 17) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good afternoon!' : 'Nammadhyāno(m)!';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good afternoon!' : (core.stg.lang == "un") ? 'Nammadhyāno(m)!' : 'नमस्कार';
     } else if (date.getHours() < 20 && date.getHours() > 16) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good evening!' : 'Nanjaendhro(m)!';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good evening!' : (core.stg.lang == "un") ? 'Nanjaendhro(m)!' : 'सुसंध्या';
     } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good night 🌃' : 'Nanrāthri 🌃';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good night 🌃' : (core.stg.lang == "un") ?  'Nanrāthri 🌃' : "शुभ रात्रि ";
     } else {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Dude it\'s midnight' : 'Dēi nadrāthri āwdhœ';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Dude it\'s midnight' : (core.stg.lang == "un") ? 'Dēi nadrāthri āwdhœ' : "अरे, आधी रात है";
     }
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);
