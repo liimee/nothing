@@ -596,6 +596,16 @@ var core = {
       modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> Allow this app to modify OS settings?',
       modifysysreqcontent: 'has requested to modify OS settings. Even changing your password.'
     },
+    hi: {
+      restartreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-refresh" style="font-size: 1.5em;"></i></div> पुनरारंभ करें?',
+      restartreqcontent: 'एक ऐप्लिकेशन ऑपरेटिंग सिस्टम को पुनरारंभ करना चाहता है।',
+      cancel: 'रद्द करना',
+      ok: 'ठीक है',
+      allow: 'अनुमति देना',
+      deny: 'मना करना',
+      modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> क्या इस ऐप्लिकेशन को ऑपरेटिंग सिस्टम के समायोजन को बदलने की अनुमति दें?',
+      modifysysreqcontent: 'ऑपरेटिंग सिस्टम के समायोजन को बदलना चाहता है। वह अपना पैस्वर्ड को भी बदल सकता है'
+    },
     un: {
       cancel: 'Llenrthœ',
       ok: 'Seri',
