@@ -372,7 +372,10 @@ var core = {
     if (core.stg.lang == 'un') {
       document.querySelector('#install').children[0].children[0].innerText = `${jp.data.value.name}e erko(m) seynumā?`;
       document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')}ku ${jp.data.value.name}e erko(m) seynuma(m)`;
-    } else if(core.stg.lang == 'hi') {
+    } else if (core.stg.lang == 'id') {
+      document.querySelector('#install').children[0].children[0].innerText = `Pasang ${jp.data.value.name}?`;
+      document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')} ingin memasang ${jp.data.value.name}.`;
+    } else if (core.stg.lang == 'hi') {
       document.querySelector('#intstall').children[0].children[0].innerText = `क्या ${jp.data.value.name} को इन्स्टॉल करें?`;
       document.querySelector('#install').children[1].innerText = `${lp.getAttribute('data-name')} ${jp.data.value.name} को इन्स्टॉल करना चाहता है।`;
     } else {
@@ -446,6 +449,12 @@ var core = {
                 core.onstgchg();
               } else if (e.data.value == 'undardese') {
                 core.stg.lang = 'un';
+                core.onstgchg();
+              } else if (e.data.value == 'hindi') {
+                core.stg.lang = 'hi';
+                core.onstgchg();
+              } else if (e.data.value == 'indonesian') {
+                core.stg.lang = 'id';
                 core.onstgchg();
               }
           }
@@ -597,7 +606,7 @@ var core = {
       allow: 'Allow',
       deny: 'Deny',
       modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> Allow this app to modify OS settings?',
-      modifysysreqcontent: 'has requested to modify OS settings. Even changing your password.'
+      modifysysreqcontent: 'has requested to modify OS settings.'
     },
     hi: {
       restartreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-refresh" style="font-size: 1.5em;"></i></div> पुनरारंभ करें?',
@@ -608,6 +617,16 @@ var core = {
       deny: 'मना करना',
       modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> क्या इस ऐप्लिकेशन को ऑपरेटिंग सिस्टम के समायोजन को बदलने की अनुमति दें?',
       modifysysreqcontent: 'ऑपरेटिंग सिस्टम के समायोजन को बदलना चाहता है। वह अपना पैस्वर्ड को भी बदल सकता है'
+    },
+    id: {
+      restartreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-refresh" style="font-size: 1.5em;"></i></div> Restart?',
+      restartreqcontent: 'Sebuah aplikasi telah meminta untuk me-restart OS ini.',
+      cancel: 'Batal',
+      ok: 'Oke',
+      allow: 'Izinkan',
+      deny: 'Tolak',
+      modifysysreqtitle: '<div style="margin-bottom: 15px;"><i class="bx bx-shield" style="font-size: 1.5em;"></i></div> Izinkan aplikasi ini untuk memodifikasi pengaturan OS?',
+      modifysysreqcontent: 'ingin memodifikasi pengaturan OS.'
     },
     un: {
       cancel: 'Llenrthœ',
@@ -843,15 +862,15 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
     if (date.getHours() != 0 && date.getHours() < 11 && date.getHours() > 3) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : (core.stg.lang == 'un') ? 'Nangāle!' : 'शुभ प्रभात';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good morning!' : (core.stg.lang == 'un') ? 'Nangāle!' : (core.stg.lang=='hi')? 'शुभ प्रभात':'Selamat pagi!';
     } else if (date.getHours() > 10 && date.getHours() < 17) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good afternoon!' : (core.stg.lang == "un") ? 'Nammadhyāno(m)!' : 'नमस्कार';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good afternoon!' : (core.stg.lang == "un") ? 'Nammadhyāno(m)!' : core.stg.lang=='hi'?'नमस्कार':'Selamat siang!';
     } else if (date.getHours() < 20 && date.getHours() > 16) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good evening!' : (core.stg.lang == "un") ? 'Nanjaendhro(m)!' : 'सुसंध्या';
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good evening!' : (core.stg.lang == "un") ? 'Nanjaendhro(m)!' : core.stg.lang=="hi"?'सुसंध्या':'Selamat Sore!';
     } else if (date.getHours() != 0 && date.getHours() < 24 && date.getHours() > 19) {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good night 🌃' : (core.stg.lang == "un") ?  'Nanrāthri 🌃' : "शुभ रात्रि ";
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Good night 🌃' : (core.stg.lang == "un") ? 'Nanrāthri 🌃' : core.stg.lang=='hi'?"शुभ रात्रि ":'Selamat Malam 🌃';
     } else {
-      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Dude it\'s midnight' : (core.stg.lang == "un") ? 'Dēi nadrāthri āwdhœ' : "अरे, आधी रात है";
+      document.querySelector('#overlayGreeting').innerText = (core.stg.lang == 'en') ? 'Dude it\'s midnight' : (core.stg.lang == "un") ? 'Dēi nadrāthri āwdhœ' : core.stg.lang=="hi"?"अरे, आधी रात है":'Ini tengah malam bung';
     }
     core.clockTooltip.setContent(hour + ':' + minute + ' | ' + month + ' ' + day + ', ' + year);
   }, 10);

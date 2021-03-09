@@ -41,6 +41,8 @@
             document.querySelector('#langf').value = 'english';
           } else if(d.language == 'un') {
             document.querySelector('#langf').value = 'undardese';
+          } else if(d.language == 'id') {
+            document.querySelector('#langf').value = 'indonesian';
           } else {
             document.querySelector('#langf').value = 'hindi';
           }

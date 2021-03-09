@@ -1,4 +1,4 @@
-window.onload = () => {
+
   var por2, data, ap, appps, install;
   var tabb = '🏠 Home';
   window.addEventListener('message', (e) => {
@@ -52,7 +52,7 @@ window.onload = () => {
             ap = v;
             document.querySelector('#pp').style.top = 0;
             document.querySelector('#pp').innerHTML = `<div style="margin-bottom: 8px"><span onclick="document.querySelector('#pp').style.top='-110%';">⬅️</span></div><img src="${v.icon}" style="width: auto; height: 36px; vertical-align: middle; border-radius: 8px; display: inline-block; margin-right: 9px">${v.name}<div><button ${(v.id in appps)?'red':'blue'}>${(v.id in appps)?'Uninstall':'Install'}</button></div>`;
-            document.querySelector('#pp').children[1].children[0].onclick = () => install(por2);
+            document.querySelector('#pp').children[2].children[0].onclick = () => install(por2);
           }
           document.querySelector('#main').appendChild(h);
         })
@@ -63,4 +63,3 @@ window.onload = () => {
       v.onclick = () => { tab(v) };
     })
   }
-}
