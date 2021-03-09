@@ -39,8 +39,10 @@
           document.querySelector('#timef').value = d.timeformat;
           if(d.language == 'en') {
             document.querySelector('#langf').value = 'english';
-          } else {
+          } else if(d.language == 'un') {
             document.querySelector('#langf').value = 'undardese';
+          } else {
+            document.querySelector('#langf').value = 'hindi';
           }
         },
         dmh: function() {
